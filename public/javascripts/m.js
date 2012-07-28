@@ -1,0 +1,1 @@
+var canvas = document.getElementById('start_screen'),context = canvas.getContext('2d');function make_base(){  base_image = new Image();  base_image.src = '/images/ui/title_screen.png';  base_image.onload = function(){    context.drawImage(base_image, 100, 100);  }}make_base();

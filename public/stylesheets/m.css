@@ -1,0 +1,1 @@
+div#content{	position:relative;	margin: 0 auto;	width:1000px;}canvas {		width: 1000px;	height: 600px;}canvas#start_screen {	position:absolute;	top:20px;	left:0;	border: 1px solid blue; }canvas#battle_canvas {	background:black;	display:none;}.clear{	clear:both;}
