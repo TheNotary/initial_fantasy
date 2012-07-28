@@ -4,26 +4,40 @@
 
 	<head>
 		<link type="text/css" rel="stylesheet" href="/stylesheets/m.css">
+
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
+		<script src="/javascripts/fabric.js/dist/all.js"></script>
+
+    <script src="/javascripts/ifClasses/sceneDirector.js"></script>
+    <script src="/javascripts/titleScreen.js"></script>
+		<script src="/javascripts/keyboard.js"></script>
 		<script src="/javascripts/m.js"></script>
+		
 	</head>
 
 <body>
+
+  <audio id="audio1" class="music">
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg" />
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3" />
+    Your browser does not support the audio element.
+  </audio>
+  
 	<div id="content">
-		<canvas id="start_screen"></canvas>
-		hello
+    <canvas id="start_screen"></canvas>
 	
-		<canvas id="battle_canvas"></canvas>
-		<canvas id="worldmap_canvas"></canvas>
+    <canvas id="battle_canvas"></canvas>
+    <canvas id="worldmap_canvas"></canvas>
 	
 	
-		<div id="battle_menu">
+    <div id="battle_menu">
 		
-		</div>
+    </div>
 	
-		<div id="character_menu">
+    <div id="character_menu">
 		
-		</div>
-	</div>
+    </div>
+  </div>
 	
 </body>
 
