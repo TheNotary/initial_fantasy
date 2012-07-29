@@ -1,0 +1,1 @@
+function battleScreen(){}battleScreen.handleKeys = function(evt){  var key = evt.keyCode;  if (key == 13){    alert('hey, you did something on the battle screen.');  }}battleScreen.context = false;battleScreen.hide = function(callbackFunc){  $('#battle_screen').fadeOut(function(){    callbackFunc.call();  });}
