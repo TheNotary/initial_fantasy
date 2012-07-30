@@ -3,6 +3,9 @@
 <html>
 
 	<head>
+	  <meta charset="UTF-8">
+	  <title>Initial Fantasy</title>
+	  
 		<!-- 	Webfonts	 -->
 		<link rel="stylesheet" href="/fonts/ffvi/stylesheet.css" type="text/css" charset="utf-8" />
 		
@@ -11,10 +14,11 @@
 	
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/1.7.2/jquery.min.js"></script>
 		<script src="/javascripts/fabric.js/dist/all.js"></script>
-	
-	    <script src="/javascripts/ifClasses/sceneDirector.js"></script>
-	    <script src="/javascripts/ifClasses/battleScreen.js"></script>
-	    <script src="/javascripts/titleScreen.js"></script>
+	  
+	  <script src="/javascripts/ifClasses/mob.js"></script>
+	  <script src="/javascripts/ifClasses/sceneDirector.js"></script>
+    <script src="/javascripts/ifClasses/battleScreen.js"></script>
+    <script src="/javascripts/titleScreen.js"></script>
 		<script src="/javascripts/keyboard.js"></script>
 		<script src="/javascripts/m.js"></script>
 		
@@ -23,21 +27,21 @@
 <body>
 
   <audio id="audio1" class="music">
-    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg" />
-    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3" />
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
     Your browser does not support the audio element.
   </audio>
   
-	<div id="content">
+  <div id="content">
     <canvas id="title_screen"></canvas>
-	
+    
     <canvas id="battle_screen"></canvas>
     <canvas id="worldmap_canvas"></canvas>
-	
-	
+    
+<!--   source proprietary attribute "type"   -->
     <div id="battle_menu">
 		  <div id="enemies" class="menu_border">
-		    <ul>
+		    <ul id="mob_list">
 		      <li>Lobo</li>
 		      <li>Krang</li>
 		      <li>Eclipse</li>
@@ -46,8 +50,20 @@
 	  	</div>
 	  	
 	  	<div id="party" class="menu_border">
-	  	  
+	  	  <ul id="character_list">
+	  	    <li id="00000001-cecil">
+	  	      <div class="name">Cecil</div>
+	  	      <div class="current_health">324</div>
+	  	      <div class="health_divider">/</div>
+	  	      <div class="max_health">450</div>
+	  	      <div class="magic"> 224 </div>
+	  	      <div class="time">  
+	  	        <div class="fill"></div>
+	  	      </div>
+	  	    </li>
+	  	  </ul>
 	  	</div>
+	  	
     </div>
 	
     <div id="character_menu">
