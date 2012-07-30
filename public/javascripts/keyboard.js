@@ -9,6 +9,10 @@ document.onkeydown = function(evt) {
     case "title_screen":
       titleScreen.handleKeys(evt);
       break;
+    case "battle_screen":
+      battleScreen.handleKeys(evt);
+      break;
+    
   }
 
   return;
