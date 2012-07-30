@@ -24,6 +24,7 @@
 		<script src="/javascripts/m.js"></script>
 		
 		<script src="/javascripts/keyboard.js"></script>
+		<script src="/javascripts/debugging.js"></script>
 		
 	</head>
 
@@ -35,13 +36,19 @@
     Your browser does not support the audio element.
   </audio>
   
+  <audio id="audBattle" class="music">
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
+    Your browser does not support the audio element.
+  </audio>
+  
   <div id="content">
     <canvas id="title_screen"></canvas>
     
     <canvas id="battle_screen"></canvas>
-    <canvas id="worldmap_canvas"></canvas>
+    <canvas id="worldmap_screen"></canvas>
     
-<!--   source proprietary attribute "type"   -->
+
     <div id="battle_menu">
 		  <div id="enemies" class="menu_border">
 		    <ul id="mob_list">

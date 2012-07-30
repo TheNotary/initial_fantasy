@@ -2,8 +2,11 @@ function Mob(id, image){
   this.id = 1;
   this.image = image;
   this.position = BattlePositions.position1; // position on the battle screen...
+  this.actualX = BattlePositions.position1[0];  // for debugging...
   
   this.stats = getStats(id);
+  
+  
 }
 
 function getStats(id){
@@ -14,7 +17,7 @@ function getStats(id){
 }
 
 BattlePositions = {
-  position1: [1, 1],
+  position1: [279/3, 231/3],         // 10c, 10c ->  30px, 30px
   position2: [1, 10]
 }
 
