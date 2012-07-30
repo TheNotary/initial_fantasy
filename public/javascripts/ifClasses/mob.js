@@ -1,7 +1,7 @@
-function Mob(id, image){
+function Mob(id, image, position){
   this.id = 1;
   this.image = image;
-  this.position = BattlePositions.position1; // position on the battle screen...
+  this.position = position; // position on the battle screen...
   this.actualX = BattlePositions.position1[0];  // for debugging...
   
   this.stats = getStats(id);
@@ -17,8 +17,8 @@ function getStats(id){
 }
 
 BattlePositions = {
-  position1: [368, 200],         // FIXME:  This should be indexed according to bottom right corner, not top since size veries, draw feet on ground
-  position2: [1, 10]
+  position1: [368, 200],   // 200 + 199 = 399      // FIXME:  This should be indexed according to bottom right corner, not top since size veries, draw feet on ground
+  position2: [255, 103]      // 103 + 96 =  199
 }
 
 
