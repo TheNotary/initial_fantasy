@@ -1,4 +1,4 @@
-var currentScreen = "title_screen";
+currentScreen = "title_screen";
 
 
 //Events when keyboard keys are pressed

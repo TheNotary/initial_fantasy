@@ -1,6 +1,6 @@
 function Mob(id, image){
   this.id = 1;
-  this.img = image;
+  this.image = image;
   this.position = BattlePositions.position1; // position on the battle screen...
   
   this.stats = getStats(id);
@@ -8,7 +8,7 @@ function Mob(id, image){
 
 function getStats(id){
   // ajax querie to pull down stats from database...
-  var combatStats = new CombatStats(0, 0, 0, 1, 1);
+  var combatStats = new CombatStats(0, 0, 10, 0, 1, 1);
   
   return combatStats;
 }
@@ -21,9 +21,10 @@ BattlePositions = {
 
 
 
-function CombatStats(str, stam, attack, hp, mp){
+function CombatStats(str, stam, speed, attack, hp, mp){
   this.str = str;
   this.stam = stam;
+  this.speed = speed;
   this.attack = attack;
   this.hp = hp;
   this.mp = mp;
