@@ -17,7 +17,7 @@ function getStats(id){
 }
 
 BattlePositions = {
-  position1: [279/3, 231/3],         // 10c, 10c ->  30px, 30px
+  position1: [368, 200],         // FIXME:  This should be indexed according to bottom right corner, not top since size veries, draw feet on ground
   position2: [1, 10]
 }
 
