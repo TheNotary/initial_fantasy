@@ -5,4 +5,14 @@ var battleScreen;
 
 
 
+function heroes(){}
+
+heroes.cecil = function(){}
+
+
+
+
+
+
+
 
