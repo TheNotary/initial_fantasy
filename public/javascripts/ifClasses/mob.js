@@ -10,23 +10,13 @@ Mob.prototype = new Unit();
 
 
 
-Mob.prototype.drawUnit = function(offsetForSlideIn){
-  switch(this.stance){
-    case "ground":
-    case undefined:
-      this.drawSimpleGroundUnit(offsetForSlideIn);
-      break;
-    case "flying":
-      this.drawFlyingUnit(offsetForSlideIn);
-      break;
-  }
-}
+
 
 
 
 
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
-Mob.prototype.drawSimpleGroundUnit = function(offsetForSlideIn){
+Mob.prototype.drawGroundUnit = function(offsetForSlideIn){
   var calculatedX = this.position[0] + offsetForSlideIn;
     // Draw the mobs up...
     battleScreen.context.drawImage(this.image,

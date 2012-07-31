@@ -42,7 +42,17 @@ Unit.getBaseStats = function(type, id){
 }
 
 
-
+Unit.prototype.drawUnit = function(offsetForSlideIn){
+  switch(this.stance){
+    case "ground":
+    case undefined:
+      this.drawGroundUnit(offsetForSlideIn);
+      break;
+    case "flying":
+      this.drawFlyingUnit(offsetForSlideIn);
+      break;
+  }
+}
 
 
 
