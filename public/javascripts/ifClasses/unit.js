@@ -27,13 +27,35 @@ enemyPositions = {
   position3: [111, 253]
 }
 
+var initialHeroYValue = 170;
+var paddingPerHero = 80;
 var frontRowXValue = 890;
 var backRowXValue = 910;
 partyPositions = {
-  row1Front: [frontRowXValue, 170],
-  row1Back: [backRowXValue, 170],
-  row2Front: [frontRowXValue, 270],
-  row2Back: [backRowXValue, 270]
+  row1Front: [frontRowXValue, initialHeroYValue],
+  row1Back: [backRowXValue, initialHeroYValue],
+  row2Front: [frontRowXValue, initialHeroYValue + paddingPerHero*1],   
+  row2Back: [backRowXValue, initialHeroYValue + paddingPerHero*1],
+  row3Front: [frontRowXValue, initialHeroYValue + paddingPerHero*2],
+  row3Back: [backRowXValue, initialHeroYValue + paddingPerHero*2],
+  row4Front: [frontRowXValue, initialHeroYValue + paddingPerHero*3],
+  row4Back: [backRowXValue, initialHeroYValue + paddingPerHero*3]
+}
+
+// I want to make it so another person's full party can be on screen for a fight.
+// var initialHeroYValue = 170;
+// var paddingPerHero = 70;
+// var frontRowXValue = 840;
+// var backRowXValue = 910;
+partyPositionsOther = {
+  row1Front: [frontRowXValue, initialHeroYValue],
+  row1Back: [backRowXValue, initialHeroYValue],
+  row2Front: [frontRowXValue, initialHeroYValue + paddingPerHero*1],   
+  row2Back: [backRowXValue, initialHeroYValue + paddingPerHero*1],
+  row3Front: [frontRowXValue, initialHeroYValue + paddingPerHero*2],
+  row3Back: [backRowXValue, initialHeroYValue + paddingPerHero*2],
+  row4Front: [frontRowXValue, initialHeroYValue + paddingPerHero*3],
+  row4Back: [backRowXValue, initialHeroYValue + paddingPerHero*3]
 }
 
 
