@@ -1,11 +1,12 @@
 function Unit(type, id, image, position, stance){
+  if(arguments.length == 0) return;
   this.id = 1;
   this.type = type;  // mob, hero, critter
   this.image = image;
   //this.shadowImages;
   this.position = position; // position on the battle screen...
-  this.x = 0;  // these variables are for hovering/ flying effects and misc. toneberry shananagins
-  this.y = 0; 
+  this.x = position[0];  // these variables are for hovering/ flying effects and misc. toneberry shananagins
+  this.y = position[1]; 
   this.mirrorY = false;  // set this to true to turn an enemy facing the other way...
   
   // this.stance is almost like "effect"...  I can have a flying effect, then a ghost effect, then a burning effect, etc...
@@ -89,10 +90,11 @@ Unit.prototype.drawUnit = function(offsetForSlideIn){
 
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
 Unit.prototype.drawGroundUnit = function(offsetForSlideIn){
-  var calculatedX = this.calculateX(offsetForSlideIn);//this.position[0] + offsetForSlideIn;
+  //var calculatedX = this.calculateX(offsetForSlideIn);//this.position[0] + offsetForSlideIn;
+  calculatedX = this.x;
     // Draw the mobs up...
     battleScreen.context.drawImage(this.image,
-      calculatedX, this.position[1] - this.image.height,
+      calculatedX, this.y - this.image.height,
       this.image.width, this.image.height);
 }
 

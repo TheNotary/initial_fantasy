@@ -10,7 +10,7 @@ Mob.prototype = new Unit();
 
 
 Mob.prototype.calculateX = function(offsetForSlideIn){
-  return this.position[0] + offsetForSlideIn;
+  return this.x + offsetForSlideIn;
 }
 
 
