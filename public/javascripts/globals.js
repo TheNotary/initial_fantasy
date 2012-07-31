@@ -1,3 +1,5 @@
+var debugMode = false;
+
 var currentScreen;  // this variable tracks the current UI being displayed...  It's useful for the render loop to know what to render...  We'll see how that turns out when I have more code down...
 
 var titleScreen;
@@ -31,12 +33,9 @@ if (window.webkitRequestAnimationFrame) {
   }
 }
 
-window.onEachFrame = onEachFrame;
+window.onEachFrame = onEachFrame;    // this global can now be called and it will de the appropriate thing across browser
 
 
-$(function(){
-  window.onEachFrame(main);
-});
 
 
 

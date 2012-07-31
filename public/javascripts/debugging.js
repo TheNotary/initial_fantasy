@@ -46,3 +46,33 @@ function relMouseCoords(event){
     console.debug("x: " + canvasX + "  y: " + canvasY);
     return {x:canvasX, y:canvasY}
 }
+
+
+
+var avgFps = 0;
+var framesGoneBy = 0;
+var mozPaintOld = 0;
+var mozPaintNew = 0;
+var mozFps = 0;
+
+function drawGraphicsDebugInfo(screen){
+  screen.context.fillStyle = "white";
+  screen.context.clearRect(0, 0, 300, 100);
+  
+  screen.context.fillText("gameTime: " + gameTime, 10, 10);    // Game Time
+  screen.context.fillText("fps: " + gameFps, 10, 20);    // fps
+  
+  framesGoneBy = framesGoneBy + 1;
+  avgFps = framesGoneBy / gameTime;
+  
+  screen.context.fillText("framesGoneBy: " + framesGoneBy, 10, 30);    // 
+  screen.context.fillText("avgFps: " + avgFps, 10, 40);    // 
+  
+  
+  
+  
+  //screen.context.fillText("avg moz-fps: " + mozPaintCount/gameTime, 10, 50);    // fps
+  
+}
+
+
