@@ -28,7 +28,7 @@ enemyPositions = {
 }
 
 var initialHeroYValue = 170;
-var paddingPerHero = 80;
+var paddingPerHero = 84;
 var frontRowXValue = 890;
 var backRowXValue = 910;
 partyPositions = {
