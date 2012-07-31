@@ -1,24 +1,14 @@
-function Mob(id, image, position, type){
-  this.id = 1;
-  this.image = image;
+function Mob(type, id, image, position, stance){
+  Unit.call(this, type, id, image, position, stance);
+  
+  
   this.shadowImages = [imgflightShadow0, imgflightShadow1, imgflightShadow2, imgflightShadow3];
-  this.position = position; // position on the battle screen...
-  this.x = 0;  // these variables are for hovering/ flying effects and misc. toneberry shananagins
-  this.y = 0; 
   
-  this.type = type;
-  
-  this.stats = getStats(id);
 }
 
-// this.type is almost like "effect"...  I can have a flying effect, then a ghost effect, then a burning effect, etc...
 
-function getStats(id){
-  // ajax querie to pull down stats from database...
-  var combatStats = new CombatStats(0, 0, 10, 0, 1, 1);
-  
-  return combatStats;
-}
+Mob.prototype = new Unit();
+
 
 BattlePositions = {
   position1: [368, 296],         
@@ -28,7 +18,7 @@ BattlePositions = {
 
 
 Mob.prototype.drawUnit = function(offsetForSlideIn){
-  switch(this.type){
+  switch(this.stance){
     case "ground":
     case undefined:
       this.drawSimpleGroundUnit(offsetForSlideIn);

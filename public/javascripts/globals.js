@@ -13,6 +13,3 @@ heroes.cecil = function(){}
 
 
 
-
-
-
