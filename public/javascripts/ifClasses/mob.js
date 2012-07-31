@@ -6,15 +6,8 @@ function Mob(type, id, image, position, stance){
   
 }
 
-
 Mob.prototype = new Unit();
 
-
-BattlePositions = {
-  position1: [368, 296],         
-  position2: [255, 199],      
-  position3: [111, 253]
-}
 
 
 Mob.prototype.drawUnit = function(offsetForSlideIn){
@@ -27,8 +20,9 @@ Mob.prototype.drawUnit = function(offsetForSlideIn){
       this.drawFlyingUnit(offsetForSlideIn);
       break;
   }
-  
 }
+
+
 
 
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
@@ -53,44 +47,6 @@ Mob.prototype.drawFlyingUnit = function(offsetForSlideIn){
     this.shadowImages[0].width, this.shadowImages[0].height);
 }
 
-
-
-function CombatStats(str, stam, speed, attack, hp, mp){
-  this.str = str;
-  this.stam = stam;
-  this.speed = speed;
-  this.attack = attack;
-  this.hp = hp;
-  this.mp = mp;
-  
-  this.immunities = new Immunities(["fire", "ice"]);
-  this.absorbtions = "";
-  this.weaknesses = "";
-  this.combatActions = "";
-}
-
-
-function Immunities(list){
-  this.fire = (jQuery.inArray("fire", list) != -1) ? false: true;  // oh man this is ugly, but atleast on one line...
-  this.ice = (jQuery.inArray("ice", list) != -1) ? false: true;  
-}
-
-function Absorbtions(){
-  this.fire = false;
-  this.ice = false;
-  this.thunder = true;
-}
-
-
-function CombatActions(){
-  this.attack = true;
-  this.spells = "";
-  this.mobAttacks = new MobAttacks();
-}
-
-function MobAttacks(){
-  
-}
 
 
 
