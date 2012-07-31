@@ -27,9 +27,13 @@ enemyPositions = {
   position3: [111, 253]
 }
 
+var frontRowXValue = 890;
+var backRowXValue = 910;
 partyPositions = {
-  row1Front: [500, 199],
-  row1Back: [550, 199]
+  row1Front: [frontRowXValue, 170],
+  row1Back: [backRowXValue, 170],
+  row2Front: [frontRowXValue, 270],
+  row2Back: [backRowXValue, 270]
 }
 
 
@@ -51,7 +55,27 @@ Unit.prototype.drawUnit = function(offsetForSlideIn){
     case "flying":
       this.drawFlyingUnit(offsetForSlideIn);
       break;
+    case "burning":
+      this.drawBurningUnit(offsetForSlideIn);
+      break;
+    case "ghost":
+      this.drawGhostUnit(offsetForSlideIn);
+      break;
   }
+}
+
+
+// TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
+Unit.prototype.drawGroundUnit = function(offsetForSlideIn){
+  var calculatedX = this.calculateX(offsetForSlideIn);//this.position[0] + offsetForSlideIn;
+    // Draw the mobs up...
+    battleScreen.context.drawImage(this.image,
+      calculatedX, this.position[1] - this.image.height,
+      this.image.width, this.image.height);
+}
+
+Unit.prototype.calculateX = function(offsetForSlideIn){
+  throw "Method not defined.  This is an abstract class, your mob and hero classes must inherit from it and define their own method.";
 }
 
 

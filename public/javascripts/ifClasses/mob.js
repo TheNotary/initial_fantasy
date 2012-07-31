@@ -1,9 +1,7 @@
 function Mob(type, id, image, position, stance){
   Unit.call(this, type, id, image, position, stance);
   
-  
   this.shadowImages = [imgflightShadow0, imgflightShadow1, imgflightShadow2, imgflightShadow3];
-  
 }
 
 Mob.prototype = new Unit();
@@ -11,19 +9,12 @@ Mob.prototype = new Unit();
 
 
 
-
-
-
-
-// TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
-Mob.prototype.drawGroundUnit = function(offsetForSlideIn){
-  var calculatedX = this.position[0] + offsetForSlideIn;
-    // Draw the mobs up...
-    battleScreen.context.drawImage(this.image,
-      calculatedX, this.position[1] - this.image.height,
-      this.image.width, this.image.height);
+Mob.prototype.calculateX = function(offsetForSlideIn){
+  return this.position[0] + offsetForSlideIn;
 }
 
+
+// This method is somewhat specific to mobs vs heroes... so I'm not refactoring it up to the super
 Mob.prototype.drawFlyingUnit = function(offsetForSlideIn){
   var calculatedX = this.position[0] + offsetForSlideIn;
   
@@ -37,6 +28,8 @@ Mob.prototype.drawFlyingUnit = function(offsetForSlideIn){
     this.shadowImages[0].width, this.shadowImages[0].height);
 }
 
-
+Mob.prototype.calculateHoverY = function(frame){
+  return 0;
+}
 
 
