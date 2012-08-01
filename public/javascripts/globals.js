@@ -36,7 +36,17 @@ if (window.webkitRequestAnimationFrame) {
 window.onEachFrame = onEachFrame;    // this global can now be called and it will de the appropriate thing across browser
 
 
+// this is needed to stop canvas from being lame when tapping it on smart phones
+function blockCanvasDefaultAction(){
+  // $('canvas').each(function(){
+    // this.addEventListener("click", "event.preventDefault()", false);
+  // });
+  //event.preventDefault()
+  
+}
 
 
+// enable styling of things which I disable their android orange box for...  doesn't work...
+//document.addEventListener("touchstart", function(){}, true);
 
 

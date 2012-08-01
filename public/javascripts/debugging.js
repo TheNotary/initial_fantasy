@@ -67,12 +67,12 @@ function drawGraphicsDebugInfo(screen){
   avgFps = framesGoneBy / gameTime;
   
   screen.context.fillText("framesGoneBy: " + framesGoneBy, 10, 30);    // 
-  //screen.context.fillText("avgFps: " + avgFps, 10, 40);    // 
   
-  //screen.context.fillText("bankScore: " + bankScore, 10, 50);  // a sort of short benchmark, just so I can eyeball the effects of code changes
+  screen.context.fillText("avgFps: " + avgFps, 10, 40);    // 
+  screen.context.fillText("bankScore: " + bankScore, 10, 50);  // a sort of short benchmark, just so I can eyeball the effects of code changes
   
-  screen.context.fillText("updatesRun: " + updatesRun, 10, 40);
-  screen.context.fillText("DrawsRun: " + drawsRun, 10, 50);
+  //screen.context.fillText("updatesRun: " + updatesRun, 10, 40);
+  //screen.context.fillText("DrawsRun: " + drawsRun, 10, 50);
   
   //screen.context.fillText("avg moz-fps: " + mozPaintCount/gameTime, 10, 50);    // fps
   

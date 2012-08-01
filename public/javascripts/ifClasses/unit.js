@@ -6,14 +6,38 @@ function Unit(type, id, image, position, stance){
   //this.shadowImages;
   this.position = position; // position on the battle screen...
   this.x = position[0];  // these variables are for hovering/ flying effects and misc. toneberry shananagins
-  this.y = position[1]; 
+  this.y = position[1];
+  this.lastX;
+  this.lastY;
+  this.width = image.width;
+  this.height = image.height;
+  this.lastWidth;
+  this.lastHeight;
   this.mirrorY = false;  // set this to true to turn an enemy facing the other way...
+  
+  this.unitMoved = false;
   
   // this.stance is almost like "effect"...  I can have a flying effect, then a ghost effect, then a burning effect, etc...
   this.stance = stance;      // "ground", "flying", "burning", "ghost/ Transparent", ...
   
   this.stats = Unit.getBaseStats(type, id);
 }
+
+Unit.prototype.getX = function(){
+  return this.x;
+}
+Unit.prototype.setX = function(val){
+  this.x = val;
+  this.unitMoved = true;
+}
+Unit.prototype.getY = function(){
+  return this.y;
+}
+Unit.prototype.setY = function(val){
+  this.y = val;
+  this.unitMoved = true;
+}
+
 
 
 unitType = {
@@ -70,9 +94,11 @@ Unit.getBaseStats = function(type, id){
 
 
 Unit.prototype.drawUnit = function(offsetForSlideIn){
+  
   switch(this.stance){
     case "ground":
     case undefined:
+      this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
       this.drawGroundUnit(offsetForSlideIn);
       break;
     case "flying":
@@ -94,14 +120,25 @@ Unit.prototype.drawGroundUnit = function(offsetForSlideIn){
   calculatedX = this.x;
     // Draw the mobs up...
     battleScreen.context.drawImage(this.image,
-      calculatedX, this.y - this.image.height,
-      this.image.width, this.image.height);
+      calculatedX, this.y - this.height,
+      this.width, this.height);
+  
+  this.lastX = this.x;
+  this.lastY = this.y;
+  this.lastWidth = this.width;
+  this.lastHeight = this.height;
 }
 
 Unit.prototype.calculateX = function(offsetForSlideIn){
   throw "Method not defined.  This is an abstract class, your mob and hero classes must inherit from it and define their own method.";
 }
 
+
+// this clears the last thing drawn on the screen
+Unit.prototype.clearFromScreen = function(){
+  battleScreen.context.clearRect(this.lastX, this.lastY-this.height, this.width, this.height);
+  //battleScreen.context.fillRect(this.x, this.y-this.height, this.width, this.height);
+}
 
 
 function CombatStats(str, stam, speed, attack, hp, mp){
@@ -142,6 +179,7 @@ function MobAttacks(){
   this.magic = ["fire", "ice", "lightning"];
   this.mobAttacks = ["Goblin Kick"];
 }
+
 
 
 
