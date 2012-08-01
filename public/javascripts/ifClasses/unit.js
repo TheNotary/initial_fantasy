@@ -7,6 +7,8 @@ function Unit(type, id, image, position, stance){
   this.position = position; // position on the battle screen...
   this.x = position[0];  // these variables are for hovering/ flying effects and misc. toneberry shananagins
   this.y = position[1];
+  this.directionX = 0;
+  this.directionY = 0;
   this.lastX;
   this.lastY;
   this.width = image.width;
@@ -15,7 +17,7 @@ function Unit(type, id, image, position, stance){
   this.lastHeight;
   this.mirrorY = false;  // set this to true to turn an enemy facing the other way...
   
-  this.unitMoved = false;
+  this.unitMoved = true;
   
   // this.stance is almost like "effect"...  I can have a flying effect, then a ghost effect, then a burning effect, etc...
   this.stance = stance;      // "ground", "flying", "burning", "ghost/ Transparent", ...
@@ -29,6 +31,14 @@ Unit.prototype.getX = function(){
 Unit.prototype.setX = function(val){
   this.x = val;
   this.unitMoved = true;
+  switch(this.type){
+    case unitType.mob:
+      battleScreen.aMobHasMoved = true;
+      break;
+    case unitType.flying:
+      battleScreen.aHeroHasMoved = true;
+      break;
+  }
 }
 Unit.prototype.getY = function(){
   return this.y;
@@ -36,6 +46,9 @@ Unit.prototype.getY = function(){
 Unit.prototype.setY = function(val){
   this.y = val;
   this.unitMoved = true;
+  if (this.type == unitType.mob){
+    battleScreen.aMobHasMoved = true;
+  }
 }
 
 
@@ -93,44 +106,43 @@ Unit.getBaseStats = function(type, id){
 }
 
 
-Unit.prototype.drawUnit = function(offsetForSlideIn){
+Unit.prototype.drawUnit = function(){
   
   switch(this.stance){
     case "ground":
     case undefined:
-      this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
-      this.drawGroundUnit(offsetForSlideIn);
+      //this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
+      this.drawGroundUnit();
       break;
     case "flying":
-      this.drawFlyingUnit(offsetForSlideIn);
+      this.drawFlyingUnit();
       break;
     case "burning":
-      this.drawBurningUnit(offsetForSlideIn);
+      this.drawBurningUnit();
       break;
     case "ghost":
-      this.drawGhostUnit(offsetForSlideIn);
+      this.drawGhostUnit();
       break;
   }
 }
 
 
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
-Unit.prototype.drawGroundUnit = function(offsetForSlideIn){
-  //var calculatedX = this.calculateX(offsetForSlideIn);//this.position[0] + offsetForSlideIn;
-  calculatedX = this.x;
-    // Draw the mobs up...
-    battleScreen.context.drawImage(this.image,
-      calculatedX, this.y - this.height,
-      this.width, this.height);
-  
-  this.lastX = this.x;
-  this.lastY = this.y;
-  this.lastWidth = this.width;
-  this.lastHeight = this.height;
-}
-
-Unit.prototype.calculateX = function(offsetForSlideIn){
-  throw "Method not defined.  This is an abstract class, your mob and hero classes must inherit from it and define their own method.";
+Unit.prototype.drawGroundUnit = function(){
+  if (this.unitMoved){
+    this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
+    calculatedX = this.x;
+      // Draw the mobs up...
+      battleScreen.context.drawImage(this.image,
+        calculatedX, this.y - this.height,
+        this.width, this.height);
+    
+    this.lastX = this.x;
+    this.lastY = this.y;
+    this.lastWidth = this.width;
+    this.lastHeight = this.height;
+    this.unitMoved = false;
+  }
 }
 
 
