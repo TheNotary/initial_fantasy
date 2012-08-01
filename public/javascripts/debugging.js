@@ -13,7 +13,7 @@ function useArrowKeysToMoveCanvasSprite(){
         alert(battleScreen.mobs[0].position);
         break;
       case 37: // left arrow
-        
+        battleScreen.mobs[0].setY(battleScreen.mobs[0].y+1);
         break;
       }
       
