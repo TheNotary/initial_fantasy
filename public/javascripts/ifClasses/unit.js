@@ -29,6 +29,7 @@ function Unit(type, id, image, position, stance){
   this.stance = stance;      // "ground", "flying", "burning", "ghost/ Transparent", ...
   
   this.stats = Unit.getBaseStats(type, id);
+  
 }
 
 Unit.prototype.getX = function(){
