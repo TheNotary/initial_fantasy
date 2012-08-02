@@ -13,6 +13,12 @@ function Unit(type, id, image, position, stance){
   this.lastY;
   this.width = image.width;
   this.height = image.height;
+  this.speedY = 0;
+  this.speedX = 0;
+  
+  this.apex = 4;  // highest point in hover animation (from position[1])
+  this.nadir = 0; // lowest point in hover animation... For all my hover animations, this MUST BE set to 0.
+  
   this.lastWidth;
   this.lastHeight;
   this.mirrorY = false;  // set this to true to turn an enemy facing the other way...
@@ -132,10 +138,10 @@ Unit.prototype.drawGroundUnit = function(){
   if (this.unitMoved){
     this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
     calculatedX = this.x;
-      // Draw the mobs up...
-      battleScreen.context.drawImage(this.image,
-        calculatedX, this.y - this.height,
-        this.width, this.height);
+    // Draw the mobs up...
+    battleScreen.context.drawImage(this.image,
+      calculatedX, this.y - this.height,
+      this.width, this.height);
     
     this.lastX = this.x;
     this.lastY = this.y;
