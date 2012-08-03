@@ -29,7 +29,6 @@ function Unit(type, id, image, position, stance){
   this.stance = stance;      // "ground", "flying", "burning", "ghost/ Transparent", ...
   
   this.stats = Unit.getBaseStats(type, id);
-  
 }
 
 Unit.prototype.getX = function(){
@@ -67,8 +66,8 @@ unitType = {
 }
 
 enemyPositions = {
-  position1: [368, 296],         
-  position2: [255, 199],      
+  position1: [388, 296],
+  position2: [255, 199],
   position3: [111, 253]
 }
 
@@ -118,7 +117,6 @@ Unit.prototype.drawUnit = function(){
   switch(this.stance){
     case "ground":
     case undefined:
-      //this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
       this.drawGroundUnit();
       break;
     case "flying":
@@ -131,6 +129,7 @@ Unit.prototype.drawUnit = function(){
       this.drawGhostUnit();
       break;
   }
+  
 }
 
 
@@ -159,14 +158,24 @@ Unit.prototype.clearFromScreen = function(){
   //battleScreen.context.fillRect(this.x, this.y-this.height, this.width, this.height);
 }
 
+// this is where you link up all the html elements so it's faster to modify the values
+function HtmlElements(hp, mp, waitBar){
+  this.hp = hp;
+  this.mp = mp;
+  this.waitBar = waitBar;
+  
+}
 
-function CombatStats(str, stam, speed, attack, hp, mp){
+function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp){
   this.str = str;
   this.stam = stam;
   this.speed = speed;
   this.attack = attack;
   this.hp = hp;
   this.mp = mp;
+  this.maxHp = maxHp;
+  this.maxMp = maxMp;
+  this.waitBar = 0;  // you know, the status bar that indicates when they'll strike next
   
   this.immunities = new Immunities(["fire", "ice"]);
   this.absorbtions = "";
