@@ -59,3 +59,10 @@ shuffleArray = function(o){ //v1.0
 };
 
 
+// input (5,2) output "05"...   (5,3) -> "005"
+function zeroPad(num, places) {
+  var zero = places - num.toString().length + 1;
+  return Array(+(zero > 0 && zero)).join("0") + num;
+}
+
+

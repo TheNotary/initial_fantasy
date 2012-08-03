@@ -1,6 +1,7 @@
 function Unit(type, id, image, position, stance){
   if(arguments.length == 0) return;
   this.id = 1;
+  this.name = Unit.getUnitName(type, id);
   this.type = type;  // mob, hero, critter
   this.image = image;
   //this.shadowImages;
@@ -11,6 +12,7 @@ function Unit(type, id, image, position, stance){
   this.directionY = 0;
   this.lastX;
   this.lastY;
+  if(image.width == undefined){throw "Something Is wrong with the image you passed this monster...";}
   this.width = image.width;
   this.height = image.height;
   this.speedY = 0;
@@ -29,6 +31,8 @@ function Unit(type, id, image, position, stance){
   this.stance = stance;      // "ground", "flying", "burning", "ghost/ Transparent", ...
   
   this.stats = Unit.getBaseStats(type, id);
+  
+  this.htmlElements = new HtmlElements(this.name);
 }
 
 Unit.prototype.getX = function(){
@@ -66,7 +70,7 @@ unitType = {
 }
 
 enemyPositions = {
-  position1: [368, 296],
+  position1: [398, 296],
   position2: [255, 199],
   position3: [111, 253]
 }
@@ -102,6 +106,23 @@ partyPositionsOther = {
   row4Back: [backRowXValue, initialHeroYValue + paddingPerHero*3]
 }
 
+Unit.getUnitName = function(type, id){
+  if (type == unitType.mob){
+    // maybe this should get pulled down along with combat stats
+    if(id == 2) return "Eagle";
+    if(id==1) return "goblin";
+    
+    return "Unknown Monster!";
+  }
+  else if (type == unitType.hero){
+    if(id==0)return "Cecil";
+    if(id==1)return "peterC";
+    if(id==2)return "veryPro";
+    if(id==3)return "Matzu!";
+  }
+  
+  
+}
 
 Unit.getBaseStats = function(type, id){
   // pull down base stats from a save file or something like that... I guess the database for this user... very complicated down the road
@@ -111,6 +132,24 @@ Unit.getBaseStats = function(type, id){
   return combatStats;
 }
 
+
+// this clears the last thing drawn on the screen
+Unit.prototype.clearFromScreen = function(){
+  
+  switch(this.stance){
+    case "ground":
+    case undefined:
+      battleScreen.context.clearRect(this.lastX, this.lastY-this.height, this.width, this.height);
+      break;
+    case "flying":
+      // clear the mob
+      battleScreen.context.clearRect(this.lastX, this.lastY-this.height-50, this.width, this.height);
+      // then clear the shadow
+      battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
+      break;
+  }
+  
+}
 
 Unit.prototype.drawUnit = function(){
   
@@ -133,6 +172,7 @@ Unit.prototype.drawUnit = function(){
 }
 
 
+
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
 Unit.prototype.drawGroundUnit = function(){
   if (this.unitMoved){
@@ -152,30 +192,18 @@ Unit.prototype.drawGroundUnit = function(){
 }
 
 
-// this clears the last thing drawn on the screen
-Unit.prototype.clearFromScreen = function(){
-  switch(this.stance){
-    case "ground":
-    case undefined:
-      battleScreen.context.clearRect(this.lastX, this.lastY-this.height, this.width, this.height);
-      break;
-    case "flying":
-      // clear the mob
-      battleScreen.context.clearRect(this.lastX, this.lastY-this.height-50, this.width, this.height);
-      // then clear the shadow
-      battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
-      break;
-  }
-  
-  //battleScreen.context.fillRect(this.x, this.y-this.height, this.width, this.height);
-}
+
 
 // this is where you link up all the html elements so it's faster to modify the values
-function HtmlElements(hp, mp, waitBar){
-  this.hp = hp;
-  this.mp = mp;
-  this.waitBar = waitBar;
+function HtmlElements(name, hp, mp, waitBar, row){
+  if (arguments.length == 0) return;
+  this.name = name;
   
+  if (arguments.length == 1) return;
+  this.hp = hp;     
+  this.mp = mp;
+  this.waitBar = waitBar;   // $('#h01-fill')
+  //$('#h' + zeroPad(row, 2) + '-fill');
 }
 
 function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp){

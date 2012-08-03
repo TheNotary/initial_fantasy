@@ -1,5 +1,7 @@
-function Hero(type, id, image, position, stance){
+function Hero(type, id, image, position, stance, row){
   Unit.call(this, type, id, image, position, stance);
+  
+  this.row = row;
 }
 
 
