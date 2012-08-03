@@ -66,7 +66,7 @@ unitType = {
 }
 
 enemyPositions = {
-  position1: [388, 296],
+  position1: [368, 296],
   position2: [255, 199],
   position3: [111, 253]
 }
@@ -136,7 +136,7 @@ Unit.prototype.drawUnit = function(){
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
 Unit.prototype.drawGroundUnit = function(){
   if (this.unitMoved){
-    this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
+    //this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
     calculatedX = this.x;
     // Draw the mobs up...
     battleScreen.context.drawImage(this.image,
@@ -154,7 +154,19 @@ Unit.prototype.drawGroundUnit = function(){
 
 // this clears the last thing drawn on the screen
 Unit.prototype.clearFromScreen = function(){
-  battleScreen.context.clearRect(this.lastX, this.lastY-this.height, this.width, this.height);
+  switch(this.stance){
+    case "ground":
+    case undefined:
+      battleScreen.context.clearRect(this.lastX, this.lastY-this.height, this.width, this.height);
+      break;
+    case "flying":
+      // clear the mob
+      battleScreen.context.clearRect(this.lastX, this.lastY-this.height-50, this.width, this.height);
+      // then clear the shadow
+      battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
+      break;
+  }
+  
   //battleScreen.context.fillRect(this.x, this.y-this.height, this.width, this.height);
 }
 

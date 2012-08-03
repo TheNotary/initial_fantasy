@@ -13,13 +13,13 @@ Mob.prototype = new Unit();
 Mob.prototype.drawFlyingUnit = function(){
   if (this.unitMoved){
     
-    battleScreen.context.clearRect(this.lastX, this.lastY-this.height-50, this.width, this.height);
+    //battleScreen.context.clearRect(this.lastX, this.lastY-this.height-50, this.width, this.height);
     battleScreen.context.drawImage(this.image,
         this.x, this.y - this.height-50,
         this.width, this.height);
         
     // draw shadow now too...
-    battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
+    //battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
     
     properShadowImage = this.shadowImages[2];
     var currentDistFromOrigin = this.y - this.position[1];
