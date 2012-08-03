@@ -111,7 +111,8 @@ Unit.getUnitName = function(type, id){
     // maybe this should get pulled down along with combat stats
     if(id == 2) return "Eagle";
     if(id==1) return "goblin";
-    
+    if(id==3) return "Floating Eye";
+    if(id==4) return "Sword Rat";
     return "Unknown Monster!";
   }
   else if (type == unitType.hero){
@@ -126,8 +127,17 @@ Unit.getUnitName = function(type, id){
 
 Unit.getBaseStats = function(type, id){
   // pull down base stats from a save file or something like that... I guess the database for this user... very complicated down the road
+  var combatStats = new CombatStats(0, 0, 10, 0, 100, 1);
   
-  var combatStats = new CombatStats(0, 0, 10, 0, 1, 1);
+  switch(type){
+    case unitType.mob:
+      combatStats = new CombatStats(0, 0, 10, 0, 450, 1, 1, 1);
+      break;
+    case unitType.hero:
+      if (id==0) combatStats = new CombatStats(0, 0, 10, 0, 450, 100, 325, 25);
+      if (id>0) combatStats = new CombatStats(0, 0, 10, 0, 450, 125, 325, 25);
+      break;
+  }
   
   return combatStats;
 }
@@ -194,16 +204,18 @@ Unit.prototype.drawGroundUnit = function(){
 
 
 
-// this is where you link up all the html elements so it's faster to modify the values
-function HtmlElements(name, hp, mp, waitBar, row){
+// this is where you link up all the html elements so it's faster to modify the values in the game loop
+function HtmlElements(name, row){
   if (arguments.length == 0) return;
   this.name = name;
   
   if (arguments.length == 1) return;
-  this.hp = hp;     
-  this.mp = mp;
-  this.waitBar = waitBar;   // $('#h01-fill')
-  //$('#h' + zeroPad(row, 2) + '-fill');
+  //alert(row);
+  this.hp = $('#charRow_'+row+' .current_hp');
+  this.mp = $('#charRow_'+row+' .current_mp');
+  this.maxHp = $('#charRow_'+row+' .max_hp');
+  this.maxMp = $('#charRow_'+row+' .max_mp');
+  this.waitBar = $('#charRow_'+row+' .time div');
 }
 
 function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp){
