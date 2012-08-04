@@ -207,15 +207,15 @@ Unit.prototype.drawGroundUnit = function(){
 // this is where you link up all the html elements so it's faster to modify the values in the game loop
 function HtmlElements(name, row){
   if (arguments.length == 0) return;
-  this.name = name;
+  //this.name = $('#charRow_'+row+' .current_hp');
   
   if (arguments.length == 1) return;
-  //alert(row);
+  this.name = $('#charRow_'+row+' .name');
   this.hp = $('#charRow_'+row+' .current_hp');
   this.mp = $('#charRow_'+row+' .current_mp');
   this.maxHp = $('#charRow_'+row+' .max_hp');
   this.maxMp = $('#charRow_'+row+' .max_mp');
-  this.waitBar = $('#charRow_'+row+' .time div');
+  this.waitBar = $('#charRow_'+ row +' .time .wait_bar')[0].getContext("2d");
 }
 
 function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp){
@@ -227,7 +227,7 @@ function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp){
   this.mp = mp;
   this.maxHp = maxHp;
   this.maxMp = maxMp;
-  this.waitBar = 0;  // you know, the status bar that indicates when they'll strike next
+  this.waitBar = 20;  // you know, the status bar that indicates when they'll strike next
   
   this.immunities = new Immunities(["fire", "ice"]);
   this.absorbtions = "";
