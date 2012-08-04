@@ -44,7 +44,54 @@ function relMouseCoords(event){
     
     //alert(canvasX + ', ' + canvasY);
     console.debug("x: " + canvasX + "  y: " + canvasY);
+    unit = reportWhatUnitWasClicked(canvasX, canvasY);
+    console.debug('Unit Name: ' + unit.name);
+    
     return {x:canvasX, y:canvasY}
+}
+
+
+function reportWhatUnitWasClicked(clickX, clickY){
+  var unit;
+  // check if it was a mob that was clicked
+  unit = whatUnitWasClicked(clickX, clickY, battleScreen.mobs);
+  if (unit != false){return unit;}
+  // check if it was a hero
+  unit = whatUnitWasClicked(clickX, clickY, battleScreen.heroes);
+  return unit;
+}
+
+function whatUnitWasClicked(clickX, clickY, mobs){
+  //var mobs = battleScreen.mobs;
+  // check if it was a mob
+  for (var i = 0; i < mobs.length; i++){
+    var mob = mobs[i];
+    
+    var x1 = mob.x;
+    var x2 = mob.x + mob.width;
+    var y1 = mob.y - mob.height;
+    var y2 = mob.y;
+    if(mob.stance == "flying" && mob.type == unitType.mob){
+      y1 = mob.y - mob.height-50;
+      y2 = mob.y-50;
+    }
+    
+    //console.debug('x1: '+x1+'  x2: '+x2+'  y1: '+y1+'  y2: '+y2);
+    
+    if (clickX >= x1 && clickX <= x2 &&
+        clickY >= y1 && clickY <= y2){
+          //console.debug('TRUE');
+          return mob;
+        }
+  }
+  return false;
+}
+
+
+
+
+function printBoundingBox(mob){
+  var x
 }
 
 
