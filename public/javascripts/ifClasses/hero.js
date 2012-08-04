@@ -4,6 +4,7 @@ function Hero(type, id, image, position, stance, row){
   this.row = row;
   this.htmlElements = new HtmlElements(this.name, row);
   this.heroIsReady = false;  // waitbar drawn at 100% yet?.. this variable is read from within the draw loop, not the update loop.  Careful...
+  this.isSelected = false;  // owner of the action bar items in the combat menu
 }
 
 
