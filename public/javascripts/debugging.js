@@ -55,6 +55,8 @@ var mozPaintOld = 0;
 var mozPaintNew = 0;
 var mozFps = 0;
 var bankScore = "none yet";
+var updatesRun = 0;
+var drawsRun = 0;
 
 
 function drawGraphicsDebugInfo(screen){
@@ -91,6 +93,7 @@ var timeSpentThisRun = 0;
 var longestRun = 0;
 var avgTimeSpent = 0;
 var goldenScore = "";
+var lastDrawTime = 0;
 function processTimeDebugInfo(screen){
   if(timeSpentThisRun > longestRun){
     longestRun = timeSpentThisRun;
