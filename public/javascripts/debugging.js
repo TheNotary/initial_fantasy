@@ -94,6 +94,7 @@ var longestRun = 0;
 var avgTimeSpent = 0;
 var goldenScore = "";
 var lastDrawTime = 0;
+var timeBetweenCallingMain = 0;
 function processTimeDebugInfo(screen){
   if(timeSpentThisRun > longestRun){
     longestRun = timeSpentThisRun;
@@ -102,7 +103,8 @@ function processTimeDebugInfo(screen){
   screen.context.fillText("Function Hits: " + thisSpotWasRun, 10, 10);
   screen.context.fillText("Total Time Spent: " + totTimeSpent, 10, 20); 
   screen.context.fillText("Time Spent This Hit: " + timeSpentThisRun, 10, 30); 
-  screen.context.fillText("Longest Run: " + longestRun, 10, 40);
+  //screen.context.fillText("Longest Run: " + longestRun, 10, 40);
+  screen.context.fillText("Time Spent OutSide Main: " + timeBetweenCallingMain, 10, 40);
   //screen.context.fillText("Average Time Spent: " + avgTimeSpent, 10, 50);
   screen.context.fillText("Golden Score: " + goldenScore, 10, 50);
 }
