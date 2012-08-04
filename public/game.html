@@ -26,6 +26,7 @@
 	  <script src="/javascripts/ifClasses/hero.js"></script>
 	  <script src="/javascripts/ifClasses/sceneDirector.js"></script>
     <script src="/javascripts/ifClasses/battleScreen.js"></script>
+    <script src="/javascripts/ifClasses/actionMenu.js"></script>
     <script src="/javascripts/titleScreen.js"></script>
 		<script src="/javascripts/m.js"></script>
 		
@@ -58,7 +59,7 @@
     
     <div id="battle_menu">
       <div id="action_buttons">
-        <a class="fight_button" onclick="alert('good')"><div id="fight_button" class="action_buttons">Fight</div></a>
+        <a class="fight_button" onclick="javascript:actionMenu.fight('fight_button');"><div id="fight_button" class="action_buttons">Fight</div></a>
       </div>
 		  <div id="enemies" class="menu_border">
 		    

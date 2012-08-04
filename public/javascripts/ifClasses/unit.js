@@ -1,6 +1,6 @@
 function Unit(type, id, image, position, stance){
   if(arguments.length == 0) return;
-  this.id = 1;
+  this.id = id;
   this.name = Unit.getUnitName(type, id);
   this.type = type;  // mob, hero, critter
   this.image = image;

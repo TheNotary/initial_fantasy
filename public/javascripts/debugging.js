@@ -47,6 +47,11 @@ function relMouseCoords(event){
     unit = reportWhatUnitWasClicked(canvasX, canvasY);
     console.debug('Unit Name: ' + unit.name);
     
+    if (actionMenu.pickingTarget && unit != false){
+      console.debug("PEWPEWPEW");
+      actionMenu.finishedSelecting();
+    }
+    
     return {x:canvasX, y:canvasY}
 }
 
