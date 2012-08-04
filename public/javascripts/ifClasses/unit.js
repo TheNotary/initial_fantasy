@@ -218,6 +218,7 @@ function HtmlElements(name, row){
   this.waitBar = $('#charRow_'+ row +' .time .wait_bar')[0].getContext("2d");
 }
 
+
 function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp){
   this.str = str;
   this.stam = stam;

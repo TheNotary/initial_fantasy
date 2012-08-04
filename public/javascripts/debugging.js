@@ -56,9 +56,15 @@ var mozPaintNew = 0;
 var mozFps = 0;
 var bankScore = "none yet";
 
+
 function drawGraphicsDebugInfo(screen){
+  screen.context.fillStyle = "black";
+  screen.context.fillRect(0, 0, 200, 50);
   screen.context.fillStyle = "white";
-  screen.context.clearRect(0, 0, 200, 50);
+  
+  
+  processTimeDebugInfo(screen);
+  return;
   
   screen.context.fillText("gameTime: " + gameTime, 10, 10);    // Game Time
   screen.context.fillText("fps: " + gameFps, 10, 20);    // fps
@@ -69,13 +75,33 @@ function drawGraphicsDebugInfo(screen){
   screen.context.fillText("framesGoneBy: " + framesGoneBy, 10, 30);    // 
   
   screen.context.fillText("avgFps: " + avgFps, 10, 40);    // 
-  screen.context.fillText("bankScore: " + bankScore, 10, 50);  // a sort of short benchmark, just so I can eyeball the effects of code changes
+  //screen.context.fillText("bankScore: " + bankScore, 10, 50);  // a sort of short benchmark, just so I can eyeball the effects of code changes
   
   //screen.context.fillText("updatesRun: " + updatesRun, 10, 40);
   //screen.context.fillText("DrawsRun: " + drawsRun, 10, 50);
   
   //screen.context.fillText("avg moz-fps: " + mozPaintCount/gameTime, 10, 50);    // fps
   
+}
+
+
+var thisSpotWasRun = 0;
+var totTimeSpent = 0;
+var timeSpentThisRun = 0;
+var longestRun = 0;
+var avgTimeSpent = 0;
+var goldenScore = "";
+function processTimeDebugInfo(screen){
+  if(timeSpentThisRun > longestRun){
+    longestRun = timeSpentThisRun;
+  }
+  
+  screen.context.fillText("Function Hits: " + thisSpotWasRun, 10, 10);
+  screen.context.fillText("Total Time Spent: " + totTimeSpent, 10, 20); 
+  screen.context.fillText("Time Spent This Hit: " + timeSpentThisRun, 10, 30); 
+  screen.context.fillText("Longest Run: " + longestRun, 10, 40);
+  //screen.context.fillText("Average Time Spent: " + avgTimeSpent, 10, 50);
+  screen.context.fillText("Golden Score: " + goldenScore, 10, 50);
 }
 
 
