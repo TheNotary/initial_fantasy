@@ -33,6 +33,8 @@ function Unit(type, id, image, position, stance){
   this.stats = Unit.getBaseStats(type, id);
   
   this.htmlElements = new HtmlElements(this.name);
+  
+  this.currentAnimation = "";  // new Animation("Swinging") (for when the player selected fighting)
 }
 
 Unit.prototype.getX = function(){
@@ -216,6 +218,8 @@ function HtmlElements(name, row){
   this.maxHp = $('#charRow_'+row+' .max_hp');
   this.maxMp = $('#charRow_'+row+' .max_mp');
   this.waitBar = $('#charRow_'+ row +' .time .wait_bar')[0].getContext("2d");
+  
+  this.readyBarHasBeenDrawn = false;  // so we know if we should make the whole bar yellow or not
 }
 
 
