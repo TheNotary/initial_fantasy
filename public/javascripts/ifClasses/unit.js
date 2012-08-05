@@ -118,7 +118,7 @@ Unit.getUnitName = function(type, id){
   else if (type == unitType.hero){
     if(id==0)return "Cecil";
     if(id==1)return "peterC";
-    if(id==2)return "veryPro";
+    if(id==2)return "Rosa";
     if(id==3)return "Matzu!";
   }
   

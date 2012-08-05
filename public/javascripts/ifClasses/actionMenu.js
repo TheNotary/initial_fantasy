@@ -17,8 +17,8 @@ ActionMenu.prototype.finishedSelecting = function(){
   this.pickingTarget = false;
   // dissable CSS animation
   element = document.getElementsByClassName('activated_picking')[0];
-  element.className = element.className.replace('activated_picking', '');
+  element.className = element.className.replace(/activated_picking/g, '');
   
-  alert('pewpewpew');
+  alert('pewpew');
   
 }
