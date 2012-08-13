@@ -4,12 +4,13 @@ function ActionMenu(){
 }
 
 
-enum battleAction = {
+battleAction = {
   fight: 1,
   magic: 2,
   defend: 3,
   row: 4
 }
+
 
 ActionMenu.prototype.fight = function(ele){
   //alert('going to fight who?');
@@ -23,7 +24,6 @@ ActionMenu.prototype.fight = function(ele){
 }
 
 ActionMenu.prototype.targetSelected = function(unit){
-  //alert('pewpew: ' + unit.name);
   console.debug("PEWPEWPEW");
   
   // begin cast time on "fight" Command...
@@ -34,7 +34,6 @@ ActionMenu.prototype.targetSelected = function(unit){
       break;
   }
   
-  actionMenu.finishedSelecting();
 }
 
 ActionMenu.performFight = function(unit){
@@ -43,6 +42,7 @@ ActionMenu.performFight = function(unit){
   // Initiate the attack animation
   
   // Initiate the mob's defend animation
+  battleScreen.heroes[0].currentAnimation = new ActionAnimation("fight");
   
   // Kill the mob / combat calculations
   
@@ -61,3 +61,4 @@ ActionMenu.prototype.finishedSelecting = function(){
   element.className = element.className.replace(/activated_picking/g, '');
   
 }
+
