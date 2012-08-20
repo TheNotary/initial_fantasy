@@ -5,7 +5,7 @@
 	<head>
 	  <meta charset="UTF-8">
 	  <title>Initial Fantasy</title>
-	  <link rel="shortcut icon" href="http://192.168.0.11:3000/favicon2.ico" type="image/x-icon" />
+      <link rel="shortcut icon" href="http://192.168.0.11:3000/favicon2.ico" type="image/x-icon" />
     
     
 	  
@@ -20,16 +20,17 @@
 		<script src="/javascripts/fabric.js/dist/all.js"></script>
 	  
 	  
-	  <script src="/javascripts/globals.js"></script>
-	  <script src="/javascripts/ifClasses/screen.js"></script>
-	  <script src="/javascripts/ifClasses/unit.js"></script>
-	  <script src="/javascripts/ifClasses/mob.js"></script>
-	  <script src="/javascripts/ifClasses/hero.js"></script>
-	  <script src="/javascripts/ifClasses/sceneDirector.js"></script>
+    <script src="/javascripts/globals.js"></script>
+    <script src="/javascripts/ifClasses/screen.js"></script>
+    <script src="/javascripts/ifClasses/unit.js"></script>
+    <script src="/javascripts/ifClasses/mob.js"></script>
+    <script src="/javascripts/ifClasses/hero.js"></script>
+    <script src="/javascripts/ifClasses/sceneDirector.js"></script>
     <script src="/javascripts/ifClasses/battleScreen.js"></script>
+    <script src="/javascripts/ifClasses/actionAnimation.js"></script>
     <script src="/javascripts/ifClasses/actionMenu.js"></script>
     <script src="/javascripts/titleScreen.js"></script>
-		<script src="/javascripts/m.js"></script>
+    <script src="/javascripts/m.js"></script>
 		
 		<script src="/javascripts/keyboard.js"></script>
 		<script src="/javascripts/debugging.js"></script>
@@ -41,13 +42,18 @@
   <audio id="audio1" class="music">
     <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
     <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
-    Your browser does not support the audio element.
+    Your browser isn't intended for super fun audio time.
   </audio>
   
   <audio id="audBattle" class="music">
     <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
     <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
-    Your browser does not support the audio element.
+    Your browser isn't intended for super fun audio time.
+  </audio>
+  
+  <audio id="audMenuMove" class="soundfx">
+    <source src="/audio/misc/menu_move.ogg"></source>
+    Your browser isn't intended for super fun audio time.
   </audio>
   
   <div id="content">

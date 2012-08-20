@@ -34,7 +34,7 @@ function Unit(type, id, image, position, stance){
   
   this.htmlElements = new HtmlElements(this.name);
   
-  this.currentAnimation = "";  // new Animation("Swinging") (for when the player selected fighting)
+  this.currentAnimation = new ActionAnimation("blank");  // new Animation("Swinging") (for when the player selected fighting)
 }
 
 Unit.prototype.getX = function(){
@@ -188,11 +188,16 @@ Unit.prototype.drawUnit = function(){
 // TODO:  add acceleration and add a delay between each mob so they come one at a time almost.  
 Unit.prototype.drawGroundUnit = function(){
   if (this.unitMoved){
+    //var animationCalculatedOffsetX = this.calculateAnimationOffsetX();
+    
     //this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
     calculatedX = this.x;
     // Draw the mobs up...
     battleScreen.context.drawImage(this.image,
-      calculatedX, this.y - this.height,
+      
+      calculatedX, 
+      this.y - this.height,
+      
       this.width, this.height);
     
     this.lastX = this.x;
@@ -201,8 +206,22 @@ Unit.prototype.drawGroundUnit = function(){
     this.lastHeight = this.height;
     this.unitMoved = false;
   }
+  if (this.currentAnimation.name != "blank"){
+    console.debug(this.currentAnimation.name);
+    
+  }
 }
 
+Unit.prototype.calculateAnimationOffsetX = function(){
+  
+  if(this.currentAnimation.name == "fight"){
+    console.debug(this.currentAnimation.name);
+    this.x = this.x - 50;
+    this.currentAnimation = new ActionAnimation("blank");
+    return -50;
+  }
+  return 0;
+}
 
 
 

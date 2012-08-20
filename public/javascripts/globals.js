@@ -6,7 +6,9 @@ var titleScreen;
 var battleScreen;
 var actionMenu;
 
-
+var audMenuFight;
+var audMenuUnitSelect;
+var audTitleScreen;
 
 
 
