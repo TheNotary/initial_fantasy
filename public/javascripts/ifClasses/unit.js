@@ -286,4 +286,46 @@ function MobAttacks(){
 
 
 
+var lastRunsTick = 0;
+Unit.herosTurnEffect_flashingOutline = function(heroes, context){
+  if (tickCount % 3 == 0){
+    for (var j = 0; j < heroes.length; j++){
+      //if (j > 0) continue;
+      if (lastRunsTick == tickCount){break;}// for somereason it can run the loop twice on the same tickCount...
+                                            // I think 'tickCount' is incremented on the update loop, but we're calling this in the draw loop... sometimes before update has a chance to incriment again
+      hero = heroes[j];
+      if (hero.isSelected){
+        
+        var imgd = context.getImageData(hero.x, hero.y-hero.height, hero.width, hero.height);
+        var pix = imgd.data;
+        
+        var foundABlackPixel = false;
+        // Loop over each pixel and replace all black pixels with grey.
+        for (var i = 0, n = pix.length; i < n; i += 4) {
+          if (pix[i] == 0 && pix[i+1] == 0 && pix[i+2] == 0 && pix[i+3] != 0){   // don't count transparent pixels
+            pix[i] = 120;
+            pix[i+1] = 120;
+            pix[i+2] = 120;
+            foundABlackPixel = true;
+          }
+        }
+        
+        if (!foundABlackPixel){
+          // Loop over each pixel and replace grey pixels with black
+          for (var i = 0, n = pix.length; i < n; i += 4) {
+            if (pix[i] == 120 && pix[i+1] == 120 && pix[i+2] == 120){
+              pix[i] = 0;
+              pix[i+1] = 0;
+              pix[i+2] = 0;
+            }
+          }
+        }
+        
+        // Draw the ImageData at the given (x,y) coordinates.
+        context.putImageData(imgd, hero.x, hero.y-hero.height);
+        lastRunsTick = tickCount;
+      }
+    }
+  }
+}
 
