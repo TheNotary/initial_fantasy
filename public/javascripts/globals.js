@@ -75,3 +75,18 @@ Array.prototype.isEmpty = function() {
   return this.length == 0 ? true : false;
 }
 
+Array.prototype.first = function() {
+  return this[0];
+}
+
+
+// Your browser needs ES5 for this to work...
+/*
+Object.defineProperty(Array.prototype, "first", {
+    get: function() {
+        return this[0];
+    },
+});
+*/
+
+

@@ -68,25 +68,19 @@ ActionMenu.performFight = function(unit){
 
 var glob;
 ActionMenu.prototype.finishedSelecting = function(target) {
-  var heroActor = battleScreen.heroes[battleScreen.heroSelected];
+  var heroActor = battleScreen.heroes[battleScreen.heroQueue[0]];
   
   this.pickingTarget = false;
   heroActor.isSelected = false;
   heroActor.heroIsReady = false;
-  heroActor.stats.waitBar = 0;
-  heroActor.htmlElements.readyBarHasBeenDrawn = false;
+  heroActor.unitMoved = true;  
   
-  battleScreen.heroQueue.splice(0,1);
-  battleScreen.aHeroIsReady = false;
-  battleScreen.heroSelected = null;
-  // manually clear the yellow progress bar
-  heroActor.htmlElements.waitBar.clearRect(0,0,100,100);
+  heroActor.resetWaitBar();
+  
+  battleScreen.heroQueue.remove(0);
   
   BattleScreen.selectNextHero();
   
-  glob = heroActor.htmlElements.waitBar;
-  //alert('come back here... you need to refactor this so it works for all units...');
-  //alert(heroActor.name);
   
   // dissable CSS animation
   element = document.getElementsByClassName('activated_picking')[0];
@@ -95,22 +89,16 @@ ActionMenu.prototype.finishedSelecting = function(target) {
   // hide the fight button...
   $('div#fight_button').slideUp();
   battleScreen.commandListShowing = false;
-  
-  
 }
 
 
 BattleScreen.selectNextHero = function() {
   
-  
   if (battleScreen.heroQueue.length !=0) {
     var hero = battleScreen.heroes[battleScreen.heroQueue[0]];
     hero.isSelected = true;
     hero.heroIsReady = true;
-    //console.debug('next hero up: ' + hero.name);
-    battleScreen.heroSelected = battleScreen.heroQueue[0];
-    battleScreen.aHeroIsReady = true;
+    console.debug('next hero up: ' + hero.name);
   }
-  
   
 }

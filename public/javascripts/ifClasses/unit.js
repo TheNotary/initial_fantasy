@@ -125,7 +125,6 @@ Unit.getUnitName = function(type, id){
     if(id==3)return "Matzu!";
   }
   
-  
 }
 
 Unit.getBaseStats = function(type, id){
