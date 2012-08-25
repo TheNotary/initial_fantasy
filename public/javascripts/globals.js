@@ -71,3 +71,7 @@ Array.prototype.remove = function(f) {
   return this;
 };
 
+Array.prototype.isEmpty = function() {
+  return this.length == 0 ? true : false;
+}
+
