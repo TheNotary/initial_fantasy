@@ -24,14 +24,14 @@ ActionMenu.prototype.fight = function(ele){
   element.className += " activated_picking";
 }
 
-ActionMenu.prototype.targetSelected = function(unit){
-  console.debug("PEWPEWPEW");
+ActionMenu.prototype.targetSelected = function(target){
+  //console.debug("PEWPEWPEW");
   
   // begin cast time on "fight" Command...
   switch(this.actionSelected){
     case battleAction.fight:
-      ActionMenu.performFight(unit);
-      this.finishedSelecting();
+      ActionMenu.performFight(target);
+      this.finishedSelecting(target);
       break;
   }
   
@@ -66,13 +66,64 @@ ActionMenu.performFight = function(unit){
 }
 
 
-
-ActionMenu.prototype.finishedSelecting = function(){
+var glob;
+ActionMenu.prototype.finishedSelecting = function(target) {
+  var heroActor = battleScreen.heroes[battleScreen.heroSelected];
+  console.debug(battleScreen.heroQueue);
   
   this.pickingTarget = false;
+  heroActor.isSelected = false;
+  heroActor.heroIsReady = false;
+  heroActor.stats.waitBar = 0;
+  heroActor.htmlElements.readyBarHasBeenDrawn = false;
+  
+  battleScreen.heroQueue.splice(0,1);
+  battleScreen.aHeroIsReady = false;
+  battleScreen.heroSelected = null;
+  // manually clear the yellow progress bar
+  heroActor.htmlElements.waitBar.clearRect(0,0,100,100);
+  
+  BattleScreen.selectNextHero();
+  
+  glob = heroActor.htmlElements.waitBar;
+  //alert('come back here... you need to refactor this so it works for all units...');
+  //alert(heroActor.name);
+  
   // dissable CSS animation
   element = document.getElementsByClassName('activated_picking')[0];
   element.className = element.className.replace(/activated_picking/g, '');
   
+  // hide the fight button...
+  $('div#fight_button').slideUp();
+  battleScreen.commandListShowing = false;
+  
+  
 }
 
+
+BattleScreen.selectNextHero = function() {
+  
+  
+  if (battleScreen.heroQueue.length !=0) {
+    var hero = battleScreen.heroes[battleScreen.heroQueue[0]];
+    hero.isSelected = true;
+    hero.heroIsReady = true;
+    //battleScreen.readyHeroes.push(i);
+    battleScreen.heroSelected = battleScreen.heroQueue[0];
+    alert('done ' + battleScreen.heroSelected);
+  }
+  
+  return;
+  
+  for (var i = 0; i < battleScreen.heroes.length; i++){
+    var hero = battleScreen.heroes[i];
+    if (hero.stats.waitBar >= 100){
+      hero.isSelected = true;
+      hero.heroIsReady = true;
+      //battleScreen.readyHeroes.push(i);
+      battleScreen.heroSelected = i;
+      break;
+    }
+  }
+  
+}

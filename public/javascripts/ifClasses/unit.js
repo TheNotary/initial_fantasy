@@ -208,7 +208,7 @@ Unit.prototype.drawGroundUnit = function(){
     this.unitMoved = false;
   }
   if (this.currentAnimation.name != "blank"){
-    console.debug(this.currentAnimation.name);
+    // console.debug(this.currentAnimation.name);
     
   }
 }
@@ -216,7 +216,7 @@ Unit.prototype.drawGroundUnit = function(){
 Unit.prototype.calculateAnimationOffsetX = function(){
   
   if(this.currentAnimation.name == "fight"){
-    console.debug(this.currentAnimation.name);
+    // console.debug(this.currentAnimation.name);
     this.x = this.x - 50;
     this.currentAnimation = new ActionAnimation("blank");
     return -50;
