@@ -69,7 +69,6 @@ ActionMenu.performFight = function(unit){
 var glob;
 ActionMenu.prototype.finishedSelecting = function(target) {
   var heroActor = battleScreen.heroes[battleScreen.heroSelected];
-  console.debug(battleScreen.heroQueue);
   
   this.pickingTarget = false;
   heroActor.isSelected = false;
@@ -108,22 +107,10 @@ BattleScreen.selectNextHero = function() {
     var hero = battleScreen.heroes[battleScreen.heroQueue[0]];
     hero.isSelected = true;
     hero.heroIsReady = true;
-    //battleScreen.readyHeroes.push(i);
+    //console.debug('next hero up: ' + hero.name);
     battleScreen.heroSelected = battleScreen.heroQueue[0];
-    alert('done ' + battleScreen.heroSelected);
+    battleScreen.aHeroIsReady = true;
   }
   
-  return;
-  
-  for (var i = 0; i < battleScreen.heroes.length; i++){
-    var hero = battleScreen.heroes[i];
-    if (hero.stats.waitBar >= 100){
-      hero.isSelected = true;
-      hero.heroIsReady = true;
-      //battleScreen.readyHeroes.push(i);
-      battleScreen.heroSelected = i;
-      break;
-    }
-  }
   
 }
