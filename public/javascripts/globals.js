@@ -10,7 +10,7 @@ var audMenuFight;
 var audMenuUnitSelect;
 var audTitleScreen;
 
-
+var audioContext;
 
 
 var onEachFrame;
@@ -50,7 +50,7 @@ function blockCanvasDefaultAction(){
 
                                                              //+ Jonas Raoni Soares Silva
 // this code is for shuffling array contents                 //@ http://jsfromhell.com/array/shuffle [v1.0]
-shuffleArray = function(o){ //v1.0
+shuffleArray = function(o) { //v1.0
   for(var j, x, i = o.length; i; j = parseInt(Math.random() * i), x = o[--i], o[i] = o[j], o[j] = x);
   return o;
 };
@@ -62,4 +62,12 @@ function zeroPad(num, places) {
   return Array(+(zero > 0 && zero)).join("0") + num;
 }
 
+
+// this code adds a delete method to arrays
+Array.prototype.remove = function(f) {
+  var r=this.slice(f+1||this.length);
+  this.length=f<0?this.length+f:f;
+  this.push.apply(this, r);
+  return this;
+};
 

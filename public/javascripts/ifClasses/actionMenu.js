@@ -13,13 +13,8 @@ battleAction = {
 
 
 ActionMenu.prototype.fight = function(ele){
-  audMenuMove.src = "/audio/misc/menu_move.ogg";
-  audMenuMove.play();
+  audioContext.playSound(audMenuMove);
   
-  
-  
-  
-  //alert('going to fight who?');
   // let other methods know that the next click on a mob is FOR REALZORZ!
   this.pickingTarget = true;
   this.actionSelected = battleAction.fight;
@@ -43,15 +38,15 @@ ActionMenu.prototype.targetSelected = function(unit){
 }
 
 ActionMenu.performFight = function(unit){
-  //audMenuUnitSelect.pause();
-  audMenuUnitSelect.src = "/audio/misc/menu_move.ogg";
-  audMenuUnitSelect.play();
+  audioContext.playSound(audMenuMove);
   
   // Initiate the fight delay timer???
   
   // Kill the mob / combat calculations
   unit.stats.hp -= 10;
-  //alert(unit.stats.hp);
+  if (unit.stats.hp < 1){
+    unit.dead = true;
+  }
   
   
   
@@ -66,8 +61,8 @@ ActionMenu.performFight = function(unit){
   
   
   // Initiate mob death animation
+  unit.unitMoved = true;
   
-  // 
 }
 
 

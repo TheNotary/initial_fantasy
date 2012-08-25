@@ -12,7 +12,6 @@ document.onkeydown = function(evt) {
     case "battle_screen":
       battleScreen.handleKeys(evt);
       break;
-    
   }
 
   return;

@@ -35,6 +35,7 @@ function Unit(type, id, image, position, stance){
   this.htmlElements = new HtmlElements(this.name);
   
   this.currentAnimation = new ActionAnimation("blank");  // new Animation("Swinging") (for when the player selected fighting)
+  this.dead = false;   // mark true to stop drawing the mob
 }
 
 Unit.prototype.getX = function(){
