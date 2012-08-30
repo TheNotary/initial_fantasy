@@ -1,4 +1,6 @@
 InitialFantasy::Application.routes.draw do
+  get "pages/game"
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
