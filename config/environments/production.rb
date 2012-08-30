@@ -29,7 +29,7 @@ InitialFantasy::Application.configure do
 
   # Disable Rails's static asset server
   # In production, Apache or nginx will already do this
-  config.serve_static_assets = false
+  config.serve_static_assets = true
 
   # Enable serving of images, stylesheets, and javascripts from an asset server
   # config.action_controller.asset_host = "http://assets.example.com"
@@ -50,4 +50,6 @@ InitialFantasy::Application.configure do
   config.assets.compress = true
   config.assets.compile = false
   config.assets.digest = true
+  
+  config.assets.precompile += %w( pages.js )    # this is needed to precompile coffee script files... it is difficult to understand how manifest files work...
 end

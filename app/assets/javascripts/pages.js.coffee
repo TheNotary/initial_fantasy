@@ -3,4 +3,10 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 class MyObject
-  @hello = -> alert 'hello world of coffeescript!'
+  constructor: ->
+  hello: -> alert 'hello world of coffeescript!'
+
+
+a = new MyObject
+
+a.hello()
