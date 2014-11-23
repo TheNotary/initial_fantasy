@@ -51,5 +51,5 @@ InitialFantasy::Application.configure do
   config.assets.compile = false
   config.assets.digest = true
   
-  config.assets.precompile += %w( pages.js )    # this is needed to precompile coffee script files... it is difficult to understand how manifest files work...
+  #config.assets.precompile += %w( pages.js )    # this is needed to precompile coffee script files... it is difficult to understand how manifest files work...
 end

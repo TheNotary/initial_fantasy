@@ -7,6 +7,8 @@ class MyObject
   hello: -> alert 'hello world of coffeescript!'
 
 
+window.MyObject = MyObject
+
 a = new MyObject
 
 a.hello()

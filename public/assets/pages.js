@@ -1,1 +1,0 @@
-(function(){var e,t;e=function(){function e(){}return e.prototype.hello=function(){return alert("hello world of coffeescript!")},e}(),t=new e,t.hello()}).call(this);
