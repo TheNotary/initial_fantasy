@@ -1,5 +1,6 @@
 //= require jquery
-//= require jquery_ujs
+//= require jquery-ujs
 //= require howler
+//= require bootstrap
 //= require_self
 //= require_tree .
