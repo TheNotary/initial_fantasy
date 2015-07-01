@@ -43,3 +43,6 @@ module InitialFantasy
     config.filter_parameters += [:password]
   end
 end
+
+require File.expand_path('../version', __FILE__)
+
