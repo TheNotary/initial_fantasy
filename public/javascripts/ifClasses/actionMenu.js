@@ -13,7 +13,7 @@ battleAction = {
 
 
 ActionMenu.prototype.fight = function(ele){
-  audioContext.playSound(audMenuMove);
+  audMenuMove.play();
   
   // let other methods know that the next click on a mob is FOR REALZORZ!
   this.pickingTarget = true;
@@ -38,7 +38,7 @@ ActionMenu.prototype.targetSelected = function(target){
 }
 
 ActionMenu.performFight = function(unit){
-  audioContext.playSound(audMenuMove);
+  audMenuMove.play();
   
   // Initiate the fight delay timer???
   
