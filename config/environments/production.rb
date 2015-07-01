@@ -51,5 +51,5 @@ InitialFantasy::Application.configure do
   config.assets.compile = false
   config.assets.digest = true
   
-  config.assets.precompile += %w( bootstrap.css bootstrap.js )
+  config.assets.precompile += %w( bootstrap.css bootstrap.js pages.css )
 end
