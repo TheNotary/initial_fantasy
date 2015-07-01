@@ -1,17 +1,33 @@
 
 
+** 0.1.x **
+  - Multiplayer battle screen
+  - Multiplayer world map
+  - Social buttons
+  - 'Channels' for town/world view
+  - Instancing on dungeons?  Or perhaps on chests
+
+
 
 ** 0.0.x **
 
-  - Fix the bug where it looks different in firefox than chrome
-    - It's a bug in the font, they don't render fonts the same way
-      OPTIONS:
-      
-      * Manually edit WOFF file
-      * See if there's a close enough match font elsewhere
-      * CSS rule to fix margin-top  http://stackoverflow.com/questions/4899792/font-size-issues-comparing-chrome-and-firefox
-      * Use a generic font
-      * Use images that the rails app renders before serving out the page (yuck)
+  - Pull out javascript handles from the HTML to be setup from within javascript from within initialize_game.js
+  - Consider using backbone js and handling game logic inside the app!!!
+  - Setup PhatomJS unit tests
+  - Just 'start' the world map view... shared with dungeon view... shared with tow view...
+    Desires:
+    * Multiplayer fun... so... 
+      > enemy mobs are visible (and appear)
+      > 'movement tiles' are small, or non tile based
+      > has mini-map/ radar
+    * iPad fun... so...
+      > tapping/ mouse click native
+      > Has auto travel
+
+
+DONE:
+
+  - Fixed browser compatibility issue by hacking the font
 
 
 ** 0.0.1 **
