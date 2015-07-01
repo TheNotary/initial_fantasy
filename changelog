@@ -6,8 +6,10 @@
   - Fix the bug where it looks different in firefox than chrome
     - It's a bug in the font, they don't render fonts the same way
       OPTIONS:
+      
       * Manually edit WOFF file
       * See if there's a close enough match font elsewhere
+      * CSS rule to fix margin-top  http://stackoverflow.com/questions/4899792/font-size-issues-comparing-chrome-and-firefox
       * Use a generic font
       * Use images that the rails app renders before serving out the page (yuck)
 
