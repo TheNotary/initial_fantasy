@@ -1,16 +1,13 @@
 <%= render "audio_elements" %>
 
-
 <div id="content">
   <canvas id="title_screen" width="1000px" height="630px"></canvas>
   <canvas id="battle_background" width="1000px" height="430px"></canvas>
   <canvas id="battle_screen" width="1000px" height="430px"></canvas>
   <canvas id="worldmap_screen" width="1000px" height="630px"></canvas>
   
-  <%= render "battle_menu" %>
-  
-
-  <div id="character_menu">
-  </div>
+  <%= render "/menus/battle_menu" %>
+  <%= render "/menus/social_menu" %>
+  <%= render "/menus/party_menu" %>
 
 </div>
