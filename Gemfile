@@ -12,3 +12,7 @@ group :assets do
 end
 
 # gem 'nokogiri'
+
+source 'https://rails-assets.org' do
+  gem 'rails-assets-howler'
+end

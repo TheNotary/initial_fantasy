@@ -1,5 +1,6 @@
 GEM
   remote: http://rubygems.org/
+  remote: https://rails-assets.org/
   specs:
     actionmailer (3.2.8)
       actionpack (= 3.2.8)
@@ -69,6 +70,7 @@ GEM
       activesupport (= 3.2.8)
       bundler (~> 1.0)
       railties (= 3.2.8)
+    rails-assets-howler (1.1.26)
     railties (3.2.8)
       actionpack (= 3.2.8)
       activesupport (= 3.2.8)
@@ -106,6 +108,7 @@ DEPENDENCIES
   coffee-rails
   jquery-rails
   rails (= 3.2.8)
+  rails-assets-howler!
   sass-rails
   sqlite3
   uglifier
