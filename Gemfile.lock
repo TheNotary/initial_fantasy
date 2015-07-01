@@ -1,5 +1,5 @@
 GEM
-  remote: http://rubygems.org/
+  remote: https://rubygems.org/
   remote: https://rails-assets.org/
   specs:
     actionmailer (3.2.21)
@@ -104,6 +104,7 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
+  bundler (= 1.10.5)
   coffee-rails
   jquery-rails
   rails (= 3.2.21)
@@ -111,3 +112,6 @@ DEPENDENCIES
   sass-rails
   sqlite3
   uglifier
+
+BUNDLED WITH
+   1.10.5
