@@ -14,14 +14,9 @@ var audioContext;
 
 
 var onEachFrame;
-if (window.webkitRequestAnimationFrame) {
+if (window.requestAnimationFrame) {
   onEachFrame = function(cb) {
-    var _cb = function() { cb(); webkitRequestAnimationFrame(_cb); }
-    _cb();
-  };
-} else if (window.mozRequestAnimationFrame) {
-  onEachFrame = function(cb) {
-    var _cb = function() { cb(); mozRequestAnimationFrame(_cb); }
+    var _cb = function() { cb(); requestAnimationFrame(_cb); }
     _cb();
   };
 } else {

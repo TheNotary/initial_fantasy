@@ -6,14 +6,15 @@
   - Social buttons
   - 'Channels' for town/world view
   - Instancing on dungeons?  Or perhaps on chests
+  - Add 'challenges' to the battlescreen in place of the button
 
 
 
 ** 0.0.x **
 
+  
   - Pull out javascript handles from the HTML to be setup from within javascript from within initialize_game.js
   - Consider using backbone js and handling game logic inside the app!!!
-  - Setup PhatomJS unit tests
   - Just 'start' the world map view... shared with dungeon view... shared with tow view...
     Desires:
     * Multiplayer fun... so... 
@@ -25,9 +26,13 @@
       > Has auto travel
 
 
-DONE:
+CURRENT TASK:
+  - Setup PhatomJS unit tests
 
+
+COMPLETE:
   - Fixed browser compatibility issue by hacking the font
+  - BugFix:  removed the now pointless edge conditionals webkitRequestAnimationFrame
 
 
 ** 0.0.1 **
