@@ -11,4 +11,4 @@ window.MyObject = MyObject
 
 a = new MyObject
 
-a.hello()
+# a.hello()
