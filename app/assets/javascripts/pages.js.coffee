@@ -3,4 +3,12 @@
 # You can use CoffeeScript in this file: http://jashkenas.github.com/coffee-script/
 
 class MyObject
-  @hello = -> alert 'hello world of coffeescript!'
+  constructor: ->
+  hello: -> alert 'hello world of coffeescript!'
+
+
+window.MyObject = MyObject
+
+a = new MyObject
+
+a.hello()
