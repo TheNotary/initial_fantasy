@@ -45,4 +45,3 @@ module InitialFantasy
 end
 
 require File.expand_path('../version', __FILE__)
-

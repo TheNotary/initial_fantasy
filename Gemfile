@@ -13,14 +13,14 @@ group :development, :test do
   gem "sqlite3"
 end
 
+
+gem 'haml-rails'
+
 group :assets do
-  gem 'haml-rails'
   gem 'sass-rails'
   gem 'coffee-rails'
   gem 'uglifier'
 end
-
-# gem 'nokogiri'
 
 source 'https://rails-assets.org' do
   gem 'rails-assets-howler'
