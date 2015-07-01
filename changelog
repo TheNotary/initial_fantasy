@@ -13,6 +13,12 @@
 ** 0.0.x **
 
   
+	- Get cannedwebview onto my mobile and do some tests to see where things
+are... android dev was on a win PC...
+	- test ahoy
+	- Consider porting to padrino... check status of websockets and sinatra
+	first
+  - use fastly as a CDN
   - Pull out javascript handles from the HTML to be setup from within javascript from within initialize_game.js
   - Consider using backbone js and handling game logic inside the app!!!
   - Just 'start' the world map view... shared with dungeon view... shared with tow view...
