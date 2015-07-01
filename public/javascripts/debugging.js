@@ -99,9 +99,17 @@ function processTimeDebugInfo(screen){
 
 
 
-
-
-if (debugMode){
+function debuggingFunctions(){  
+  // make it so there is no sound on title screen
+  titleScreen.audio.volume = 0.2;
+  
+  // make it so there is no delay on titlescreen
+  delayBeforeStartGame = 0;
+  
   // auto skip title screen
-  titleScreen.ExitScreen("intro-on_air_ship");
+  //titleScreen.ExitScreen("intro-on_air_ship");
+  
+  useArrowKeysToMoveCanvasSprite();
 }
+
+

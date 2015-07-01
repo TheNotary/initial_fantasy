@@ -41,6 +41,13 @@ document.onkeydown = function(evt) {
 
 // place within the onclick event of a canvas to see it work
 function relMouseCoords(event){
+    if (currentScreen == "title_screen"){
+        titleScreen.handleMouse(event);
+        return;
+    }
+
+    // else handleMouse for battleScreen... TODO: Refactor into battleScreen.handleMouse if possible
+
     var totalOffsetX = 0;
     var totalOffsetY = 0;
     var canvasX = 0;

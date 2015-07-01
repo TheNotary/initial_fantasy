@@ -9,7 +9,9 @@ function Screen(canvasId, audioId, menuId){
 }
 
 
-Screen.HandleKeys = function(evt){}
+Screen.handleKeys = function(evt){}
+
+Screen.handleMouse = function(evt){}
 
 
 // This method is only useful for the title screen... what a waste of refactoring...
