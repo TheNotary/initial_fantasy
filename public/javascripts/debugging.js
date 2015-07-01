@@ -98,3 +98,10 @@ function processTimeDebugInfo(screen){
 }
 
 
+
+
+
+if (debugMode){
+  // auto skip title screen
+  titleScreen.ExitScreen("intro-on_air_ship");
+}
