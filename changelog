@@ -33,6 +33,14 @@ are... android dev was on a win PC...
 
 
 CURRENT TASK:
+
+	- UI Glitch on Firefox 37.0.1, windows 7 
+    - Font origin seems to be offset from top left corner 
+		  (so has extra padding on bottom).
+		  This pushes the party_list to overflow off the screen.
+			Solution:
+			* Explicitly setting containers height may cause consistency
+
   - Setup PhatomJS unit tests
 
 
