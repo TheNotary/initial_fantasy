@@ -79,7 +79,7 @@ function reportWhatUnitWasClicked(clickX, clickY){
   unit = whatUnitWasClicked(clickX, clickY, battleScreen.mobs);
   if (unit != false){return unit;}
   // check if it was a hero
-  unit = whatUnitWasClicked(clickX, clickY, battleScreen.heroes);
+  unit = whatUnitWasClicked(clickX, clickY, battleScreen.heros);
   return unit;
 }
 
