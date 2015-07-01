@@ -13,7 +13,9 @@
 ** 0.0.x **
 
   
-	- Get cannedwebview onto my mobile and do some tests to see where things
+	- Refactor css
+	- Could the battle screen render different on a phone?
+  - Get cannedwebview onto my mobile and do some tests to see where things
 are... android dev was on a win PC...
 	- test ahoy
 	- Consider porting to padrino... check status of websockets and sinatra
@@ -34,19 +36,14 @@ are... android dev was on a win PC...
 
 CURRENT TASK:
 
-	- UI Glitch on Firefox 37.0.1, windows 7 
-    - Font origin seems to be offset from top left corner 
-		  (so has extra padding on bottom).
-		  This pushes the party_list to overflow off the screen.
-			Solution:
-			* Explicitly setting containers height may cause consistency
-
   - Setup PhatomJS unit tests
 
 
 COMPLETE:
   - Fixed browser compatibility issue by hacking the font
   - BugFix:  removed the now pointless edge conditionals webkitRequestAnimationFrame
+	- BugFix:  Behavor with font differed one Windows 7, Firefox 37.0.1, solved
+	by explicitly declaring div and li heights without ill effect.  
 
 
 ** 0.0.1 **

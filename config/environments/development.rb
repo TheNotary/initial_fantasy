@@ -25,5 +25,6 @@ InitialFantasy::Application.configure do
   config.assets.compress = false
   config.assets.compile = true
   config.assets.debug = true   # calls the javascript files file by file, instead of conctenating the .js files into a single application.js file
+  config.assets.prefix = '/dev/assets' # prevents assets being served twice in development...
 end
 
