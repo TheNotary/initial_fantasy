@@ -25,29 +25,37 @@ setupGameTimer();
 
 
 /* TitleScreenFadeInLogic */
-var ga = 0.0;
-var timerId = 0;
 
-var queueUpFadeInTitle = function(){
-  context = titleScreen.context;
-  
-  timerId = setInterval("fadeIn(context, imgTitleScreen)",60);
-}
+function TitleScreenFader() {
+  this.ga = 0.0;
+  this.timerId = 0;
 
-function fadeIn(context, image){
-  var fadeInMax = 1.0; // fade in over 1 second
-  var fadeInIncrement = 0.01;
+  this.queueUpFadeInTitle = function(){
+    //context = titleScreen.context;
+    
+    timerId = setInterval("titleScreenFader.fadeIn(titleScreen.context, imgTitleScreen)",60);
+  };
   
-  context.clearRect(0,0, context.canvas.width,context.canvas.height);
-  context.globalAlpha = ga;
-  
-  context.drawImage(image, 0, 0);
-  
-  ga = ga + fadeInIncrement;
-  if (ga > fadeInMax){
-    clearInterval(timerId);
-  }
-}
+  this.fadeIn = function(context, image){
+    var fadeInMax = 1.0; // fade in over 1 second
+    var fadeInIncrement = 0.01;
+    
+    context.clearRect(0,0, context.canvas.width,context.canvas.height);
+    context.globalAlpha = this.ga;
+    
+    context.drawImage(image, 0, 0);
+    
+    this.ga = this.ga + fadeInIncrement;
+    if (this.ga > fadeInMax){
+      clearInterval(timerId);
+    }
+  };
+
+};
+var titleScreenFader = new TitleScreenFader();
+
+
+
 
 
 
@@ -150,7 +158,7 @@ var delayBeforeStartGame = 2;
 function init(){
   //document.getElementById('audio1').play();
   audTitleScreen.play();
-  queueUpFadeInTitle();
+  titleScreenFader.queueUpFadeInTitle();
 
   //timeout_before_press_start(delayBeforeStartGame);
   
