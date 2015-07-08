@@ -11,8 +11,6 @@
 
 
 ** 0.0.x **
-
-  
 	- Refactor css
 	- Could the battle screen render different on a phone?
   - Get cannedwebview onto my mobile and do some tests to see where things
@@ -33,10 +31,11 @@ are... android dev was on a win PC...
       > tapping/ mouse click native
       > Has auto travel
 
+  - Setup PhatomJS unit tests
 
 CURRENT TASK:
 
-  - Setup PhatomJS unit tests
+  - Make javascript using modulejs and put it into a bower pacakge
 
 
 COMPLETE:
