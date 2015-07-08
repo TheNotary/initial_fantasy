@@ -79,6 +79,7 @@ GEM
     rails-assets-jquery (2.1.4)
     rails-assets-jquery-ujs (1.0.4)
       rails-assets-jquery (> 1.8)
+    rails-assets-modulejs (1.9.0)
     railties (3.2.21)
       actionpack (= 3.2.21)
       activesupport (= 3.2.21)
@@ -122,6 +123,7 @@ DEPENDENCIES
   rails-assets-bootstrap!
   rails-assets-howler!
   rails-assets-jquery-ujs!
+  rails-assets-modulejs!
   sass-rails
   sqlite3
   uglifier

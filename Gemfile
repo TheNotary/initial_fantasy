@@ -26,4 +26,5 @@ source 'https://rails-assets.org' do
   gem 'rails-assets-howler'
   gem 'rails-assets-bootstrap'
   gem 'rails-assets-jquery-ujs'
+  gem 'rails-assets-modulejs'
 end
