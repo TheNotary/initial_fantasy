@@ -1,9 +1,13 @@
-function Screen(canvasId, audioId, menuId){
+
+function Screen(canvasId, bgMusicPaths, menuId){
   if (canvasId == undefined){
     return;
   }
   this.context = document.getElementById(canvasId).getContext('2d');
-  this.audio = document.getElementById(audioId);
+  //this.audio = document.getElementById(audioId);
+  this.audio = new Howl({
+    urls: bgMusicPaths
+  });
   this.canvasId = canvasId;
   this.menuId = menuId;
 }

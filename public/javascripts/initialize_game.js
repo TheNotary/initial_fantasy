@@ -1,6 +1,14 @@
 
+// NameSpace for globals
+function InitialFantasy(){
+}
 
-var mobs;
+var game = new InitialFantasy();
+
+
+game.debugMode = true;
+
+
 
 
 var setupGameTimer = function() {
@@ -23,36 +31,6 @@ setupGameTimer();
 
 
 
-
-/* TitleScreenFadeInLogic */
-
-function TitleScreenFader() {
-  this.ga = 0.0;
-  this.timerId = 0;
-
-  this.queueUpFadeInTitle = function(){
-    //context = titleScreen.context;
-    
-    timerId = setInterval("titleScreenFader.fadeIn(titleScreen.context, imgTitleScreen)",60);
-  };
-  
-  this.fadeIn = function(context, image){
-    var fadeInMax = 1.0; // fade in over 1 second
-    var fadeInIncrement = 0.01;
-    
-    context.clearRect(0,0, context.canvas.width,context.canvas.height);
-    context.globalAlpha = this.ga;
-    
-    context.drawImage(image, 0, 0);
-    
-    this.ga = this.ga + fadeInIncrement;
-    if (this.ga > fadeInMax){
-      clearInterval(timerId);
-    }
-  };
-
-};
-var titleScreenFader = new TitleScreenFader();
 
 
 
@@ -154,21 +132,13 @@ function update(secondsPassed){
   }
 }
 
-var delayBeforeStartGame = 2;
 function init(){
-  //document.getElementById('audio1').play();
-  audTitleScreen.play();
-  titleScreenFader.queueUpFadeInTitle();
+  titleScreen.begin();
 
-  //timeout_before_press_start(delayBeforeStartGame);
-  
   addEventHandlersToDom();
 }
 
 
-
-// Images and stuff
-var imgTitleScreen;
 
 // battle backgrounds
 var imgBtlGrassyLake;
@@ -181,9 +151,6 @@ var goblin;
 function load(){
   setupClassObjects();
   
-  imgTitleScreen = new Image();
-  imgTitleScreen.src = '/images/ui/title_screen.png';
-
   loadBattleBackgrounds();
   
   loadMobs();
@@ -200,19 +167,16 @@ function setupAudio(){
   audMenuUnitSelect = document.createElement('audio');
   audMenuUnitSelect.setAttribute('src', '/audio/misc/menu_move.ogg');
   
-  audTitleScreen = document.getElementById('audio1'); // html5
+  // audTitleScreen = document.getElementById('audio1'); // html5
+
 }
 
 // Sets up canvases and Screen objects
 function setupClassObjects(){
-  canvasId = 'title_screen';
-  audioId = 'audio1';
+  titleScreen = new TitleScreen('title_screen', 
+    ["/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3", "/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg"], 
+    null, '/images/ui/title_screen.png');
   
-  // pass in the ID of the canvas element to be used for this screen.  Also pass in the audioId
-  titleScreen = new TitleScreen(canvasId, audioId);
-  
-  // You need to pass in a third argument for the BattleScreen which is the html div encapsulating the
-  // fight commands and player health points, etc.  
   battleScreen = new BattleScreen('battle_screen', 'audBattle', 'battle_menu');
   
   actionMenu = new ActionMenu();
@@ -275,7 +239,7 @@ $(document).ready(function() {
   load();
   $(window).load(function () {   // this waits for everything that happened in load() to ... load.
     init();
-    if(debugMode)debuggingFunctions();
+    if(game.debugMode)debuggingFunctions();
   });
 });
 

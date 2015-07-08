@@ -73,7 +73,7 @@ function relMouseCoords(event){
       actionMenu.targetSelected(unit);
     }
     
-    if (debugMode == true) {
+    if (game.debugMode == true) {
       //console.debug("x: " + canvasX + "  y: " + canvasY);
       //console.debug('Unit Name: ' + unit.name);
     }

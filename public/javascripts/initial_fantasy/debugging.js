@@ -104,7 +104,7 @@ function debuggingFunctions(){
   titleScreen.audio.volume = 0.2;
   
   // make it so there is no delay on titlescreen
-  delayBeforeStartGame = 0;
+  game.removeTitleScreenDelay = true;
   
   // auto skip title screen
   //titleScreen.ExitScreen("intro-on_air_ship");
