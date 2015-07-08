@@ -27,7 +27,8 @@ TitleScreen.prototype.ExitScreen = function(scene){
 }
 
 TitleScreen.prototype.breakFromScreenOnInput = function(evt){
-  if (readyToPressStart == false){  // wait a few seconds before user bypasses screen
+  var delayBeforePressStart = 2.0; // wait 2 seconds before they can start the game
+  if (gameTime < delayBeforePressStart){
     return;
   }
 

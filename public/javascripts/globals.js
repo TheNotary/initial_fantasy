@@ -13,19 +13,6 @@ var audTitleScreen;
 var audioContext;
 
 
-var onEachFrame;
-if (window.requestAnimationFrame) {
-  onEachFrame = function(cb) {
-    var _cb = function() { cb(); requestAnimationFrame(_cb); }
-    _cb();
-  };
-} else {
-  onEachFrame = function(cb) {
-    setInterval(cb, 1000 / 60);
-  }
-}
-
-window.onEachFrame = onEachFrame;    // this global can now be called and it will de the appropriate thing across browser
 
 
 // this is needed to stop canvas from being lame when tapping it on smart phones

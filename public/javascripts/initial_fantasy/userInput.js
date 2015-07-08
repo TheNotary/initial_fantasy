@@ -1,4 +1,7 @@
-currentScreen = "title_screen";
+currentScreen = "title_screen"; // hmmm... I need a namespace...
+
+
+
 
 
 //Events when keyboard keys are pressed
@@ -113,6 +116,4 @@ function whatUnitWasClicked(clickX, clickY, units){
   }
   return false;
 }
-
-
 

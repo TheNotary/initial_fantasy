@@ -36,6 +36,7 @@ are... android dev was on a win PC...
 CURRENT TASK:
 
   - Make javascript using modulejs and put it into a bower pacakge
+    - Get rid of globals, use object and eventually use a namespace
 
 
 COMPLETE:
