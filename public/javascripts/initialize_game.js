@@ -24,33 +24,34 @@ setupGameTimer();
 
 
 
+/* TitleScreenFadeInLogic */
+var ga = 0.0;
+var timerId = 0;
 
-
-
-function fadeInTitle(){
+var queueUpFadeInTitle = function(){
   context = titleScreen.context;
+  
   timerId = setInterval("fadeIn(context, imgTitleScreen)",60);
 }
 
-
-var ga = 0.0;
-var timerId = 0;
 function fadeIn(context, image){
+  var fadeInMax = 1.0; // fade in over 1 second
+  var fadeInIncrement = 0.01;
+  
   context.clearRect(0,0, context.canvas.width,context.canvas.height);
   context.globalAlpha = ga;
   
   context.drawImage(image, 0, 0);
   
-  ga = ga + 0.01;
-  if (ga > 1.0){
-    goingUp = false;
+  ga = ga + fadeInIncrement;
+  if (ga > fadeInMax){
     clearInterval(timerId);
   }
 }
 
 
-var lastMainEndedAt = 0;
 
+var lastMainEndedAt = 0;
 
 var gameTime = 0.0;
 var gameFps = 0.0;
@@ -149,7 +150,7 @@ var delayBeforeStartGame = 2;
 function init(){
   //document.getElementById('audio1').play();
   audTitleScreen.play();
-  fadeInTitle();
+  queueUpFadeInTitle();
 
   //timeout_before_press_start(delayBeforeStartGame);
   
