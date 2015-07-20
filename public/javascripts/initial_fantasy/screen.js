@@ -12,7 +12,6 @@ function Screen(canvasId, bgMusicPaths, menuId){
   this.menuId = menuId;
 }
 
-
 Screen.handleKeys = function(evt){}
 
 Screen.handleMouse = function(evt){}
@@ -37,5 +36,3 @@ Screen.prototype.Hide = function(callbackFunc){
     callbackFunc.call();
   });
 }
-
-
