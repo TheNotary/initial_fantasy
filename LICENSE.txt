@@ -1,0 +1,5 @@
+This software is licensed via...
+
+GNU General Public License v2.0
+
+http://choosealicense.com/licenses/gpl-2.0/
