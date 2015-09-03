@@ -1,4 +1,4 @@
-function ActionAnimation(name) {
+function ActionAnimation(name, length) {
     this.currentFrame = 0; // I need to keep track of which frame we're on
     this.lastFrame = 50; // I need to know which frame marks the end of our animation
     this.isAnimating = false; // Set this to true so it's faster to check if we need to draw animations
@@ -13,7 +13,9 @@ function ActionAnimation(name) {
 
 
 ActionAnimation.prototype.render = function() {
-    alert('hi, here is a function where we will slowly modify the X and Y values of the owning mob...');
+    // alert('hi, here is a function where we will slowly modify the X and Y values of the owning mob...');
+    console.log("processing animation");
+
     // but what if there are multiple animations on the mob at the same time...
     // Maybe there's some clean way to hanle this... by using the actionAnimation in the drawImage calculation for X,Y?...
 
@@ -28,6 +30,18 @@ ActionAnimation.prototype.render = function() {
     //      the number of animations which could be applied to each character to one (NOT FEASIBLE)
     //
     //
+};
+
+
+ActionAnimation.prototype.update = function() {
+    
+    // increment frame
+    this.currentFrame++;
+
+    //
+    if (this.currentFrame >= 16) {
+        this.terminate();
+    }
 }
 
 // Animations:

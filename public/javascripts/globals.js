@@ -1,6 +1,49 @@
 // This file just has misc re-usable functions and junk
 // It's a good place to drop functions, objects as you develop them
 
+var tickCount = 0;
+
+// This seems to be a hack to prevent certain draw/ update methods from being called
+// twice on the same tick...  very hackish and ugly...
+var lastRunsTick = 0;
+
+
+var user = {
+    email: "a@b",
+    display_name: "Notary",
+
+    game_data: {
+        game_slot:  1,
+        play_time: 60, // 1 minute
+        completion: 0.10,
+
+        heros: [
+            { id: 1, name: "Cecil", sprite_sheet:  '/images/heroes/ff2_cecil.png' },
+            { id: 2, name: "Kain", sprite_sheet:  '/images/heroes/ff2_kain.png' },
+            { id: 3, name: "Rosa", sprite_sheet:  '/images/heroes/ff2_rosa.png' },
+            { id: 4, name: "Kabul", sprite_sheet:  '/images/heroes/ff2_kabul.png' }
+        ],
+
+        party_data: {
+            location: {
+                dungeon_name: "overworld",
+                map_id: 0,
+                x: 0,
+                y: 0
+            },
+            combat_setup: {
+                hero_slots: [
+                    { hero_id: 1, row: 0, col: "front" },
+                    { hero_id: 2, row: 1, col: "front" },
+                    { hero_id: 3, row: 2, col: "front" },
+                    { hero_id: 4, row: 3, col: "front" }
+                ]
+            }
+
+
+        },
+    }
+}
 
 
 

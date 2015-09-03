@@ -101,7 +101,6 @@ function InitialFantasy(debugMode = false) {
         // so it's global name is game... thus game.gameTime... wow...
         // this is because main is a callback from requestAnimationFrame...
         gameTime = gameTime + delta / 1000;
-        //game.gameTime = gameTime;
 
         var skipTicks = 1000 / 30; // 30 fps
         var loops = 0;
@@ -135,7 +134,8 @@ function InitialFantasy(debugMode = false) {
         lastMainEndedAt = Date.now();
     };
 
-
+    // This function determines how frequently we perform the update() method in
+    // the game loop.
     function itsTimeToDoAnotherTick(lastTick, tickInterval) {
         delta = Date.now() - lastTick;
         if (delta >= tickInterval * 4) {
@@ -165,7 +165,7 @@ function InitialFantasy(debugMode = false) {
                 break;
             case "town_screen":
                 break;
-            case "worl_screen":
+            case "world_screen":
                 break;
         }
     }
@@ -179,7 +179,7 @@ function InitialFantasy(debugMode = false) {
                 break;
             case "town_screen":
                 break;
-            case "worl_screen":
+            case "world_screen":
                 break;
         }
     }

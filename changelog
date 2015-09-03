@@ -42,23 +42,33 @@ are... android dev was on a win PC...
     - user.party_settings.heros.first
         #=> { id: 1, name: "cecil", row: "", image: "/images/cecil_1" , hero_loadout: "object" }
 
-    - party_settings
-      - hero
+    - game_data
+
+      - heros
         - equipment_loadout
         - magic_loadout
         - base_stats
         - afflictions (stat modifiers)
         -
-      - combat_setup
-        - hero_id
-        - position row_index + front/back
-      - location
-        - dungeon_name: "overworld", map_id: 0, x: 0, y: 0
-      - map
-        - id:0, image: "/images/maps/overworld.png", tile_data_id: 0, zoology: {zoologic_data}
+
+      - party_data
+
+        - combat_setup
+          - hero_id
+          - position row_index + front/back
+
+        - location
+          - dungeon_name: "overworld", map_id: 0, x: 0, y: 0
+
+    - map
+      >> id:0, image: "/images/maps/overworld.png", tile_data_id: 0, zoology: {zoologic_data}
       - tile_data (run length encoded specifications of how players can interact with maps)
         -
       - zoologic_data (what mobs are in this dungeon map... what about the world map...)
+
+
+
+
 
 
 
@@ -82,7 +92,58 @@ CURRENT TASK:
 This game could get huge...  I think it's best to download graphics on an as-needed basis...
 but I'm not sure how to pull that off...
 
+Make it so image data is loaded as needed... and cached... and a func can be called to pre-cache...
 
+>> Make it so I can start the 'first battle' by querying the battle configuration from the server
+
+>>> it's hard to think about 'securing' the game from a server client standpoint...
+    the original was obviously a client only game...
+
+>>>> The user needs to 'login', and the server needs to see their location as
+     "first_spawn" and then initiate them into the first battle...
+     I can't believe it's all this architecting just to refactor a .js file....
+
+>>>>> I need to start devise logins now.......... =(   =(
+
+>>>>>> After the javascript/ html is loaded, the client needs to ask the server
+       "ok, what now?"
+       and the server must reply
+       "Start this unique battle: { battleConfigs }"
+
+       AND when the client attacks a mob... it actually needs to tell the server
+       it's attacking it...
+
+       Shit.... I don't have any sweet kill animations!!! That's where I left off!!!
+
+
+::Kill Mob Animation::
+  >> WOAH!! the animation is way more fluid than this, I just can't step through
+     the frames the way I was trying at first!
+     The erase steaks appear through the mob, and then radiate outwards from the
+     equator of the mob!  It's awesome in slow mo, but you can't step frames and see it.
+     
+  1) Fade blue/ purple (first tick)
+  2) Stay faded/ do nothing (second tick)
+  3) Erase lines through mobs 1-2 pixels wide
+  4)
+    Fade darker
+    Widen erase marks
+    Add some erase marks
+  5)
+    Fade darker
+    Widen erase marks
+    Add some erase marks
+  6) widen erase marks, mob around 50% erased now
+
+  7) Widen/ add erase marks, mob mostly gone?
+
+  8) Erase mob completely
+
+
+- Swinging animation
+- fire whirling animation on mob (from fire sword I guess)
+- dmg points animation
+- mob death animation
 
 
 COMPLETE:

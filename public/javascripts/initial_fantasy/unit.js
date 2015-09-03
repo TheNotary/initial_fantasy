@@ -36,7 +36,11 @@ function Unit(type, id, image, position, stance) {
 
     this.htmlElements = new HtmlElements(this.name);
 
+    // TODO: remove currentAnimation because there's going to be multiple
+    // animations running at the same time
     this.currentAnimation = new ActionAnimation("blank"); // new Animation("Swinging") (for when the player selected fighting)
+
+    this.animations = []; // array of animations active on this mob
     this.dead = false; // mark true to stop drawing the mob
 }
 
@@ -288,12 +292,11 @@ function MobAttacks() {
 
 
 
-var lastRunsTick = 0;
 Unit.herosTurnEffect_flashingOutline = function(heroes, context) {
-    if (tickCount % 3 == 0) {
+    if (tickCount % 2 === 0) {
         for (var j = 0; j < heroes.length; j++) {
             //if (j > 0) continue;
-            if (lastRunsTick == tickCount) {
+            if (lastRunsTick === tickCount) {
                 break;
             } // for somereason it can run the loop twice on the same tickCount...
             // I think 'tickCount' is incremented on the update loop, but we're calling this in the draw loop... sometimes before update has a chance to incriment again
@@ -306,7 +309,7 @@ Unit.herosTurnEffect_flashingOutline = function(heroes, context) {
                 var foundABlackPixel = false;
                 // Loop over each pixel and replace all black pixels with grey.
                 for (var i = 0, n = pix.length; i < n; i += 4) {
-                    if (pix[i] == 0 && pix[i + 1] == 0 && pix[i + 2] == 0 && pix[i + 3] != 0) { // don't count transparent pixels
+                    if (pix[i] === 0 && pix[i + 1] === 0 && pix[i + 2] === 0 && pix[i + 3] !== 0) { // don't count transparent pixels
                         pix[i] = 120;
                         pix[i + 1] = 120;
                         pix[i + 2] = 120;
@@ -317,7 +320,7 @@ Unit.herosTurnEffect_flashingOutline = function(heroes, context) {
                 if (!foundABlackPixel) {
                     // Loop over each pixel and replace grey pixels with black
                     for (var i = 0, n = pix.length; i < n; i += 4) {
-                        if (pix[i] == 120 && pix[i + 1] == 120 && pix[i + 2] == 120) {
+                        if (pix[i] === 120 && pix[i + 1] === 120 && pix[i + 2] === 120) {
                             pix[i] = 0;
                             pix[i + 1] = 0;
                             pix[i + 2] = 0;

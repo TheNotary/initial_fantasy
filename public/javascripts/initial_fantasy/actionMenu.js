@@ -25,19 +25,21 @@ ActionMenu.prototype.fight = function(ele) {
 }
 
 ActionMenu.prototype.targetSelected = function(target) {
-    //console.debug("PEWPEWPEW");
+    // the unit that is performing the action on target
+    var bs = game.battleScreen;
+    var actor = bs.heroes[bs.heroQueue.first()];
 
     // begin cast time on "fight" Command...
     switch (this.actionSelected) {
         case battleAction.fight:
-            ActionMenu.performFight(target);
+            ActionMenu.performFight(actor, target);
             this.finishedSelecting(target);
             break;
     }
 
 }
 
-ActionMenu.performFight = function(unit) {
+ActionMenu.performFight = function(actor, unit) {
     var bs = game.battleScreen;
     audMenuMove.play();
 
@@ -49,25 +51,19 @@ ActionMenu.performFight = function(unit) {
         unit.dead = true;
     }
 
-
-
     // Initiate the attack animation
-    bs.heroes[0].currentAnimation = new ActionAnimation("fight");
-    bs.heroes[0].unitMoved = true;
+    actor.animations.push(new ActionAnimation("fight"));
+    actor.unitMoved = true;
     bs.aHeroHasMoved = true;
 
     // Initiate the mob's defend animation
-    //bs.mobs[0].currentAnimation = new ActionAnimation("recieveFight");
-
-
+    //target.annimations.push(new ActionAnimation("recieveFight"));
 
     // Initiate mob death animation
     unit.unitMoved = true;
-
 }
 
 
-var glob;
 ActionMenu.prototype.finishedSelecting = function(target) {
     var bs = game.battleScreen;
     var heroActor = bs.heroes[bs.heroQueue[0]];
