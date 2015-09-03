@@ -7,10 +7,10 @@ function useArrowKeysToMoveCanvasSprite() {
         if (currentScreen == "battle_screen") {
             switch (evt.keyCode) {
                 case 39: // right arrow
-                    alert(battleScreen.mobs[0].position);
+                    alert(game.battleScreen.mobs[0].position);
                     break;
                 case 37: // left arrow
-                    battleScreen.mobs[0].setY(battleScreen.mobs[0].y + 1);
+                    game.battleScreen.mobs[0].setY(game.battleScreen.mobs[0].y + 1);
                     break;
             }
 
@@ -51,11 +51,11 @@ function drawGraphicsDebugInfo(screen) {
     //processTimeDebugInfo(screen);
     //return;
 
-    screen.context.fillText("gameTime: " + gameTime, 10, 10); // Game Time
-    screen.context.fillText("fps: " + gameFps, 10, 20); // fps
+    screen.context.fillText("game time: " + game.time(), 10, 10); // Game Time
+    screen.context.fillText("fps: " + game.fps(), 10, 20); // fps
 
     framesGoneBy = framesGoneBy + 1;
-    avgFps = framesGoneBy / gameTime;
+    avgFps = framesGoneBy / game.time();
 
     screen.context.fillText("framesGoneBy: " + framesGoneBy, 10, 30); //
 
@@ -65,8 +65,7 @@ function drawGraphicsDebugInfo(screen) {
     //screen.context.fillText("updatesRun: " + updatesRun, 10, 40);
     //screen.context.fillText("DrawsRun: " + drawsRun, 10, 50);
 
-    //screen.context.fillText("avg moz-fps: " + mozPaintCount/gameTime, 10, 50);    // fps
-
+    //screen.context.fillText("avg moz-fps: " + mozPaintCount/game.time(), 10, 50);    // fps
 }
 
 
@@ -97,13 +96,13 @@ function processTimeDebugInfo(screen) {
 
 function debuggingFunctions() {
     // make it so there is no sound on title screen
-    titleScreen.audio.volume = 0.2;
+    game.titleScreen.audio.volume = 0.2;
 
     // make it so there is no delay on titlescreen
     game.removeTitleScreenDelay = true;
 
     // auto skip title screen
-    //titleScreen.ExitScreen("intro-on_air_ship");
+    game.titleScreen.ExitScreen("intro-on_air_ship");
 
     useArrowKeysToMoveCanvasSprite();
 }

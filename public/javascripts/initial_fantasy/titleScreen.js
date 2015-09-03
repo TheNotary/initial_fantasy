@@ -29,6 +29,8 @@ TitleScreen.prototype.handleMouse = function(evt) {
 }
 
 TitleScreen.prototype.ExitScreen = function(scene) {
+
+
     this.audio.pause();
     clearInterval(timerId); // clears the fade in timer
     if (scene != undefined) {
@@ -38,25 +40,26 @@ TitleScreen.prototype.ExitScreen = function(scene) {
 
 TitleScreen.prototype.breakFromScreenOnInput = function(evt) {
     var delayBeforePressStart = 2.0; // wait 2 seconds before they can start the game
-    if (gameTime < delayBeforePressStart && !game.removeTitleScreenDelay) {
+    // TODO: refactor game.time() into a more nested pattern...
+    if (game.time() < delayBeforePressStart && !game.removeTitleScreenDelay) {
         return;
     }
 
-    if (evt.buttons >= 1) {
+    if (evt.buttons >= 1) { // mouse button 1
         this.ExitScreen("intro-on_air_ship");
         return;
     }
 
     var key = evt.keyCode;
 
-    if (key == 13 || key == 27) {
+    if (key == 13 || key == 27) { // enter or esc???
         this.ExitScreen("intro-on_air_ship");
     }
 }
 
 // queues the timer that handles mutating the transparency levels of the canvas for the title screen
 TitleScreen.prototype.fadeIn = function() {
-    timerId = setInterval("titleScreen.iterateFadeIn()", 60);
+    timerId = setInterval("game.titleScreen.iterateFadeIn()", 60);
 }
 
 // this is itereted when fadeIn is called which makes the canvas more and more visible

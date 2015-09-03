@@ -43,6 +43,10 @@ function zeroPad(num, places) {
 }
 
 
+
+
+// Browser shimming below...
+
 // this code adds a delete method to arrays
 Array.prototype.remove = function(f) {
     var r = this.slice(f + 1 || this.length);
@@ -58,13 +62,3 @@ Array.prototype.isEmpty = function() {
 Array.prototype.first = function() {
     return this[0];
 }
-
-
-// Your browser needs ES5 for this to work...
-/*
-Object.defineProperty(Array.prototype, "first", {
-    get: function() {
-        return this[0];
-    },
-});
-*/

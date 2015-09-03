@@ -48,10 +48,10 @@ Unit.prototype.setX = function(val) {
     this.unitMoved = true;
     switch (this.type) {
         case unitType.mob:
-            battleScreen.aMobHasMoved = true;
+            game.battleScreen.aMobHasMoved = true;
             break;
         case unitType.flying:
-            battleScreen.aHeroHasMoved = true;
+            game.battleScreen.aHeroHasMoved = true;
             break;
     }
 }
@@ -62,7 +62,7 @@ Unit.prototype.setY = function(val) {
     this.y = val;
     this.unitMoved = true;
     if (this.type == unitType.mob) {
-        battleScreen.aMobHasMoved = true;
+        game.battleScreen.aMobHasMoved = true;
     }
 }
 
@@ -152,13 +152,14 @@ Unit.prototype.clearFromScreen = function() {
     switch (this.stance) {
         case "ground":
         case undefined:
-            battleScreen.context.clearRect(this.lastX, this.lastY - this.height, this.width, this.height);
+            // TODO: refactor these so unit doesn't need to know this much about game.battleScreen???
+            game.battleScreen.context.clearRect(this.lastX, this.lastY - this.height, this.width, this.height);
             break;
         case "flying":
             // clear the mob
-            battleScreen.context.clearRect(this.lastX, this.lastY - this.height - 50, this.width, this.height);
+            game.battleScreen.context.clearRect(this.lastX, this.lastY - this.height - 50, this.width, this.height);
             // then clear the shadow
-            battleScreen.context.clearRect(this.lastX - 12, this.position[1] + 20, this.shadowImages[0].width, this.shadowImages[0].height);
+            game.battleScreen.context.clearRect(this.lastX - 12, this.position[1] + 20, this.shadowImages[0].width, this.shadowImages[0].height);
             break;
     }
 
@@ -194,7 +195,7 @@ Unit.prototype.drawGroundUnit = function() {
         //this.clearFromScreen();// clear screen for mobs (prevent them from blurring in...)
         calculatedX = this.x;
         // Draw the mobs up...
-        battleScreen.context.drawImage(this.image,
+        game.battleScreen.context.drawImage(this.image,
 
             calculatedX,
             this.y - this.height,

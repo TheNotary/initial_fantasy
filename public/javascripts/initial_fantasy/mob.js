@@ -14,12 +14,12 @@ Mob.prototype.drawFlyingUnit = function() {
     if (this.unitMoved) {
 
         //battleScreen.context.clearRect(this.lastX, this.lastY-this.height-50, this.width, this.height);
-        battleScreen.context.drawImage(this.image,
+        game.battleScreen.context.drawImage(this.image,
             this.x, this.y - this.height - 50,
             this.width, this.height);
 
         // draw shadow now too...
-        //battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
+        //game.battleScreen.context.clearRect(this.lastX-12, this.position[1]+20, this.shadowImages[0].width, this.shadowImages[0].height);
 
         properShadowImage = this.shadowImages[2];
         var currentDistFromOrigin = this.y - this.position[1];
@@ -27,7 +27,7 @@ Mob.prototype.drawFlyingUnit = function() {
         var transposed = Math.round(currentDistFromOrigin / range * 3); // convert distance from origin to frame index...
         properShadowImage = this.shadowImages[transposed];
 
-        battleScreen.context.drawImage(properShadowImage,
+        game.battleScreen.context.drawImage(properShadowImage,
             this.x - 12, this.position[1] + 20,
             properShadowImage.width, properShadowImage.height);
 

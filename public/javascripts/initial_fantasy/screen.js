@@ -1,6 +1,4 @@
-(function() {
 
-    'use strict';
     function Screen(canvasId, bgMusicPaths, menuId) {
         if (canvasId === undefined) {
             return;
@@ -38,7 +36,3 @@
             callbackFunc.call();
         });
     };
-
-    window.Screen = Screen;
-
-}());

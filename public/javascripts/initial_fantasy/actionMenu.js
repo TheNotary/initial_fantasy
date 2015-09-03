@@ -38,6 +38,7 @@ ActionMenu.prototype.targetSelected = function(target) {
 }
 
 ActionMenu.performFight = function(unit) {
+    var bs = game.battleScreen;
     audMenuMove.play();
 
     // Initiate the fight delay timer???
@@ -51,12 +52,12 @@ ActionMenu.performFight = function(unit) {
 
 
     // Initiate the attack animation
-    battleScreen.heroes[0].currentAnimation = new ActionAnimation("fight");
-    battleScreen.heroes[0].unitMoved = true;
-    battleScreen.aHeroHasMoved = true;
+    bs.heroes[0].currentAnimation = new ActionAnimation("fight");
+    bs.heroes[0].unitMoved = true;
+    bs.aHeroHasMoved = true;
 
     // Initiate the mob's defend animation
-    //battleScreen.mobs[0].currentAnimation = new ActionAnimation("recieveFight");
+    //bs.mobs[0].currentAnimation = new ActionAnimation("recieveFight");
 
 
 
@@ -68,7 +69,8 @@ ActionMenu.performFight = function(unit) {
 
 var glob;
 ActionMenu.prototype.finishedSelecting = function(target) {
-    var heroActor = battleScreen.heroes[battleScreen.heroQueue[0]];
+    var bs = game.battleScreen;
+    var heroActor = bs.heroes[bs.heroQueue[0]];
 
     this.pickingTarget = false;
     heroActor.isSelected = false;
@@ -77,7 +79,7 @@ ActionMenu.prototype.finishedSelecting = function(target) {
 
     heroActor.resetWaitBar();
 
-    battleScreen.heroQueue.remove(0);
+    bs.heroQueue.remove(0);
 
     BattleScreen.selectNextHero();
 
@@ -88,14 +90,15 @@ ActionMenu.prototype.finishedSelecting = function(target) {
 
     // hide the fight button...
     $('div#fight_button').slideUp();
-    battleScreen.commandListShowing = false;
+    bs.commandListShowing = false;
 }
 
 
 BattleScreen.selectNextHero = function() {
+    var bs = game.battleScreen;
 
-    if (battleScreen.heroQueue.length != 0) {
-        var hero = battleScreen.heroes[battleScreen.heroQueue[0]];
+    if (bs.heroQueue.length != 0) {
+        var hero = bs.heroes[bs.heroQueue[0]];
         hero.isSelected = true;
         hero.heroIsReady = true;
         console.debug('next hero up: ' + hero.name);

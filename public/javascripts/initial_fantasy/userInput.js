@@ -10,10 +10,12 @@ document.onkeydown = function(evt) {
 
     switch (currentScreen) {
         case "title_screen":
-            titleScreen.handleKeys(evt);
+            // TODO: refactor game.titleScreen into a more nested pattern...
+            game.titleScreen.handleKeys(evt);
             break;
         case "battle_screen":
-            battleScreen.handleKeys(evt);
+            // TODO: refactor game.titleScreen into a more nested pattern...
+            game.battleScreen.handleKeys(evt);
             break;
     }
 
@@ -45,7 +47,8 @@ document.onkeydown = function(evt) {
 // place within the onclick event of a canvas to see it work
 function relMouseCoords(event) {
     if (currentScreen == "title_screen") {
-        titleScreen.handleMouse(event);
+        // TODO: refactor game.titleScreen into a more nested pattern...
+        game.titleScreen.handleMouse(event);
         return;
     }
 
@@ -69,8 +72,8 @@ function relMouseCoords(event) {
 
     unit = reportWhatUnitWasClicked(canvasX, canvasY);
 
-    if (actionMenu.pickingTarget && unit != false) {
-        actionMenu.targetSelected(unit);
+    if (game.actionMenu.pickingTarget && unit != false) {
+        game.actionMenu.targetSelected(unit);
     }
 
     if (game.debugMode == true) {
@@ -87,19 +90,19 @@ function relMouseCoords(event) {
 
 
 function reportWhatUnitWasClicked(clickX, clickY) {
+    var bs = game.battleScreen;
     var unit;
     // check if it was a mob that was clicked
-    unit = whatUnitWasClicked(clickX, clickY, battleScreen.mobs);
+    unit = whatUnitWasClicked(clickX, clickY, bs.mobs);
     if (unit != false) {
         return unit;
     }
     // check if it was a hero
-    unit = whatUnitWasClicked(clickX, clickY, battleScreen.heros);
+    unit = whatUnitWasClicked(clickX, clickY, bs.heros);
     return unit;
 }
 
 function whatUnitWasClicked(clickX, clickY, units) {
-    //var mobs = battleScreen.mobs;
     // check if it was a mob
     for (var i = 0; i < units.length; i++) {
         var unit = units[i];
