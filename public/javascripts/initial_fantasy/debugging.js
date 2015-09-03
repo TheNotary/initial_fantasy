@@ -4,7 +4,7 @@ function useArrowKeysToMoveCanvasSprite() {
         myProc.call(this, evt); // do the thing that onkeydown is meant to do in production mode too...
 
 
-        if (currentScreen == "battle_screen") {
+        if (game.currentScreen == "battle_screen") {
             switch (evt.keyCode) {
                 case 39: // right arrow
                     alert(game.battleScreen.mobs[0].position);

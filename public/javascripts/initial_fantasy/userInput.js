@@ -1,14 +1,9 @@
-currentScreen = "title_screen"; // hmmm... I need a namespace...
-
-
-
-
 
 //Events when keyboard keys are pressed
 document.onkeydown = function(evt) {
     evt = evt || window.event;
 
-    switch (currentScreen) {
+    switch (game.currentScreen) {
         case "title_screen":
             // TODO: refactor game.titleScreen into a more nested pattern...
             game.titleScreen.handleKeys(evt);
@@ -46,7 +41,7 @@ document.onkeydown = function(evt) {
 
 // place within the onclick event of a canvas to see it work
 function relMouseCoords(event) {
-    if (currentScreen == "title_screen") {
+    if (game.currentScreen == "title_screen") {
         // TODO: refactor game.titleScreen into a more nested pattern...
         game.titleScreen.handleMouse(event);
         return;

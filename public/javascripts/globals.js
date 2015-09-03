@@ -1,14 +1,8 @@
-var currentScreen; // this variable tracks the current UI being displayed...  It's useful for the render loop to know what to render...  We'll see how that turns out when I have more code down...
+// This file just has misc re-usable functions and junk
+// It's a good place to drop functions, objects as you develop them
 
-var titleScreen;
-var battleScreen;
-var actionMenu;
 
-var audMenuFight;
-var audMenuUnitSelect;
-var audTitleScreen;
 
-var audioContext;
 
 
 

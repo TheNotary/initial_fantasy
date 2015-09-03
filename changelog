@@ -23,7 +23,7 @@ are... android dev was on a win PC...
   - Consider using backbone js and handling game logic inside the app!!!
   - Just 'start' the world map view... shared with dungeon view... shared with tow view...
     Desires:
-    * Multiplayer fun... so... 
+    * Multiplayer fun... so...
       > enemy mobs are visible (and appear)
       > 'movement tiles' are small, or non tile based
       > has mini-map/ radar
@@ -33,17 +33,63 @@ are... android dev was on a win PC...
 
   - Setup PhatomJS unit tests
 
+
+  - Add user logons with devise
+
+
+  # Implement below persistent data:
+
+    - user.party_settings.heros.first
+        #=> { id: 1, name: "cecil", row: "", image: "/images/cecil_1" , hero_loadout: "object" }
+
+    - party_settings
+      - hero
+        - equipment_loadout
+        - magic_loadout
+        - base_stats
+        - afflictions (stat modifiers)
+        -
+      - combat_setup
+        - hero_id
+        - position row_index + front/back
+      - location
+        - dungeon_name: "overworld", map_id: 0, x: 0, y: 0
+      - map
+        - id:0, image: "/images/maps/overworld.png", tile_data_id: 0, zoology: {zoologic_data}
+      - tile_data (run length encoded specifications of how players can interact with maps)
+        -
+      - zoologic_data (what mobs are in this dungeon map... what about the world map...)
+
+
+
+
 CURRENT TASK:
 
   - Make javascript using modulejs and put it into a bower pacakge
-    - Get rid of globals, use object and eventually use a namespace
+
+  - Further removing globals so that everything is in the game object
+    - Split initialize_game.js into...
+      * _graphics.js
+      * _audio.js
+      * _main_loop.js
+
+        >  I want to pull out the graphics code from InitialFantasy so it looks just like
+           1 line of loadGraphics...
+          i.  It needs to be refactored so it's accessible... kind of... like, organized
+              into arrays.
+            heroes = [new Hero(unitType.hero, 0, imgCecil, partyPositions.row1Front, "ground", 0),
+
+This game could get huge...  I think it's best to download graphics on an as-needed basis...
+but I'm not sure how to pull that off...
+
+
 
 
 COMPLETE:
   - Fixed browser compatibility issue by hacking the font
   - BugFix:  removed the now pointless edge conditionals webkitRequestAnimationFrame
 	- BugFix:  Behavor with font differed one Windows 7, Firefox 37.0.1, solved
-	by explicitly declaring div and li heights without ill effect.  
+	by explicitly declaring div and li heights without ill effect.
 
 
 ** 0.0.1 **
@@ -53,5 +99,3 @@ COMPLETE:
   - Title screen
   - Battle screen
   - Some animations
-  
-  
