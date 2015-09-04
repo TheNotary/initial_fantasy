@@ -147,8 +147,8 @@ Make it so image data is loaded as needed... and cached... and a func can be cal
 
 
 SWING ANIMATION:
-  Fight is clicked
-  Mob is chosen (ActionMenu.fight)
+  Fight is clicked  (ActionMenu.chooseAction)
+  Mob is chosen (ActionMenu.chooseAction)
   ->
     * actor's timer bar is set to zero and set to 'frozen' state
     * A 'fight' animation is set on the hero's animations list

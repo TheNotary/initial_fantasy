@@ -1,3 +1,4 @@
+// this is the "FIGHT" button, and it's housing
 function ActionMenu() {
     this.pickingTarget = false;
     this.actionSelected = ""; // "fight", "magic"
@@ -7,6 +8,19 @@ function ActionMenu() {
         volume: 0.05
     });
 }
+
+
+ActionMenu.displayCommandList = function(heroes) {
+    var bs = game.battleScreen;
+    if (!bs.commandListShowing) { // get out now if we're already showing a command menu
+        $.each(heroes, function(i, hero) {
+            if (hero.stats.waitBar >= 100) {
+                $('div#fight_button').slideDown();
+                bs.commandListShowing = true;
+            }
+        });
+    }
+};
 
 
 var battleAction = {

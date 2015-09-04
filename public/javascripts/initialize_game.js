@@ -15,7 +15,6 @@ function InitialFantasy(debugMode) {
         null, '/images/ui/title_screen.png');
 
     this.battleScreen = new BattleScreen('battle_screen', 'audBattle', 'battle_menu');
-    this.actionMenu = new ActionMenu();
 
 
 

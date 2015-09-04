@@ -73,8 +73,8 @@ function relMouseCoords(event) {
 
     unit = reportWhatUnitWasClicked(canvasX, canvasY);
 
-    if (game.actionMenu.pickingTarget && unit != false) {
-        game.actionMenu.targetSelected(unit);
+    if (game.battleScreen.actionMenu.pickingTarget && unit != false) {
+        game.battleScreen.actionMenu.targetSelected(unit);
     }
 
     if (game.debugMode == true) {
