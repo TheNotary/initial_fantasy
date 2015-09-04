@@ -7,22 +7,28 @@ digraph prof {
 	"game.start()" -> "addEventHandlersToDom()";
 	"game.start()" -> "window.onEachFrame(game.main)";
 	"game.start()" -> "this.titleScreen.begin()";
-	
-	
+
+
 "addEventHandlersToDom()" [color="0.408 0.498 1.000"];
 "window.onEachFrame(game.main)" [color="0.408 0.498 1.000"];
 "this.titleScreen.begin()" [color="0.408 0.498 1.000"];
 
   node [style=filled color="0.408 0.498 1.000"];
   "game.main()" -> "draw()"
+	"draw()" -> "game.battleScreen.render()"
+	"game.battleScreen.render()" -> "hero.drawUnit"
+	"game.battleScreen.render()" -> "mob.drawUnit"
+	"game.battleScreen.render()" -> "drawWaitBars"
+	"game.battleScreen.render()" -> "renderAnimations"
+	"game.battleScreen.render()" -> "drawGraphicsDebugInfo"
+
   "game.main()" -> "update()"
-  
   "update()" -> "game.battleScreen.update(secondsPassed)"
-  
-  "game.battleScreen.update(secondsPassed)" -> "BattleScreen.updateTimerBars(this.heroes)"
+
+  "game.battleScreen.update(secondsPassed)" -> "BattleScreen.updateWaitBars(this.heroes)"
   "game.battleScreen.update(secondsPassed)" -> "ActionMenu.displayCommandList(this.heroes)"
   "game.battleScreen.update(secondsPassed)" -> "updateAnimations"
-  
+
   "updateAnimations" -> "RushInEffect_allAtOnce"
   "updateAnimations" -> "HoverEffect_simpleBird"
 }

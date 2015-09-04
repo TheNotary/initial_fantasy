@@ -83,7 +83,7 @@ function InitialFantasy(debugMode) {
             }
         }
 
-        draw(); // DRAW AS OFTEN AS YOU CAN
+        render(); // DRAW AS OFTEN AS YOU CAN
 
         gameFps = 1000 / delta;
         then = now;
@@ -110,19 +110,12 @@ function InitialFantasy(debugMode) {
         return loops < maxFrameSkip;
     }
 
-    //
-    // $(function() {
-    //     window.onEachFrame(main);
-    // });
-
-
-
-    function draw() {
+    function render() {
         switch (game.currentScreen) {
             case "title_screen": // never use render loop for title screen... unless I make it more interesting...
                 break;
             case "battle_screen":
-                game.battleScreen.renderBattleScene();
+                game.battleScreen.render();
                 break;
             case "town_screen":
                 break;
