@@ -96,7 +96,7 @@ function processTimeDebugInfo(screen) {
 
 function debuggingFunctions() {
     // make it so there is no sound on title screen
-    game.titleScreen.audio.volume = 0.2;
+    game.titleScreen.audio.volume = 0.1;
 
     // make it so there is no delay on titlescreen
     game.removeTitleScreenDelay = true;

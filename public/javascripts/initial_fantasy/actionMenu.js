@@ -1,6 +1,11 @@
 function ActionMenu() {
     this.pickingTarget = false;
     this.actionSelected = ""; // "fight", "magic"
+
+    this.audMenuMove = new Howl({
+        urls: ["/audio/misc/menu_move.ogg"],
+        volume: 0.05
+    });
 }
 
 
@@ -9,11 +14,11 @@ battleAction = {
     magic: 2,
     defend: 3,
     row: 4
-}
+};
 
 
 ActionMenu.prototype.fight = function(ele) {
-    audMenuMove.play();
+    this.audMenuMove.play();
 
     // let other methods know that the next click on a mob is FOR REALZORZ!
     this.pickingTarget = true;
@@ -22,7 +27,7 @@ ActionMenu.prototype.fight = function(ele) {
     // initiate CSS animation
     element = document.getElementsByClassName(ele)[0];
     element.className += " activated_picking";
-}
+};
 
 ActionMenu.prototype.targetSelected = function(target) {
     // the unit that is performing the action on target
@@ -32,16 +37,16 @@ ActionMenu.prototype.targetSelected = function(target) {
     // begin cast time on "fight" Command...
     switch (this.actionSelected) {
         case battleAction.fight:
-            ActionMenu.performFight(actor, target);
+            this.performFight(actor, target);
             this.finishedSelecting(target);
             break;
     }
 
-}
+};
 
-ActionMenu.performFight = function(actor, unit) {
+ActionMenu.prototype.performFight = function(actor, unit) {
     var bs = game.battleScreen;
-    audMenuMove.play();
+    this.audMenuMove.play();
 
     // Initiate the fight delay timer???
 
@@ -61,7 +66,7 @@ ActionMenu.performFight = function(actor, unit) {
 
     // Initiate mob death animation
     unit.unitMoved = true;
-}
+};
 
 
 ActionMenu.prototype.finishedSelecting = function(target) {
@@ -87,17 +92,4 @@ ActionMenu.prototype.finishedSelecting = function(target) {
     // hide the fight button...
     $('div#fight_button').slideUp();
     bs.commandListShowing = false;
-}
-
-
-BattleScreen.selectNextHero = function() {
-    var bs = game.battleScreen;
-
-    if (bs.heroQueue.length != 0) {
-        var hero = bs.heroes[bs.heroQueue[0]];
-        hero.isSelected = true;
-        hero.heroIsReady = true;
-        console.debug('next hero up: ' + hero.name);
-    }
-
-}
+};

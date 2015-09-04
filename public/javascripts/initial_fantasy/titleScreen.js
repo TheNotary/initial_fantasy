@@ -1,11 +1,11 @@
 /*
  * canvasId     - String containing ID of canvas element on html
- * bgMusicPaths - String identifieing audio element
+ * audioId      - String identifieing audio element
  * menuId       - null, would define an html menu... null if no menu
  * imageSrc     - path to image for title screen
  */
-function TitleScreen(canvasId, bgMusicPaths, menuId, imageSrc) {
-    Screen.call(this, canvasId, bgMusicPaths, menuId);
+function TitleScreen(canvasId, audioId, menuId, imageSrc) {
+    Screen.call(this, canvasId, audioId, menuId);
 
     this.ga = 0.0; // global alpha to the canvas context
     this.timerId = 0; // id for fade in timer

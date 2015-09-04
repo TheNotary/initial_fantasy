@@ -6,7 +6,7 @@
 //
 // Split into
 //
-function InitialFantasy(debugMode = false) {
+function InitialFantasy(debugMode) {
     this.debugMode = debugMode;
 
     // this variable tracks the current UI being displayed...
@@ -14,9 +14,7 @@ function InitialFantasy(debugMode = false) {
     // We'll see how that turns out when I have more code down...
     this.currentScreen = "title_screen";
 
-    this.titleScreen = new TitleScreen('title_screen',
-        [ "/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3",
-          "/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" ],
+    this.titleScreen = new TitleScreen('title_screen', 'audTitleScreen',
         null, '/images/ui/title_screen.png');
 
     this.battleScreen = new BattleScreen('battle_screen', 'audBattle', 'battle_menu');
@@ -44,29 +42,7 @@ function InitialFantasy(debugMode = false) {
 
     // ************ LOAD AUDIO *************************
 
-    this.audMenuFight;
-    this.audMenuUnitSelect;
-    this.audTitleScreen;
-
-    this.audioContext;
-
-
-    function setupAudio() {
-        var audMenuMove = new Howl({
-            urls: ["/audio/misc/menu_move.ogg"]
-        })
-
-        audMenuUnitSelect = document.createElement('audio');
-        audMenuUnitSelect.setAttribute('src', '/audio/misc/menu_move.ogg');
-
-        // audTitleScreen = document.getElementById('audio1'); // html5
-
-    }
-
-    setupAudio();
-
-
-
+    
 
 
     //  *************** MAIN LOOP STUFF *******************
@@ -268,7 +244,7 @@ InitialFantasy.prototype.Graphics = new Graphics();
 
 
 $(window).load(function() { // this waits for everything that happened in load() to ... load.
-    debugMode = true;
+    debugMode = false;
     // NOTE: the game object *MUST* be named game thanks to onEachFrame
     // callbacks and lack of encapsulation at the moment...
     window.game = new InitialFantasy(debugMode);

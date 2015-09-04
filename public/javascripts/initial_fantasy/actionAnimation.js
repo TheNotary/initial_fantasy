@@ -8,7 +8,7 @@ function ActionAnimation(name, length) {
     this.name = name; // I guess I want to address the animation by name...
     this.id; // No, addressing things by name is silly...  Here's an ID
 
-
+    this._delete = false;
 }
 
 
@@ -34,15 +34,19 @@ ActionAnimation.prototype.render = function() {
 
 
 ActionAnimation.prototype.update = function() {
-    
     // increment frame
     this.currentFrame++;
 
     //
     if (this.currentFrame >= 16) {
-        this.terminate();
+        //this.terminate();
     }
-}
+};
+
+// game.battleScreen.heroes.first().animations.first().delete()
+ActionAnimation.prototype.delete = function() {
+    this._delete = true;
+};
 
 // Animations:
 /*
