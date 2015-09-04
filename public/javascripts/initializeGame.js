@@ -4,8 +4,6 @@
 asGameLoop.call(InitialFantasy.prototype);
 
 
-
-
 $(window).load(function() { // this waits for everything that happened in load() to ... load.
     debugMode = true;
     // NOTE: the game object *MUST* be named game thanks to onEachFrame
@@ -14,9 +12,6 @@ $(window).load(function() { // this waits for everything that happened in load()
 
     // downloads .png files needed to play
     game.graphics.loadBaseImages();
-
-    // this should say hi
-    // alert(game.Graphics.my_image);
 
     game.start();
 });

@@ -1,7 +1,7 @@
 function Mob(type, id, image, position, stance) {
     Unit.call(this, type, id, image, position, stance);
 
-    this.shadowImages = [imgflightShadow0, imgflightShadow1, imgflightShadow2, imgflightShadow3];
+    this.shadowImages = game.graphics.getShadowImages();
 }
 
 Mob.prototype = new Unit();

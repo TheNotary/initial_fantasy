@@ -1,11 +1,8 @@
 // This file houses the main class... but there's interesting bits in the
 // initialize_game.js file too, such as it's mixin content loading
 
-// Setup/ define game loop
+// Setup/ define game loop (mixin invoked from initialize_game.js)
 // Initialize the big game objects (eg battleScreen)
-// Load sprites (mobs/ heroes/ bg images)
-//
-
 window.InitialFantasy = function(debugMode) {
     this.debugMode = debugMode;
 
@@ -34,43 +31,4 @@ window.InitialFantasy = function(debugMode) {
         if (this.debugMode) debuggingFunctions();
     };
 
-
-
-
-
-
-
-    // ************ LOAD GRAPHICS *************************
-
-    // loadBattleBackgrounds();
-    this.imgBtlGrassyLake = new Image();
-    this.imgBtlGrassyLake.src = '/images/battle_bgs/ff2_zone1_grass.png';
-
-    function loadMobs() {
-        window.imgflightShadow0 = new Image();
-        imgflightShadow0.src = '/images/mobs/ff2_flightShadow0.png';
-        window.imgflightShadow1 = new Image();
-        imgflightShadow1.src = '/images/mobs/ff2_flightShadow1.png';
-        window.imgflightShadow2 = new Image();
-        imgflightShadow2.src = '/images/mobs/ff2_flightShadow2.png';
-        window.imgflightShadow3 = new Image();
-        imgflightShadow3.src = '/images/mobs/ff2_flightShadow3.png';
-    }
-
-    function loadHeroes() {
-        imgCecil = new Image();
-        imgCecil.src = '/images/heroes/ff2_cecil.png';
-
-        imgKain = new Image();
-        imgKain.src = '/images/heroes/ff2_kain.png';
-
-        imgRosa = new Image();
-        imgRosa.src = '/images/heroes/ff2_rosa.png';
-
-        imgKabul = new Image();
-        imgKabul.src = '/images/heroes/ff2_kabul.png';
-    }
-
-    loadMobs();
-    loadHeroes();
 };
