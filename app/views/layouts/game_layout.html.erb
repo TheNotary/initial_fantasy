@@ -2,20 +2,20 @@
 
 <html>
 
-	<head>
-	  <meta charset="UTF-8">
-	  <title>Initial Fantasy</title>
+<head>
+	<meta charset="UTF-8">
+	<title>Initial Fantasy</title>
     <link rel="shortcut icon" href="/favicon2.ico" type="image/x-icon" />
-    
-		<!-- 	FFIV FONT	 -->
-		<style media="screen" type="text/css">/*<![CDATA[*/@import '/fonts/hacked_font/stylesheet.css';/*]]>*/</style>
-		<%= stylesheet_link_tag "application" %>
 
-		<%= javascript_include_tag "application" %>
-	  
+	<!-- 	FFIV FONT	 -->
+	<style media="screen" type="text/css">/*<![CDATA[*/@import '/fonts/hacked_font/stylesheet.css';/*]]>*/</style>
+	<%= stylesheet_link_tag "application" %>
+
+	<%= javascript_include_tag "application" %>
+
     <script src="/javascripts/globals.js"></script>
 
-     <script src="/javascripts/initial_fantasy/sceneDirector.js"></script>
+    <script src="/javascripts/initial_fantasy/sceneDirector.js"></script>
 
     <script src="/javascripts/initial_fantasy/screen.js"></script>
     <script src="/javascripts/initial_fantasy/titleScreen.js"></script>
@@ -31,16 +31,12 @@
     <script src="/javascripts/initial_fantasy/userInput.js"></script>
     <script src="/javascripts/initial_fantasy/debugging.js"></script>
 
+	<script src="/javascripts/game_loop.js"></script>
     <script src="/javascripts/initialize_game.js"></script>
-		
-		
-		
-	</head>
+</head>
 
 <body>
-
 	<%= yield %>
-
 </body>
 
 </html>
