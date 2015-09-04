@@ -39,12 +39,6 @@ function InitialFantasy(debugMode) {
 
 
 
-
-    // ************ LOAD AUDIO *************************
-
-    
-
-
     //  *************** MAIN LOOP STUFF *******************
 
     var lastMainEndedAt = 0;
@@ -244,7 +238,7 @@ InitialFantasy.prototype.Graphics = new Graphics();
 
 
 $(window).load(function() { // this waits for everything that happened in load() to ... load.
-    debugMode = false;
+    debugMode = true;
     // NOTE: the game object *MUST* be named game thanks to onEachFrame
     // callbacks and lack of encapsulation at the moment...
     window.game = new InitialFantasy(debugMode);

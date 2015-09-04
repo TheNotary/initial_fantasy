@@ -43,7 +43,7 @@ var user = {
 
         },
     }
-}
+};
 
 
 
@@ -94,8 +94,8 @@ Array.prototype.remove = function(f) {
 
 Array.prototype.isEmpty = function() {
     return this.length == 0 ? true : false;
-}
+};
 
 Array.prototype.first = function() {
     return this[0];
-}
+};

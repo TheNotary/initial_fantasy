@@ -46,7 +46,8 @@ function Unit(type, id, image, position, stance) {
 
 Unit.prototype.getX = function() {
     return this.x;
-}
+};
+
 Unit.prototype.setX = function(val) {
     this.x = val;
     this.unitMoved = true;
@@ -58,17 +59,19 @@ Unit.prototype.setX = function(val) {
             game.battleScreen.aHeroHasMoved = true;
             break;
     }
-}
+};
+
 Unit.prototype.getY = function() {
     return this.y;
-}
+};
+
 Unit.prototype.setY = function(val) {
     this.y = val;
     this.unitMoved = true;
     if (this.type == unitType.mob) {
         game.battleScreen.aMobHasMoved = true;
     }
-}
+};
 
 
 
@@ -76,13 +79,13 @@ unitType = {
     mob: 0,
     hero: 1,
     critter: 2
-}
+};
 
 enemyPositions = {
     position1: [398, 296],
     position2: [255, 199],
     position3: [111, 253]
-}
+};
 
 var initialHeroYValue = 170;
 var paddingPerHero = 84;
@@ -97,7 +100,7 @@ partyPositions = {
     row3Back: [backRowXValue, initialHeroYValue + paddingPerHero * 2],
     row4Front: [frontRowXValue, initialHeroYValue + paddingPerHero * 3],
     row4Back: [backRowXValue, initialHeroYValue + paddingPerHero * 3]
-}
+};
 
 // I want to make it so another person's full party can be on screen for a fight.
 // var initialHeroYValue = 170;
@@ -113,7 +116,7 @@ partyPositionsOther = {
     row3Back: [backRowXValue, initialHeroYValue + paddingPerHero * 2],
     row4Front: [frontRowXValue, initialHeroYValue + paddingPerHero * 3],
     row4Back: [backRowXValue, initialHeroYValue + paddingPerHero * 3]
-}
+};
 
 Unit.getUnitName = function(type, id) {
     if (type == unitType.mob) {
@@ -130,7 +133,7 @@ Unit.getUnitName = function(type, id) {
         if (id == 3) return "Matzu!";
     }
 
-}
+};
 
 Unit.getBaseStats = function(type, id) {
     // pull down base stats from a save file or something like that... I guess the database for this user... very complicated down the road
@@ -147,7 +150,7 @@ Unit.getBaseStats = function(type, id) {
     }
 
     return combatStats;
-}
+};
 
 
 // this clears the last thing drawn on the screen
@@ -167,7 +170,7 @@ Unit.prototype.clearFromScreen = function() {
             break;
     }
 
-}
+};
 
 Unit.prototype.drawUnit = function() {
 
@@ -187,7 +190,7 @@ Unit.prototype.drawUnit = function() {
             break;
     }
 
-}
+};
 
 
 
@@ -216,7 +219,7 @@ Unit.prototype.drawGroundUnit = function() {
         // console.debug(this.currentAnimation.name);
 
     }
-}
+};
 
 Unit.prototype.calculateAnimationOffsetX = function() {
 
@@ -227,7 +230,7 @@ Unit.prototype.calculateAnimationOffsetX = function() {
         return -50;
     }
     return 0;
-}
+};
 
 
 
@@ -245,7 +248,7 @@ function HtmlElements(name, row) {
     this.waitBar = $('#charRow_' + row + ' .time .wait_bar')[0].getContext("2d");
 
     this.readyBarHasBeenDrawn = false; // so we know if we should make the whole bar yellow or not
-}
+};
 
 
 function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp) {
@@ -263,32 +266,32 @@ function CombatStats(str, stam, speed, attack, maxHp, maxMp, hp, mp) {
     this.absorbtions = "";
     this.weaknesses = "";
     this.combatActions = "";
-}
+};
 
 
 function Immunities(list) {
     this.fire = (jQuery.inArray("fire", list) != -1) ? false : true; // oh man this is ugly, but atleast on one line...
     this.ice = (jQuery.inArray("ice", list) != -1) ? false : true;
-}
+};
 
 function Absorbtions() {
     this.fire = false;
     this.ice = false;
     this.thunder = true;
-}
+};
 
 
 function CombatActions() {
     this.attack = true;
     this.spells = "";
     this.mobAttacks = new MobAttacks();
-}
+};
 
 function MobAttacks() {
     this.fight = true;
     this.magic = ["fire", "ice", "lightning"];
     this.mobAttacks = ["Goblin Kick"];
-}
+};
 
 
 
@@ -334,4 +337,4 @@ Unit.herosTurnEffect_flashingOutline = function(heroes, context) {
             }
         }
     }
-}
+};

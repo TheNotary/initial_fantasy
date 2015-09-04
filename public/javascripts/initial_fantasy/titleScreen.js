@@ -18,15 +18,15 @@ TitleScreen.prototype = new Screen();
 TitleScreen.prototype.begin = function() {
     this.audio.play();
     this.fadeIn();
-}
+};
 
 TitleScreen.prototype.handleKeys = function(evt) {
     this.breakFromScreenOnInput(evt);
-}
+};
 
 TitleScreen.prototype.handleMouse = function(evt) {
     this.breakFromScreenOnInput(evt);
-}
+};
 
 TitleScreen.prototype.ExitScreen = function(scene) {
 
@@ -36,7 +36,7 @@ TitleScreen.prototype.ExitScreen = function(scene) {
     if (scene != undefined) {
         sceneDirector.switchToScene(scene);
     }
-}
+};
 
 TitleScreen.prototype.breakFromScreenOnInput = function(evt) {
     var delayBeforePressStart = 2.0; // wait 2 seconds before they can start the game
@@ -55,12 +55,12 @@ TitleScreen.prototype.breakFromScreenOnInput = function(evt) {
     if (key == 13 || key == 27) { // enter or esc???
         this.ExitScreen("intro-on_air_ship");
     }
-}
+};
 
 // queues the timer that handles mutating the transparency levels of the canvas for the title screen
 TitleScreen.prototype.fadeIn = function() {
     timerId = setInterval("game.titleScreen.iterateFadeIn()", 60);
-}
+};
 
 // this is itereted when fadeIn is called which makes the canvas more and more visible
 // until the fade in is complete
@@ -78,4 +78,4 @@ TitleScreen.prototype.iterateFadeIn = function() {
     if (this.ga > fadeInMax) {
         clearInterval(timerId);
     }
-}
+};

@@ -35,7 +35,7 @@ document.onkeydown = function(evt) {
             updateControls()
         };
     }
-}
+};
 
 
 

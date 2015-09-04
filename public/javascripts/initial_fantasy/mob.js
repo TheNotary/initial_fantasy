@@ -37,9 +37,9 @@ Mob.prototype.drawFlyingUnit = function() {
         this.lastHeight = this.height;
 
     }
-}
+};
 
 
 Mob.prototype.setPositionOffscreen = function() {
     this.x = this.x - 400;
-}
+};
