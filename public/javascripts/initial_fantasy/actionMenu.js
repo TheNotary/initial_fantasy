@@ -112,7 +112,8 @@ ActionMenu.prototype.commitAction = function(target) {
     heroActor.resetWaitBar();
     // freeze Hero's waitBar
     heroActor.freezeWaitBar();
-    // add animation to heros animation list
+    // add animation to hero's animation list
+    heroActor.animations.push(new ActionAnimation("HeroAttack", 20, function() {alert('done');}))
 
     bs.heroQueue.remove(0);
     heroActor.isSelected = false;

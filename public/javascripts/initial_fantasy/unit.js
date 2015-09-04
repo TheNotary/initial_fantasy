@@ -12,9 +12,8 @@ function Unit(type, id, image, position, stance) {
     this.directionY = 0;
     this.lastX;
     this.lastY;
-    if (image.width == undefined) {
+    if (image.width == undefined)
         throw "Something Is wrong with the image you passed this monster...";
-    }
     this.width = image.width;
     this.height = image.height;
     this.speedY = 0;

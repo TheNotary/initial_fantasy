@@ -1,4 +1,4 @@
-function ActionAnimation(name, length) {
+function ActionAnimation(name, duration, cb) {
     this.currentFrame = 0; // I need to keep track of which frame we're on
     this.lastFrame = 50; // I need to know which frame marks the end of our animation
     this.isAnimating = false; // Set this to true so it's faster to check if we need to draw animations
@@ -6,6 +6,8 @@ function ActionAnimation(name, length) {
     this.animationTarget; // the mob that you're animating
 
     this.name = name; // I guess I want to address the animation by name...
+    this.duration = duration;
+    this.cb = cb;
     this.id; // No, addressing things by name is silly...  Here's an ID
 
     this._delete = false;
@@ -14,7 +16,6 @@ function ActionAnimation(name, length) {
 
 ActionAnimation.prototype.render = function() {
     // alert('hi, here is a function where we will slowly modify the X and Y values of the owning mob...');
-    console.log("processing animation");
 
     // but what if there are multiple animations on the mob at the same time...
     // Maybe there's some clean way to hanle this... by using the actionAnimation in the drawImage calculation for X,Y?...
@@ -36,10 +37,15 @@ ActionAnimation.prototype.render = function() {
 ActionAnimation.prototype.update = function() {
     // increment frame
     this.currentFrame++;
+    // console.log("processing animation");
 
-    //
-    if (this.currentFrame >= 16) {
-        //this.terminate();
+
+    // fire the callback and delete the actionAnimation
+    // once it's lived out its duration
+    if (this.currentFrame >= this.duration) {
+        if (this.cb != undefined)
+            this.cb();
+        this.delete();
     }
 };
 

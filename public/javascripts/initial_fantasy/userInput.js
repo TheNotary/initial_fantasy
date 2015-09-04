@@ -99,7 +99,7 @@ function reportWhatUnitWasClicked(clickX, clickY) {
         return unit;
     }
     // check if it was a hero
-    unit = whatUnitWasClicked(clickX, clickY, bs.heros);
+    unit = whatUnitWasClicked(clickX, clickY, bs.heroes);
     return unit;
 }
 

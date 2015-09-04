@@ -6,3 +6,6 @@ tmp/
 .goutputstream-*
 ideas.txt
 .sass-cache/
+doc/*.svg
+doc/**/*.svg
+

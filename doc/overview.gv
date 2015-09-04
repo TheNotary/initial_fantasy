@@ -1,0 +1,26 @@
+# dot -Tsvg overview.gv >overview.svg
+
+digraph prof {
+	size="6,4"; ratio = fill;
+	node [style=filled];
+	"game = new InitialFantasy()"
+	"game.start()" -> "addEventHandlersToDom()";
+	"game.start()" -> "window.onEachFrame(game.main)";
+	"game.start()" -> "this.titleScreen.begin()";
+	
+	
+"addEventHandlersToDom()" [color="0.408 0.498 1.000"];
+"window.onEachFrame(game.main)" [color="0.408 0.498 1.000"];
+"this.titleScreen.begin()" [color="0.408 0.498 1.000"];
+
+  node [style=filled color="0.408 0.498 1.000"];
+  "game.main()" -> "draw()"
+  "game.main()" -> "update()"
+  
+  "update()" -> "game.battleScreen.update(secondsPassed)"
+  "game.battleScreen.update(secondsPassed)" -> "RushInEffect_allAtOnce"
+  "game.battleScreen.update(secondsPassed)" -> "HoverEffect_simpleBird"
+  "game.battleScreen.update(secondsPassed)" -> "BattleScreen.updateTimerBars(this.heroes)"
+  "game.battleScreen.update(secondsPassed)" -> "ActionMenu.displayCommandList(this.heroes)"
+  "game.battleScreen.update(secondsPassed)" -> "updateAnimations"
+}

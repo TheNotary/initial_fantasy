@@ -17,7 +17,7 @@ var user = {
         play_time: 60, // 1 minute
         completion: 0.10,
 
-        heros: [
+        heroes: [
             { id: 1, name: "Cecil", sprite_sheet:  '/images/heroes/ff2_cecil.png' },
             { id: 2, name: "Kain", sprite_sheet:  '/images/heroes/ff2_kain.png' },
             { id: 3, name: "Rosa", sprite_sheet:  '/images/heroes/ff2_rosa.png' },

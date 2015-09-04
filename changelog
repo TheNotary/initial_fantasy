@@ -39,12 +39,12 @@ are... android dev was on a win PC...
 
   # Implement below persistent data:
 
-    - user.party_settings.heros.first
+    - user.party_settings.heroes.first
         #=> { id: 1, name: "cecil", row: "", image: "/images/cecil_1" , hero_loadout: "object" }
 
     - game_data
 
-      - heros
+      - heroes
         - equipment_loadout
         - magic_loadout
         - base_stats
@@ -158,6 +158,10 @@ SWING ANIMATION:
       complete and it will remove itself from the hero
 
 
+
+
+>>>>>>>> I left off working on BattleScreen.prototype.updateAnimations = function() {
+  I'm trying to see why the animation cannot be deleted even after that callback goes off...
 
 
 
