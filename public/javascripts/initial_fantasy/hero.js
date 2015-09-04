@@ -40,8 +40,6 @@ Hero.prototype.unfreezeWaitBar = function() {
 
 Hero.prototype.drawWaitBar = function() {
     var hero = this;
-    if (hero.stats.waitBarFrozen)
-        return;
 
     if (hero.stats.waitBar < 100) {
         var waitBarContext = hero.htmlElements.waitBar;

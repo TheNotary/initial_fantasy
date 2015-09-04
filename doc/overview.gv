@@ -18,9 +18,11 @@ digraph prof {
   "game.main()" -> "update()"
   
   "update()" -> "game.battleScreen.update(secondsPassed)"
-  "game.battleScreen.update(secondsPassed)" -> "RushInEffect_allAtOnce"
-  "game.battleScreen.update(secondsPassed)" -> "HoverEffect_simpleBird"
+  
   "game.battleScreen.update(secondsPassed)" -> "BattleScreen.updateTimerBars(this.heroes)"
   "game.battleScreen.update(secondsPassed)" -> "ActionMenu.displayCommandList(this.heroes)"
   "game.battleScreen.update(secondsPassed)" -> "updateAnimations"
+  
+  "updateAnimations" -> "RushInEffect_allAtOnce"
+  "updateAnimations" -> "HoverEffect_simpleBird"
 }

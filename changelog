@@ -165,6 +165,13 @@ SWING ANIMATION:
 
 
 
+:: REWORK SYSTEM FLOW... ::
+
+- HoverEffect_simpleBird should be an animation applied directly to units with 'flying'
+  - Need to get per unit animations laid out first...
+
+
+
 COMPLETE:
   - Fixed browser compatibility issue by hacking the font
   - BugFix:  removed the now pointless edge conditionals webkitRequestAnimationFrame
