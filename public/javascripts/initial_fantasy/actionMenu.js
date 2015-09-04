@@ -109,13 +109,15 @@ ActionMenu.prototype.commitAction = function(target) {
     var bs = game.battleScreen;
     var heroActor = bs.heroes[bs.heroQueue[0]];
 
+    heroActor.resetWaitBar();
+    // freeze Hero's waitBar
+    heroActor.freezeWaitBar();
+    // add animation to heros animation list
+
+    bs.heroQueue.remove(0);
     heroActor.isSelected = false;
     heroActor.heroIsReady = false;
     heroActor.unitMoved = true;
-
-    heroActor.resetWaitBar();
-
-    bs.heroQueue.remove(0);
 
     BattleScreen.selectNextHero();
 };
