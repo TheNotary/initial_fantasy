@@ -1,0 +1,29 @@
+# dot -Tsvg battleScreen_user_attacks_mob.gv >battleScreen_user_attacks_mob.svg
+
+digraph prof {
+	size="6,4"; ratio = fill;
+
+	# logic action
+
+
+	node [style=filled];
+
+	# user clicks fight button
+	"isTargeting = true" [color="1.408 0.498 1.000"];
+	"actionMenu.chooseAction('fight_button')" -> "isTargeting = true";
+
+	# user chooses mob/ hero
+	"relMouseCoords()" -> "actionMenu.targetSelected(unit)";
+	"actionMenu.targetSelected(unit)" -> "performFight(actor, target)";
+	"actionMenu.targetSelected(unit)" -> "finishedSelecting()";
+
+	"unit.dead = true" [color="1.408 0.498 1.000"];
+
+	"performFight(actor, target)" -> "unit.dead = true";
+	"performFight(actor, target)" -> "actor.animations.push(new ActionAnimation('fight'))";
+	"" -> "";
+	"" -> "";
+	"" -> "";
+	"" -> "";
+
+}

@@ -1,17 +1,11 @@
 
 // This mixin is applied to InitialFantasy to give it a game loop pipeline
-// pattern
+// pattern from within initialize_game.js
 var asGameLoop = function() {
-
-
-    //  *************** MAIN LOOP STUFF *******************
-
     var lastMainEndedAt = 0;
-
     var gameTime = 0.0;
     var gameFps = 0.0;
     var then = Date.now();
-
     var lastTick = 0; // the last time the game logic ticked was at...
 
     this.time = function() {
@@ -112,7 +106,9 @@ var asGameLoop = function() {
         }
     }
 
-
+    // This is how browsers loop quickly,
+    // these animation frames are given a callback to perform the game loop...
+    // This appears to be a shim...
     var setupGameTimer = function() {
         var onEachFrame;
         if (window.requestAnimationFrame) {
@@ -131,7 +127,6 @@ var asGameLoop = function() {
 
         window.onEachFrame = onEachFrame; // this global can now be called and it will do the appropriate thing across browser
     };
-
     setupGameTimer();
 
     return this;

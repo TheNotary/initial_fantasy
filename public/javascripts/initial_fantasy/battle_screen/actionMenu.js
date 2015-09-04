@@ -45,6 +45,7 @@ ActionMenu.prototype.chooseAction = function(action) {
     element.className += " activated_picking";
 };
 
+// modifies the UI and 'state' to not be picking a target
 ActionMenu.prototype.cancelAction = function(action) {
     this.pickingTarget = false;
     // dissable CSS animation
@@ -65,40 +66,38 @@ ActionMenu.prototype.targetSelected = function(target) {
     switch (this.actionSelected) {
         case battleAction.fight:
             this.performFight(actor, target);
-            this.finishedSelecting(target);
             break;
     }
 
 };
 
-ActionMenu.prototype.performFight = function(actor, unit) {
+ActionMenu.prototype.performFight = function(actor, target) {
     var bs = game.battleScreen;
     this.audMenuMove.play();
 
-    // Initiate the fight delay timer???
-
     // Kill the mob / combat calculations
-    unit.stats.hp -= 10;
-    if (unit.stats.hp < 1) {
-        unit.dead = true;
+    target.stats.hp -= 10;
+    if (target.stats.hp < 1) {
+        target.dead = true;
+        bs.aMobHasMoved = true;
     }
 
-    // Initiate the attack animation
-    actor.animations.push(new ActionAnimation("fight"));
     actor.unitMoved = true;
     bs.aHeroHasMoved = true;
+
+    // Initiate mob death animation
+    target.unitMoved = true;
 
     // Initiate the mob's defend animation
     //target.annimations.push(new ActionAnimation("recieveFight"));
 
-    // Initiate mob death animation
-    unit.unitMoved = true;
+    this.commitAction(target);
+    this.finishedSelecting();
 };
 
 
-ActionMenu.prototype.finishedSelecting = function(target) {
+ActionMenu.prototype.finishedSelecting = function() {
     this.cancelAction();
-    this.commitAction();
 
     // hide the fight button...
     $('div#fight_button').slideUp();
@@ -113,7 +112,7 @@ ActionMenu.prototype.commitAction = function(target) {
     // freeze Hero's waitBar
     heroActor.freezeWaitBar();
     // add animation to hero's animation list
-    heroActor.animations.push(new ActionAnimation("HeroAttack", 20, function() {alert('done');}))
+    heroActor.animations.push(new ActionAnimation("HeroAttack", 40, function() { console.log(heroActor.name + ' has finished attacking ' + target.name);}))
 
     bs.heroQueue.remove(0);
     heroActor.isSelected = false;
