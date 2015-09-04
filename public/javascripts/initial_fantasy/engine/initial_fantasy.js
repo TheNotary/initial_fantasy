@@ -19,7 +19,8 @@ window.InitialFantasy = function(debugMode) {
 
     this.battleScreen = new BattleScreen('battle_screen', 'audBattle', 'battle_menu');
 
-    this.graphics = new Graphics();
+    this.graphics = new this.Graphics();
+    this.sound = new this.Sound();
 
 
     // Calling this method will initiate the game
@@ -46,17 +47,6 @@ window.InitialFantasy = function(debugMode) {
     this.imgBtlGrassyLake.src = '/images/battle_bgs/ff2_zone1_grass.png';
 
     function loadMobs() {
-        window.imgGoblin = new Image(); // this creates a global variable from within a function... not sure if I should do it this way...
-        imgGoblin.src = '/images/mobs/ff2_goblin.png';
-
-        window.imgEagle = new Image();
-        imgEagle.src = '/images/mobs/ff2_eagle.png';
-
-        window.imgFloatingEye = new Image();
-        imgFloatingEye.src = '/images/mobs/ff2_floating_eye.png';
-        window.imgSwordRat = new Image();
-        imgSwordRat.src = '/images/mobs/ff2_sword_rat.png';
-
         window.imgflightShadow0 = new Image();
         imgflightShadow0.src = '/images/mobs/ff2_flightShadow0.png';
         window.imgflightShadow1 = new Image();
@@ -84,44 +74,3 @@ window.InitialFantasy = function(debugMode) {
     loadMobs();
     loadHeroes();
 };
-
-
-function Graphics() {
-    this.my_image = "hihi";
-
-    this.imageHash = {};
-
-    this.loadBaseImages = function() {
-        var coreImages = [ "imgflightShadow0", "imgflightShadow1", "imgflightShadow2", "imgflightShadow3" ];
-        var mobsForCurrentRegion = [ "floating_eye", "eagle", "sword_rat", "goblin" ];
-
-        var listOfImagesThisUserHasEncountered = [ "imgCecil", "imgKain", "imgRosa", "imgKabul" ];  // rails should serve this
-
-        this.loadImageSet('mobs', mobsForCurrentRegion);
-
-
-    };
-
-    // Load all the images (performs download)
-    // setClass: folder within /images where files are stored
-    // setOfNames:  the file names which should be downloaded from the setClass folder
-    // eg loadImageSet('mobs', ['sword_rat']);
-    this.loadImageSet = function(setClass, setOfNames) {
-        for (var i = 0; i < setOfNames.length; i++) {
-            var imgString = setOfNames[i];
-
-            var img  = new Image();
-            img.src = '/images/' + setClass + '/' + imgString + '.png';
-
-            this.imageHash[setClass] = this.imageHash[setClass] || {};
-            this.imageHash[setClass][imgString] = img;
-        }
-    };
-
-}
-
-
-
-function Sound() {
-
-}
