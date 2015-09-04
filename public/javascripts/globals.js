@@ -8,6 +8,7 @@ var tickCount = 0;
 var lastRunsTick = 0;
 
 
+// This is what the json tha trails servers to a new user should look like I think
 var user = {
     email: "a@b",
     display_name: "Notary",
