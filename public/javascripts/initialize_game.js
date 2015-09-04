@@ -1,10 +1,7 @@
 // NameSpace for globals
 //
-// Setup audio
 // Setup/ define game loop
 // Load sprites (mobs/ heroes/ bg images)
-//
-// Split into
 //
 function InitialFantasy(debugMode) {
     this.debugMode = debugMode;

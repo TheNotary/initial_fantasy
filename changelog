@@ -148,7 +148,7 @@ Make it so image data is loaded as needed... and cached... and a func can be cal
 
 SWING ANIMATION:
   Fight is clicked
-  Mob is chosen
+  Mob is chosen (ActionMenu.fight)
   ->
     * actor's timer bar is set to zero and set to 'frozen' state
     * A 'fight' animation is set on the hero's animations list
@@ -156,6 +156,10 @@ SWING ANIMATION:
         invoked on battleScreen.Update() and battleScreen.Render() respectively
     * Eventually, after update() is called enough times, the animation will
       complete and it will remove itself from the hero
+
+
+
+
 
 COMPLETE:
   - Fixed browser compatibility issue by hacking the font

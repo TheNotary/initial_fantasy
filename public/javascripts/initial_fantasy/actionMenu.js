@@ -9,15 +9,17 @@ function ActionMenu() {
 }
 
 
-battleAction = {
+var battleAction = {
     fight: 1,
     magic: 2,
     defend: 3,
     row: 4
 };
 
-
-ActionMenu.prototype.fight = function(ele) {
+// This is fired when the user clicks the 'fight' button
+// this method sets up the game state so you can now select a thing to fight.
+// the word 'fight' will also pulsate...
+ActionMenu.prototype.chooseAction = function(action) {
     this.audMenuMove.play();
 
     // let other methods know that the next click on a mob is FOR REALZORZ!
@@ -25,9 +27,20 @@ ActionMenu.prototype.fight = function(ele) {
     this.actionSelected = battleAction.fight;
 
     // initiate CSS animation
-    element = document.getElementsByClassName(ele)[0];
+    element = document.getElementsByClassName(action)[0];
     element.className += " activated_picking";
 };
+
+ActionMenu.prototype.cancelAction = function(action) {
+    this.pickingTarget = false;
+    // dissable CSS animation
+    elements = document.getElementsByClassName('activated_picking');
+    for (var i = 0; i < elements.length; i++) {
+        var ele = elements[i];
+        ele.className = ele.className.replace(/activated_picking/g, '');
+    }
+};
+
 
 ActionMenu.prototype.targetSelected = function(target) {
     // the unit that is performing the action on target
@@ -70,10 +83,18 @@ ActionMenu.prototype.performFight = function(actor, unit) {
 
 
 ActionMenu.prototype.finishedSelecting = function(target) {
+    this.cancelAction();
+    this.commitAction();
+
+    // hide the fight button...
+    $('div#fight_button').slideUp();
+    game.battleScreen.commandListShowing = false;
+};
+
+ActionMenu.prototype.commitAction = function(target) {
     var bs = game.battleScreen;
     var heroActor = bs.heroes[bs.heroQueue[0]];
 
-    this.pickingTarget = false;
     heroActor.isSelected = false;
     heroActor.heroIsReady = false;
     heroActor.unitMoved = true;
@@ -83,13 +104,4 @@ ActionMenu.prototype.finishedSelecting = function(target) {
     bs.heroQueue.remove(0);
 
     BattleScreen.selectNextHero();
-
-
-    // dissable CSS animation
-    element = document.getElementsByClassName('activated_picking')[0];
-    element.className = element.className.replace(/activated_picking/g, '');
-
-    // hide the fight button...
-    $('div#fight_button').slideUp();
-    bs.commandListShowing = false;
 };
