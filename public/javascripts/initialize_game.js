@@ -23,19 +23,14 @@ function InitialFantasy(debugMode) {
 
 
     this.start = function() {
-        this.titleScreen.begin();
         addEventHandlersToDom();
         window.onEachFrame(game.main); // queue up the game loop
+        this.titleScreen.begin();
 
-        if (this.debugMode)
-            debuggingFunctions();
+        if (this.debugMode) debuggingFunctions();
     };
 
-    function addEventHandlersToDom() {
-        $('canvas').each(function() {
-            this.addEventListener("mousedown", relMouseCoords, false);
-        });
-    }
+
 
 
 
