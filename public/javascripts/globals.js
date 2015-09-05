@@ -1,10 +1,11 @@
 // This file just has misc re-usable functions and junk
 // It's a good place to drop functions, objects as you develop them
 
-var tickCount = 0;
 
 // This seems to be a hack to prevent certain draw/ update methods from being called
-// twice on the same tick...  very hackish and ugly...
+// twice on the same tick...  very hackish and ugly... but needed?
+// I think draw and update can both run under the same 'tick', since tick isn't
+// incremented between them.  Shucks, programming is complicated
 var lastRunsTick = 0;
 
 

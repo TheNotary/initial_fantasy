@@ -304,6 +304,7 @@ function MobAttacks() {
 
 
 Unit.herosTurnEffect_flashingOutline = function(heroes, context) {
+    var tickCount = game.tickCount;
     if (tickCount % 2 === 0) {
         for (var j = 0; j < heroes.length; j++) {
             //if (j > 0) continue;

@@ -2,11 +2,13 @@
 // This mixin is applied to InitialFantasy to give it a game loop pipeline
 // pattern from within initialize_game.js
 var asGameLoop = function() {
+    this.tickCount = 0;
     var lastMainEndedAt = 0;
     var gameTime = 0.0;
     var gameFps = 0.0;
     var then = Date.now();
     var lastTick = 0; // the last time the game logic ticked was at...
+
 
     this.time = function() {
         return gameTime;
@@ -104,6 +106,7 @@ var asGameLoop = function() {
             case "world_screen":
                 break;
         }
+        game.tickCount++;
     }
 
     // This is how browsers loop quickly,
