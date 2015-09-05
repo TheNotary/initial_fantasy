@@ -2,24 +2,20 @@
 function ActionMenu() {
     this.pickingTarget = false;
     this.actionSelected = ""; // "fight", "magic"
-
-    this.audMenuMove = new Howl({
-        urls: ["/audio/misc/menu_move.ogg"],
-        volume: 0.05
-    });
 }
 
 
 ActionMenu.displayCommandList = function(heroes) {
     var bs = game.battleScreen;
-    if (!bs.commandListShowing) { // get out now if we're already showing a command menu
-        $.each(heroes, function(i, hero) {
-            if (hero.stats.waitBar >= 100) {
-                $('div#fight_button').slideDown();
-                bs.commandListShowing = true;
-            }
-        });
-    }
+    // get out now if we're already showing a command menu
+    if (bs.commandListShowing) return;
+
+    $.each(heroes, function(i, hero) {
+        if (hero.stats.waitBar >= 100) {
+            $('div#fight_button').slideDown();
+            bs.commandListShowing = true;
+        }
+    });
 };
 
 
@@ -34,7 +30,7 @@ var battleAction = {
 // this method sets up the game state so you can now select a thing to fight.
 // the word 'fight' will also pulsate...
 ActionMenu.prototype.chooseAction = function(action) {
-    this.audMenuMove.play();
+    game.sound.audMenuMove.play();
 
     // let other methods know that the next click on a mob is FOR REALZORZ!
     this.pickingTarget = true;
@@ -73,7 +69,7 @@ ActionMenu.prototype.targetSelected = function(target) {
 
 ActionMenu.prototype.performFight = function(actor, target) {
     var bs = game.battleScreen;
-    this.audMenuMove.play();
+    game.sound.audMenuMove.play();
 
     // TODO: refactor to queryActionResult()
     // Kill the mob / combat calculations

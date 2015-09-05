@@ -41,5 +41,9 @@ window.InitialFantasy.prototype.Graphics = function() {
 };
 
 window.InitialFantasy.prototype.Sound = function() {
-
+    this.audMenuMove = new Howl({
+        urls: ["/audio/misc/menu_move.ogg"],
+        volume: 0.05
+    });
+    
 };
