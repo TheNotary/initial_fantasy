@@ -35,7 +35,7 @@ Hero.prototype.freezeWaitBar = function() {
 
 Hero.prototype.unfreezeWaitBar = function() {
     this.stats.waitBarFrozen = false;
-}
+};
 
 
 Hero.prototype.drawWaitBar = function() {

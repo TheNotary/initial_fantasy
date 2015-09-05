@@ -15,12 +15,9 @@
 	- Could the battle screen render different on a phone?
   - Get cannedwebview onto my mobile and do some tests to see where things
 are... android dev was on a win PC...
-	- test ahoy
-	- Consider porting to padrino... check status of websockets and sinatra
-	first
   - use fastly as a CDN
   - Pull out javascript handles from the HTML to be setup from within javascript from within initialize_game.js
-  - Consider using backbone js and handling game logic inside the app!!!
+
   - Just 'start' the world map view... shared with dungeon view... shared with tow view...
     Desires:
     * Multiplayer fun... so...
@@ -31,8 +28,7 @@ are... android dev was on a win PC...
       > tapping/ mouse click native
       > Has auto travel
 
-  - Setup PhatomJS unit tests
-
+  - Setup PhatomJS unit tests to cover the battleScreen
 
   - Add user logons with devise
 
@@ -66,7 +62,8 @@ are... android dev was on a win PC...
         -
       - zoologic_data (what mobs are in this dungeon map... what about the world map...)
 
-
+      Here's some discussion of map tiles... well... images...
+      http://slickproductions.org/forum/index.php?PHPSESSID=p6v172i9lijsppfv2130pdos15&topic=2097.0
 
 
 

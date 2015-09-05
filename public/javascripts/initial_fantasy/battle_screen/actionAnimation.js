@@ -1,4 +1,5 @@
 function ActionAnimation(name, duration, cb) {
+    this.startFrame;  // all key frames of the animation take place relative to this frame
     this.currentFrame = 0; // I need to keep track of which frame we're on
     this.lastFrame = 50; // I need to know which frame marks the end of our animation
     this.isAnimating = false; // Set this to true so it's faster to check if we need to draw animations

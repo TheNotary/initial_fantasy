@@ -16,14 +16,25 @@ digraph prof {
 	"relMouseCoords()" -> "actionMenu.targetSelected(unit)";
 	"actionMenu.targetSelected(unit)" -> "performFight(actor, target)";
 	"actionMenu.targetSelected(unit)" -> "finishedSelecting()";
+	
+	"isTargeting = false" [color="1.408 0.498 1.000"];
+	"finishedSelecting()" -> "isTargeting = false";
 
-	"unit.dead = true" [color="1.408 0.498 1.000"];
+	
+	"performFight(actor, target)" -> "actor.addAction(new Action({ name:'normal_swing', target: target}))";
+	
+	"EXPOSES animation on unit.getAnimations()" [color="1.408 0.498 1.000"]
+	"actor.addAction(new Action({ name:'normal_swing', target: target}))" -> "EXPOSES animation on unit.getAnimations()";
 
-	"performFight(actor, target)" -> "unit.dead = true";
-	"performFight(actor, target)" -> "actor.animations.push(new ActionAnimation('fight'))";
-	"" -> "";
-	"" -> "";
-	"" -> "";
-	"" -> "";
+	"actor.addAction(new Action({ name:'normal_swing', target: target}))" -> "AJAX `/actions/new`";
 
+  
+
+
+  "AJAX response `/actions/new`" -> "game.getUnit(id).addAction(new Action({ name:'take_damage', value:9999 }))";
+  
+  "unit.dead = true" [color="1.408 0.498 1.000"];
+	
+	"target.update" -> "addAction(new Action({ name:'death'})";
+	
 }
