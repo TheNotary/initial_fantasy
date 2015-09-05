@@ -75,24 +75,7 @@ are... android dev was on a win PC...
 
 CURRENT TASK:
 
-  - Make javascript using modulejs and put it into a bower pacakge
-
   - Further removing globals so that everything is in the game object
-    - Split initialize_game.js into...
-      * _graphics.js
-      * _audio.js
-      * _main_loop.js
-
-        >  I want to pull out the graphics code from InitialFantasy so it looks just like
-           1 line of loadGraphics...
-          i.  It needs to be refactored so it's accessible... kind of... like, organized
-              into arrays.
-            heroes = [new Hero(unitType.hero, 0, imgCecil, partyPositions.row1Front, "ground", 0),
-
-This game could get huge...  I think it's best to download graphics on an as-needed basis...
-but I'm not sure how to pull that off...
-
-Make it so image data is loaded as needed... and cached... and a func can be called to pre-cache...
 
 >> Make it so I can start the 'first battle' by querying the battle configuration from the server
 
@@ -152,23 +135,19 @@ SWING ANIMATION:
   ->
     * actor's timer bar is set to zero and set to 'frozen' state
     * A 'fight' animation is set on the hero's animations list
-      * With that fight animation, it's update() and render() methods are
-        invoked on battleScreen.Update() and battleScreen.Render() respectively
-    * Eventually, after update() is called enough times, the animation will
-      complete and it will remove itself from the hero
+      - I need to work on animationDefinitions for HeroAttack...
+        - What should the DSL look like for my basic fight animation?
+        - I need to initiate the attack, and request a 'damage_dealt' value
+          from the server, so server can reply "9999"
 
 
 
-
->>>>>>>> I left off working on BattleScreen.prototype.updateAnimations = function() {
-  I'm trying to see why the animation cannot be deleted even after that callback goes off...
 
 
 
 :: REWORK SYSTEM FLOW... ::
 
 - HoverEffect_simpleBird should be an animation applied directly to units with 'flying'
-  - Need to get per unit animations laid out first...
 
 
 

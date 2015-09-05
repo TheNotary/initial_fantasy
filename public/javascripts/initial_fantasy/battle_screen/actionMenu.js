@@ -112,7 +112,7 @@ ActionMenu.prototype.commitAction = function(target) {
     // freeze Hero's waitBar
     heroActor.freezeWaitBar();
     // add animation to hero's animation list
-    heroActor.animations.push(new ActionAnimation("HeroAttack", 40, function() { console.log(heroActor.name + ' has finished attacking ' + target.name);}))
+    heroActor.animations.push(game.AnimationDefinitions.HeroAttack(heroActor, target));
 
     bs.heroQueue.remove(0);
     heroActor.isSelected = false;
