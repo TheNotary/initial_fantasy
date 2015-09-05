@@ -21,6 +21,9 @@ digraph prof {
 	"game.battleScreen.render()" -> "drawWaitBars"
 	"game.battleScreen.render()" -> "renderAnimations"
 	"game.battleScreen.render()" -> "drawGraphicsDebugInfo"
+	
+	"renderAnimations" -> "unit.renderAnimation()"
+	
 
   "game.main()" -> "update()"
   "update()" -> "game.battleScreen.update(secondsPassed)"

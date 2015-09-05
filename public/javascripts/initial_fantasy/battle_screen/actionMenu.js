@@ -75,6 +75,7 @@ ActionMenu.prototype.performFight = function(actor, target) {
     var bs = game.battleScreen;
     this.audMenuMove.play();
 
+    // TODO: refactor to queryActionResult()
     // Kill the mob / combat calculations
     target.stats.hp -= 10;
     if (target.stats.hp < 1) {
@@ -121,3 +122,13 @@ ActionMenu.prototype.commitAction = function(target) {
 
     BattleScreen.selectNextHero();
 };
+
+// this function asks rails what should happen if actor performons aciton on
+// target.
+// The result
+ActionMenu.prototype.queryActionResult = function(actor, target, action) {
+    return { target: {
+                incursDamage: 10,
+                afflictedWith: ['blind'] }
+            };
+}

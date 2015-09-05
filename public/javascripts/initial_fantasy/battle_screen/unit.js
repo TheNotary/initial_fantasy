@@ -171,6 +171,15 @@ Unit.prototype.clearFromScreen = function() {
 
 };
 
+Unit.prototype.renderAnimations = function() {
+    var animations = this.animations;
+    var l = animations.length;
+    for (var i = 0; i < l; i++) {
+        var a = animations[i];
+        a.render();
+    }
+};
+
 Unit.prototype.drawUnit = function() {
 
     switch (this.stance) {
