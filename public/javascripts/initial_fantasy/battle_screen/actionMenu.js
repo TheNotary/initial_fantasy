@@ -108,6 +108,7 @@ ActionMenu.prototype.commitAction = function(target) {
     heroActor.resetWaitBar();
     // freeze Hero's waitBar
     heroActor.freezeWaitBar();
+
     // add animation to hero's animation list
     heroActor.animations.push(game.AnimationDefinitions.HeroAttack(heroActor, target));
 

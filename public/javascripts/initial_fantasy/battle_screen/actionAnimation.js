@@ -1,14 +1,21 @@
-function ActionAnimation(name, duration, cb) {
+// config.
+//  name
+//  duration
+//  animationProcedure
+//  onEnd
+//  first frame
+function ActionAnimation(config) {
     this.startFrame;  // all key frames of the animation take place relative to this frame
     this.currentFrame = 0; // I need to keep track of which frame we're on
     this.lastFrame = 50; // I need to know which frame marks the end of our animation
     this.isAnimating = false; // Set this to true so it's faster to check if we need to draw animations
     this.slowness = 4; // how fast does it take to tick a frame...
-    this.animationTarget; // the mob that you're animating
 
-    this.name = name; // I guess I want to address the animation by name...
-    this.duration = duration;
-    this.cb = cb;
+    this.animationTarget; // the mob that you're animating
+    this.name = config.name; // I guess I want to address the animation by name...
+    this.duration = config.duration
+    this.animationProcedure = config.animationProcedure
+    this.onEnd = config.onEnd;
     this.id; // No, addressing things by name is silly...  Here's an ID
 
     this._delete = false;
@@ -36,16 +43,20 @@ ActionAnimation.prototype.render = function() {
 
 
 ActionAnimation.prototype.update = function() {
-    // increment frame
+    // TODO: this is incorrect, it must calculate current frame based on game
+    // time and it's starting frame (incase we miss some updates)
     this.currentFrame++;
     // console.log("processing animation");
+
+    this.animationProcedure.call();
 
 
     // fire the callback and delete the actionAnimation
     // once it's lived out its duration
     if (this.currentFrame >= this.duration) {
-        if (this.cb != undefined)
-            this.cb();
+        console.log('got here somehow');
+        if (this.onEnd != undefined)
+            this.onEnd();
         this.delete();
     }
 };

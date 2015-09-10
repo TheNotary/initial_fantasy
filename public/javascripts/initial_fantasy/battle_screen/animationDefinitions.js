@@ -2,9 +2,18 @@ window.InitialFantasy.prototype.AnimationDefinitions = {
 
     HeroAttack: function(actor, target) {
 
-        var animation = function() {
+        // Closures the actor and target (so they can be manipulated as needed)
+        // takes in the time since the animation began and then goes through
+        // the algorithm, making changes to actor and target
+        var animationProcedure = function(timeSinceStart) {
 
             // step forward
+            actor.x += -20;
+            actor.unitMoved = true;
+            game.battleScreen.aHeroHasMoved = true;
+
+            console.log("animation update");
+
 
             // swing weapon
 
@@ -15,13 +24,6 @@ window.InitialFantasy.prototype.AnimationDefinitions = {
 
             // step back
 
-            actor.stepForward(function(actor) {
-                var dmgDealt = actor.swingWeapon(target, function(actor) {
-                    actor.stepBack(function() {
-                        // kill mob if needed after stepback complete
-                    });
-                });
-            });
         };
 
         var onEnd = function() {
@@ -29,7 +31,16 @@ window.InitialFantasy.prototype.AnimationDefinitions = {
             actor.unfreezeWaitBar();
         };
 
-        return new ActionAnimation("HeroAttack", 40, onEnd);
+        var config = {
+            name:"HeroAttack",
+            duration:40,
+            animationProcedure:animationProcedure,
+            onEnd:onEnd,
+            actor: actor,
+            target: target
+        };
+
+        return new ActionAnimation(config);
     },
     ReceiveDamage: function() {
 

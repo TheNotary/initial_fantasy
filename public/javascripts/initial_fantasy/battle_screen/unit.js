@@ -35,10 +35,6 @@ function Unit(type, id, image, position, stance) {
 
     this.htmlElements = new HtmlElements(this.name);
 
-    // TODO: remove currentAnimation because there's going to be multiple
-    // animations running at the same time
-    this.currentAnimation = new ActionAnimation("blank"); // new Animation("Swinging") (for when the player selected fighting)
-
     this.animations = []; // array of animations active on this mob
     this.dead = false; // mark true to stop drawing the mob
 }
@@ -158,6 +154,7 @@ Unit.prototype.clearFromScreen = function() {
     switch (this.stance) {
         case "ground":
         case undefined:
+            console.log("when do you fire?")
             // TODO: refactor these so unit doesn't need to know this much about game.battleScreen???
             game.battleScreen.context.clearRect(this.lastX, this.lastY - this.height, this.width, this.height);
             break;
@@ -169,6 +166,15 @@ Unit.prototype.clearFromScreen = function() {
             break;
     }
 
+};
+
+Unit.prototype.updateAnimations = function() {
+    var animations = this.animations;
+    var l = animations.length;
+    for (var i = 0; i < l; i++) {
+        var animation = animations[i];
+        animation.update();
+    }
 };
 
 Unit.prototype.renderAnimations = function() {
@@ -223,23 +229,7 @@ Unit.prototype.drawGroundUnit = function() {
         this.lastHeight = this.height;
         this.unitMoved = false;
     }
-    if (this.currentAnimation.name != "blank") {
-        // console.debug(this.currentAnimation.name);
-
-    }
 };
-
-Unit.prototype.calculateAnimationOffsetX = function() {
-
-    if (this.currentAnimation.name == "fight") {
-        // console.debug(this.currentAnimation.name);
-        this.x = this.x - 50;
-        this.currentAnimation = new ActionAnimation("blank");
-        return -50;
-    }
-    return 0;
-};
-
 
 
 // this is where you link up all the html elements so it's faster to modify the values in the game loop

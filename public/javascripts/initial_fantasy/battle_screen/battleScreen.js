@@ -221,9 +221,8 @@ var offsetForSlideIn;
 
 BattleScreen.prototype.render = function() {
 
-    // Not sure why this is here, but it's obviously defeating any potential efficiencies
-    this.aHeroHasMoved = true;
     if (this.aHeroHasMoved) {
+        this.clearMovedHeroes();
         $.each(this.heroes, function(i, hero) {
             hero.drawUnit();
         });
@@ -319,6 +318,14 @@ BattleScreen.prototype.drawWaitBars = function() {
     }
 };
 
+BattleScreen.prototype.clearMovedHeroes = function() {
+    $.each(this.heroes, function(i, mob) {
+        if (mob.unitMoved) {
+            mob.clearFromScreen();
+        }
+    });
+};
+
 BattleScreen.prototype.clearMovedMobs = function() {
     if (this.aMobHasMoved) {
         $.each(this.mobs, function(i, mob) {
@@ -360,7 +367,6 @@ BattleScreen.prototype.updateUnitAnimations = function() {
         var animations = unit.animations;
         var l = animations.length;
         for (var i = 0; i < l; i++) {
-            console.log("animation update")
             var a = animations[i];
             a.update();
             // Remove the animation if it's set for deletion, adjust i
