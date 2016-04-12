@@ -5,7 +5,7 @@ asGameLoop.call(InitialFantasy.prototype);
 
 
 $(window).load(function() { // this waits for everything that happened in load() to ... load.
-    debugMode = true;
+    debugMode = false;
     // NOTE: the game object *MUST* be named game thanks to onEachFrame
     // callbacks and lack of encapsulation at the moment...
     window.game = new InitialFantasy(debugMode);
