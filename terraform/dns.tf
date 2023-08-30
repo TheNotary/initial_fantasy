@@ -22,16 +22,6 @@ resource "aws_s3_bucket" "personal_site_redirect" {
   }
 }
 
-resource "aws_route53_zone" "personal_site" {
-  provider = "aws"
-  name     = "${var.personal_site_domain}"
-
-  # Because it takes up to 48h for your domain registrar to update to new zone
-  # nameservers, it's wise to prevent `terraform destroy` commands from working
-  # on this record, hence below:
-  lifecycle { prevent_destroy = true }
-}
-
 resource "aws_route53_record" "personal_site_a_" {
   type    = "A"
   name    = ""
@@ -44,6 +34,7 @@ resource "aws_route53_record" "personal_site_a_" {
   }
 }
 
+// Redirect "prod" to heroku
 resource "aws_route53_record" "personal_site_cname_www" {
   type    = "CNAME"
   name    = "www"
@@ -52,6 +43,7 @@ resource "aws_route53_record" "personal_site_cname_www" {
   ttl     = "5"
 }
 
+// Redirect stage to heroku
 resource "aws_route53_record" "personal_site_cname_stage" {
   type    = "CNAME"
   name    = "stage"
