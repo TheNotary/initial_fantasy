@@ -9,3 +9,4 @@ ideas.txt
 doc/*.svg
 doc/**/*.svg
 terraform.tfstate*
+*_terraform.tfstate*
