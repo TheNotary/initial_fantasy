@@ -1,7 +1,7 @@
 source 'https://rubygems.org'
 
-gem 'bundler', '1.10.5'
-gem 'rails', '3.2.21'
+gem 'bundler', '1.17.3'
+gem 'rails', '3.2.22.5'
 
 #gem 'sqlite3'
 

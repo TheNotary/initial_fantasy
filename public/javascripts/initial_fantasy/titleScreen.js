@@ -16,7 +16,7 @@ function TitleScreen(canvasId, audioId, menuId, imageSrc) {
 TitleScreen.prototype = new Screen();
 
 TitleScreen.prototype.begin = function() {
-    this.audio.play();
+    // this.audio.play();
     this.fadeIn();
 };
 

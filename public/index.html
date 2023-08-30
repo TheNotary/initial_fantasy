@@ -1,0 +1,149 @@
+<!DOCTYPE html>
+<!-- pages/game -->
+<html>
+    
+<head>
+    <meta charset="UTF-8">
+    <title>InitialFantasy</title>
+    <link rel="shortcut icon" href="/favicon2.ico" type="image/x-icon" />
+
+    <!--    FFIV FONT    -->
+    <style media="screen" type="text/css">/*<![CDATA[*/@import '/fonts/hacked_font/stylesheet.css';/*]]>*/</style>
+    <link href="/styles.css" rel="stylesheet" type="text/css" />
+    
+    <script src="/jquery-2.1.4.min.js"></script>
+    <script src="/howler.min.js"></script>
+</head>
+<body>
+
+<!-- Audio Elements -->
+<audio id="audTitleScreen" class="music">
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
+    Your browser isn't intended for super fun audio time.
+</audio>
+  
+<audio id="audBattle" class="music">
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
+    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
+    Your browser isn't intended for super fun audio time.
+</audio>
+
+<div id="content">
+  <canvas id="title_screen" width="1000px" height="630px"></canvas>
+  <canvas id="battle_background" width="1000px" height="430px"></canvas>
+  <canvas id="battle_screen" width="1000px" height="430px"></canvas>
+  <canvas id="worldmap_screen" width="1000px" height="630px"></canvas>
+
+  <!-- BATTLE MENU -->
+  <div id="battle_menu">
+    <div id="action_buttons">
+      <a class="fight_button" onmousedown="javascript:game.battleScreen.actionMenu.chooseAction('fight_button');"><div id="fight_button" class="action_buttons">Fight</div></a>
+    </div>
+  
+    <!-- MOB LIST -->
+    <div id="enemies" class="menu_border">
+        <ul id="mob_list">
+          <li>Lobo</li>
+          <li>Krang</li>
+          <li>Eclipse</li>
+          <li>Blue Power Ranger</li>
+          <li>populated by js</li>
+        </ul>
+    </div>
+  
+    <!-- CHARACTER LIST -->
+    <div id="party" class="menu_border">
+        <ul id="character_list">
+          <li id="charRow_0">
+            <div class="name">Cecil</div>
+            <div class="current_hp">324</div>
+            <div class="health_divider">/</div>
+            <div class="max_hp">450</div>
+            <div class="current_mp"> 224 </div>
+            <div class="time">
+              <!-- <div id="h01-fill" class="fill"></div> -->
+              <canvas class="wait_bar" width="100" height="10"></canvas>
+            </div>
+          </li>
+          <div class="clear"></div>
+          
+          <li id="charRow_1">
+            <div class="name">Cecil</div>
+            <div class="current_hp">324</div>
+            <div class="health_divider">/</div>
+            <div class="max_hp">450</div>
+            <div class="current_mp"> 224 </div>
+            <div class="time">
+              <canvas class="wait_bar" width="100" height="10"></canvas>
+            </div>
+          </li>
+          <div class="clear"></div>
+          
+          <li id="charRow_2">
+            <div class="name">Cecil</div>
+            <div class="current_hp">324</div>
+            <div class="health_divider">/</div>
+            <div class="max_hp">450</div>
+            <div class="current_mp"> 224 </div>
+            <div class="time">
+              <canvas class="wait_bar" width="100" height="10"></canvas>
+            </div>
+          </li>
+          <div class="clear"></div>
+          
+          <li id="charRow_3">
+            <div class="name">Cecil</div>
+            <div class="current_hp">324</div>
+            <div class="health_divider">/</div>
+            <div class="max_hp">450</div>
+            <div class="current_mp"> 224 </div>
+            <div class="time">
+              <canvas class="wait_bar" width="100" height="10"></canvas>
+            </div>
+          </li>
+          <div class="clear"></div>
+          
+        </ul>
+      </div>
+      <!-- END CHARACTER LIST -->
+      
+  </div>
+  <!-- END BATTLE MENU -->
+  
+  <!-- SOCIAL MENU -->
+  <!-- communication for multiplayer menu -->
+  <!-- END SOCIAL MENU -->
+  
+  <!-- PARTY MENU -->
+  <!-- menu to check inventory, and change equipment, from world view-->
+  <!-- END PARTY MENU -->
+</div>
+
+
+<script src="/javascripts/initial_fantasy/engine/initial_fantasy.js"></script>
+
+<script src="/javascripts/initial_fantasy/engine/assetLoading.js"></script>
+<script src="/javascripts/initial_fantasy/engine/userInput.js"></script>
+<script src="/javascripts/initial_fantasy/engine/debugging.js"></script>
+<script src="/javascripts/initial_fantasy/engine/gameLoop.js"></script>
+
+<script src="/javascripts/initial_fantasy/engine/sceneDirector.js"></script>
+<script src="/javascripts/initial_fantasy/engine/screen.js"></script>
+
+
+<script src="/javascripts/initial_fantasy/titleScreen.js"></script>
+
+<script src="/javascripts/initial_fantasy/battle_screen/battleScreen.js"></script>
+<script src="/javascripts/initial_fantasy/battle_screen/unit.js"></script>
+<script src="/javascripts/initial_fantasy/battle_screen/mob.js"></script>
+<script src="/javascripts/initial_fantasy/battle_screen/hero.js"></script>
+<script src="/javascripts/initial_fantasy/battle_screen/actionAnimation.js"></script>
+<script src="/javascripts/initial_fantasy/battle_screen/animationDefinitions.js"></script>
+<script src="/javascripts/initial_fantasy/battle_screen/actionMenu.js"></script>
+
+<script src="/javascripts/globals.js"></script>
+<script src="/javascripts/initializeGame.js"></script>
+
+</body>
+</html>
