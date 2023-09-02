@@ -3,8 +3,13 @@
 // Give InitialFantasy a game loop pipeline via this mixin pattern
 asGameLoop.call(InitialFantasy.prototype);
 
-
-$(window).load(function() { // this waits for everything that happened in load() to ... load.
+let initialized = false;
+function initializer() {
+    if (initialized) return;
+    initialized = true;
+    
+    document.getElementById('autoplay-notice').style.display = 'none';
+    
     debugMode = false;
     // NOTE: the game object *MUST* be named game thanks to onEachFrame
     // callbacks and lack of encapsulation at the moment...
@@ -12,6 +17,8 @@ $(window).load(function() { // this waits for everything that happened in load()
 
     // downloads .png files needed to play
     game.graphics.loadBaseImages();
-
+    
     game.start();
-});
+}
+
+$(document.body).on('click', initializer);

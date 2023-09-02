@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <!-- pages/game -->
 <html>
-    
+
 <head>
     <meta charset="UTF-8">
     <title>InitialFantasy</title>
@@ -10,24 +10,15 @@
     <!--    FFIV FONT    -->
     <style media="screen" type="text/css">/*<![CDATA[*/@import '/fonts/hacked_font/stylesheet.css';/*]]>*/</style>
     <link href="/styles.css" rel="stylesheet" type="text/css" />
-    
+
     <script src="/jquery-2.1.4.min.js"></script>
     <script src="/howler.min.js"></script>
 </head>
 <body>
 
-<!-- Audio Elements -->
-<audio id="audTitleScreen" class="music">
-    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
-    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
-    Your browser isn't intended for super fun audio time.
-</audio>
-  
-<audio id="audBattle" class="music">
-    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg" type="audio/ogg"></source>
-    <source src="/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3" type="audio/mp3"></source>
-    Your browser isn't intended for super fun audio time.
-</audio>
+<div id="autoplay-notice">
+    Autoplay Disabled per 2018, please click to start :/
+</div>
 
 <div id="content">
   <canvas id="title_screen" width="1000px" height="630px"></canvas>
@@ -40,7 +31,7 @@
     <div id="action_buttons">
       <a class="fight_button" onmousedown="javascript:game.battleScreen.actionMenu.chooseAction('fight_button');"><div id="fight_button" class="action_buttons">Fight</div></a>
     </div>
-  
+
     <!-- MOB LIST -->
     <div id="enemies" class="menu_border">
         <ul id="mob_list">
@@ -51,7 +42,7 @@
           <li>populated by js</li>
         </ul>
     </div>
-  
+
     <!-- CHARACTER LIST -->
     <div id="party" class="menu_border">
         <ul id="character_list">
@@ -67,7 +58,7 @@
             </div>
           </li>
           <div class="clear"></div>
-          
+
           <li id="charRow_1">
             <div class="name">Cecil</div>
             <div class="current_hp">324</div>
@@ -79,7 +70,7 @@
             </div>
           </li>
           <div class="clear"></div>
-          
+
           <li id="charRow_2">
             <div class="name">Cecil</div>
             <div class="current_hp">324</div>
@@ -91,7 +82,7 @@
             </div>
           </li>
           <div class="clear"></div>
-          
+
           <li id="charRow_3">
             <div class="name">Cecil</div>
             <div class="current_hp">324</div>
@@ -103,18 +94,18 @@
             </div>
           </li>
           <div class="clear"></div>
-          
+
         </ul>
       </div>
       <!-- END CHARACTER LIST -->
-      
+
   </div>
   <!-- END BATTLE MENU -->
-  
+
   <!-- SOCIAL MENU -->
   <!-- communication for multiplayer menu -->
   <!-- END SOCIAL MENU -->
-  
+
   <!-- PARTY MENU -->
   <!-- menu to check inventory, and change equipment, from world view-->
   <!-- END PARTY MENU -->

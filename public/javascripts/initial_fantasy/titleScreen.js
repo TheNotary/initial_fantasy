@@ -1,11 +1,11 @@
 /*
  * canvasId     - String containing ID of canvas element on html
- * audioId      - String identifieing audio element
+ * sound        - object The sound object from initialFantasy
  * menuId       - null, would define an html menu... null if no menu
  * imageSrc     - path to image for title screen
  */
-function TitleScreen(canvasId, audioId, menuId, imageSrc) {
-    Screen.call(this, canvasId, audioId, menuId);
+function TitleScreen(canvasId, sound, menuId, imageSrc) {
+    Screen.call(this, canvasId, sound, menuId);
 
     this.ga = 0.0; // global alpha to the canvas context
     this.timerId = 0; // id for fade in timer
@@ -16,7 +16,7 @@ function TitleScreen(canvasId, audioId, menuId, imageSrc) {
 TitleScreen.prototype = new Screen();
 
 TitleScreen.prototype.begin = function() {
-    // this.audio.play();
+    this.bgMusic.play();
     this.fadeIn();
 };
 
@@ -29,9 +29,7 @@ TitleScreen.prototype.handleMouse = function(evt) {
 };
 
 TitleScreen.prototype.ExitScreen = function(scene) {
-
-
-    this.audio.pause();
+    this.bgMusic.pause();
     clearInterval(timerId); // clears the fade in timer
     if (scene != undefined) {
         sceneDirector.switchToScene(scene);

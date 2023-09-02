@@ -1,5 +1,5 @@
-function BattleScreen(canvasId, bgMusicPaths, menuId) {
-    Screen.call(this, canvasId, bgMusicPaths, menuId);
+function BattleScreen(canvasId, sound, menuId) {
+    Screen.call(this, canvasId, sound, menuId);
     this.background;
     this.mobs = [];
     this.heroes = [];
@@ -484,7 +484,9 @@ BattleScreen.prototype.updateWaitBars = function() {
 BattleScreen.prototype.playBattleTransitionSound = function() {};
 BattleScreen.prototype.doBattleTransitionEffect = function() {};
 
-BattleScreen.prototype.startBattleMusic = function() {};
+BattleScreen.prototype.startBattleMusic = function() {
+    this.bgMusic.play();
+};
 
 
 BattleScreen.prototype.paintBackground = function(background) {

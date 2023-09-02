@@ -11,14 +11,18 @@ window.InitialFantasy = function(debugMode) {
     // We'll see how that turns out when I have more code down...
     this.currentScreen = "title_screen";
 
-    this.titleScreen = new TitleScreen('title_screen', 'audTitleScreen',
-        null, '/images/ui/title_screen.png');
-
-    this.battleScreen = new BattleScreen('battle_screen', 'audBattle', 'battle_menu');
-
     this.graphics = new this.Graphics();
     this.sound = new this.Sound();
-
+    
+    this.titleScreen = new TitleScreen('title_screen', 
+        this.sound,
+        null, '/images/ui/title_screen.png');
+        
+    this.battleScreen = new BattleScreen('battle_screen', 
+        this.sound, 
+        'battle_menu');
+    
+    // this.sound.bgMusic['title_screen'].play();
 
     // Calling this method will initiate the game
     this.start = function() {

@@ -42,7 +42,23 @@ window.InitialFantasy.prototype.Graphics = function() {
 
 window.InitialFantasy.prototype.Sound = function() {
     this.audMenuMove = new Howl({
-        urls: ["/audio/misc/menu_move.ogg"],
+        src: ["/audio/misc/menu_move.ogg"],
+        volume: 0.05
+    });
+    
+    this.bgMusic = {};
+    
+    this.bgMusic['title_screen'] = new Howl({
+        src: [
+            '/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3', 
+            '/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg'],
+        volume: 0.05
+    });
+    
+    this.bgMusic['battle_screen'] = new Howl({
+        src: [
+            '/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.mp3', 
+            '/audio/opener/Final_Fantasy_4_Lacrima_OC_ReMix.ogg'],
         volume: 0.05
     });
     
